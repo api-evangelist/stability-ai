@@ -1,0 +1,449 @@
+openapi: 3.1.0
+info:
+  title: Stability AI Stable Image Generate API
+  description: >-
+    The Stability AI Stable Image Generate API provides text-to-image generation
+    capabilities powered by models including Stable Diffusion 3.5 and Stable Image
+    Ultra. Developers can generate high-quality images from text prompts with
+    control over style, dimensions, and output format. The API supports multiple
+    model tiers including Stable Image Core for fast and affordable generation and
+    Stable Image Ultra for state-of-the-art quality results.
+  version: 'v2beta'
+  contact:
+    name: Stability AI Support
+    url: https://platform.stability.ai
+  termsOfService: https://stability.ai/terms-of-service
+externalDocs:
+  description: Stability AI API Documentation
+  url: https://platform.stability.ai/docs/api-reference
+servers:
+  - url: https://api.stability.ai
+    description: Production Server
+tags:
+  - name: Generate Ultra
+    description: >-
+      Generate images using Stable Image Ultra, the highest quality model for
+      state-of-the-art photorealistic and artistic image generation.
+  - name: Generate Core
+    description: >-
+      Generate images using Stable Image Core, a fast and affordable model for
+      high-quality image generation.
+  - name: Generate SD3
+    description: >-
+      Generate images using Stable Diffusion 3 and 3.5 models with advanced
+      text-to-image and image-to-image capabilities.
+security:
+  - bearerAuth: []
+paths:
+  /v2beta/stable-image/generate/ultra:
+    post:
+      operationId: generateImageUltra
+      summary: Generate an image using Stable Image Ultra
+      description: >-
+        Generates a high-quality image from a text prompt using the Stable Image
+        Ultra model. This endpoint produces state-of-the-art results with
+        exceptional detail, lighting, and composition. Requests use multipart
+        form data encoding.
+      tags:
+        - Generate Ultra
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/GenerateUltraRequest'
+      responses:
+        '200':
+          description: Successfully generated image
+          content:
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
+            image/png:
+              schema:
+                type: string
+                format: binary
+            image/webp:
+              schema:
+                type: string
+                format: binary
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenerateImageResponse'
+        '400':
+          description: Bad request due to invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized due to missing or invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: >-
+            Forbidden due to content moderation or insufficient permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /v2beta/stable-image/generate/core:
+    post:
+      operationId: generateImageCore
+      summary: Generate an image using Stable Image Core
+      description: >-
+        Generates an image from a text prompt using the Stable Image Core model.
+        This endpoint provides fast and affordable generation with high-quality
+        results suitable for most use cases. Requests use multipart form data
+        encoding.
+      tags:
+        - Generate Core
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/GenerateCoreRequest'
+      responses:
+        '200':
+          description: Successfully generated image
+          content:
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
+            image/png:
+              schema:
+                type: string
+                format: binary
+            image/webp:
+              schema:
+                type: string
+                format: binary
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenerateImageResponse'
+        '400':
+          description: Bad request due to invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized due to missing or invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: >-
+            Forbidden due to content moderation or insufficient permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /v2beta/stable-image/generate/sd3:
+    post:
+      operationId: generateImageSD3
+      summary: Generate an image using Stable Diffusion 3
+      description: >-
+        Generates an image using Stable Diffusion 3 or 3.5 models. Supports both
+        text-to-image and image-to-image generation modes. When an image is
+        provided along with a prompt, the model uses it as a reference guided by
+        the strength parameter. Requests use multipart form data encoding.
+      tags:
+        - Generate SD3
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/GenerateSD3Request'
+      responses:
+        '200':
+          description: Successfully generated image
+          content:
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
+            image/png:
+              schema:
+                type: string
+                format: binary
+            image/webp:
+              schema:
+                type: string
+                format: binary
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenerateImageResponse'
+        '400':
+          description: Bad request due to invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized due to missing or invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: >-
+            Forbidden due to content moderation or insufficient permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        API key authentication. Pass your Stability AI API key as a Bearer token
+        in the Authorization header.
+  schemas:
+    GenerateUltraRequest:
+      type: object
+      required:
+        - prompt
+      properties:
+        prompt:
+          type: string
+          maxLength: 10000
+          description: >-
+            Text describing what you wish to see in the output image. Strong,
+            descriptive prompts that clearly define elements, colors, and subjects
+            lead to better results.
+        negative_prompt:
+          type: string
+          maxLength: 10000
+          description: >-
+            Text describing elements to exclude from the output image.
+        aspect_ratio:
+          type: string
+          enum:
+            - '16:9'
+            - '1:1'
+            - '21:9'
+            - '2:3'
+            - '3:2'
+            - '4:5'
+            - '5:4'
+            - '9:16'
+            - '9:21'
+          default: '1:1'
+          description: >-
+            Controls the aspect ratio of the generated image.
+        seed:
+          type: integer
+          minimum: 0
+          maximum: 4294967294
+          default: 0
+          description: >-
+            A value to control randomness in generation. Set to 0 for a random
+            seed. Using the same seed with the same parameters produces similar
+            results.
+        output_format:
+          type: string
+          enum:
+            - jpeg
+            - png
+            - webp
+          default: png
+          description: >-
+            The output format of the generated image.
+    GenerateCoreRequest:
+      type: object
+      required:
+        - prompt
+      properties:
+        prompt:
+          type: string
+          maxLength: 10000
+          description: >-
+            Text describing what you wish to see in the output image.
+        negative_prompt:
+          type: string
+          maxLength: 10000
+          description: >-
+            Text describing elements to exclude from the output image.
+        aspect_ratio:
+          type: string
+          enum:
+            - '16:9'
+            - '1:1'
+            - '21:9'
+            - '2:3'
+            - '3:2'
+            - '4:5'
+            - '5:4'
+            - '9:16'
+            - '9:21'
+          default: '1:1'
+          description: >-
+            Controls the aspect ratio of the generated image.
+        seed:
+          type: integer
+          minimum: 0
+          maximum: 4294967294
+          default: 0
+          description: >-
+            A value to control randomness in generation.
+        output_format:
+          type: string
+          enum:
+            - jpeg
+            - png
+            - webp
+          default: png
+          description: >-
+            The output format of the generated image.
+        style_preset:
+          type: string
+          description: >-
+            An optional style preset to guide the image model towards a
+            particular visual style.
+    GenerateSD3Request:
+      type: object
+      required:
+        - prompt
+      properties:
+        prompt:
+          type: string
+          maxLength: 10000
+          description: >-
+            Text describing what you wish to see in the output image.
+        negative_prompt:
+          type: string
+          maxLength: 10000
+          description: >-
+            Text describing elements to exclude from the output image.
+        image:
+          type: string
+          format: binary
+          description: >-
+            An optional input image for image-to-image generation. When provided,
+            the model uses this image as a reference guided by the strength
+            parameter.
+        strength:
+          type: number
+          minimum: 0
+          maximum: 1
+          default: 0.7
+          description: >-
+            Controls how much influence the input image has on the output.
+            Lower values produce images closer to the input, higher values allow
+            more creative deviation. Only applicable for image-to-image mode.
+        aspect_ratio:
+          type: string
+          enum:
+            - '16:9'
+            - '1:1'
+            - '21:9'
+            - '2:3'
+            - '3:2'
+            - '4:5'
+            - '5:4'
+            - '9:16'
+            - '9:21'
+          default: '1:1'
+          description: >-
+            Controls the aspect ratio of the generated image. Only applicable
+            for text-to-image mode.
+        model:
+          type: string
+          enum:
+            - sd3
+            - sd3-turbo
+            - sd3.5-large
+            - sd3.5-large-turbo
+            - sd3.5-medium
+          default: sd3.5-large
+          description: >-
+            The Stable Diffusion 3 model variant to use for generation.
+        seed:
+          type: integer
+          minimum: 0
+          maximum: 4294967294
+          default: 0
+          description: >-
+            A value to control randomness in generation.
+        output_format:
+          type: string
+          enum:
+            - jpeg
+            - png
+            - webp
+          default: png
+          description: >-
+            The output format of the generated image.
+        mode:
+          type: string
+          enum:
+            - text-to-image
+            - image-to-image
+          default: text-to-image
+          description: >-
+            The generation mode. Use text-to-image for prompt-only generation
+            or image-to-image when providing a reference image.
+    GenerateImageResponse:
+      type: object
+      properties:
+        image:
+          type: string
+          description: >-
+            Base64-encoded image data when Accept header is set to
+            application/json.
+        finish_reason:
+          type: string
+          enum:
+            - SUCCESS
+            - CONTENT_FILTERED
+          description: >-
+            The reason the generation finished. SUCCESS indicates a successful
+            generation, CONTENT_FILTERED indicates the output was blocked by
+            content moderation.
+        seed:
+          type: integer
+          description: >-
+            The seed used for generation. Useful for reproducing results.
+    ErrorResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: >-
+            A unique identifier for the error instance.
+        name:
+          type: string
+          description: >-
+            The error type name.
+        message:
+          type: string
+          description: >-
+            A human-readable description of the error.

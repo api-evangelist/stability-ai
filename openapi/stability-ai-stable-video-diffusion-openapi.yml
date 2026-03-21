@@ -1,0 +1,213 @@
+openapi: 3.1.0
+info:
+  title: Stability AI Stable Video Diffusion API
+  description: >-
+    The Stability AI Stable Video Diffusion API enables developers to generate
+    short video clips from a single input image. Powered by the Stable Video
+    Diffusion model, the API produces smooth animated sequences that bring static
+    images to life with realistic motion. This is useful for creating product
+    animations, visual effects previews, and dynamic content from existing image
+    assets. The API uses an asynchronous workflow where a generation is started
+    and then polled for completion.
+  version: 'v2beta'
+  contact:
+    name: Stability AI Support
+    url: https://platform.stability.ai
+  termsOfService: https://stability.ai/terms-of-service
+externalDocs:
+  description: Stability AI Video Documentation
+  url: https://platform.stability.ai/docs/getting-started/stable-video-diffusion
+servers:
+  - url: https://api.stability.ai
+    description: Production Server
+tags:
+  - name: Image to Video
+    description: >-
+      Generate short video clips from a single input image using the Stable
+      Video Diffusion model. The API uses an asynchronous start-and-poll pattern.
+security:
+  - bearerAuth: []
+paths:
+  /v2beta/image-to-video:
+    post:
+      operationId: startImageToVideo
+      summary: Start an image-to-video generation
+      description: >-
+        Initiates an asynchronous video generation from a single input image.
+        Returns a generation ID that can be used to poll for the completed video.
+        The model produces a short animated sequence with realistic motion derived
+        from the input image. Parameters control the strength of motion and
+        conditioning.
+      tags:
+        - Image to Video
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ImageToVideoRequest'
+      responses:
+        '200':
+          description: Video generation started successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsyncGenerationResponse'
+        '400':
+          description: Bad request due to invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized due to missing or invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /v2beta/image-to-video/result/{id}:
+    get:
+      operationId: getImageToVideoResult
+      summary: Get the result of a video generation
+      description: >-
+        Polls for the result of an asynchronous image-to-video generation.
+        Returns the generated video when processing is complete or a status
+        indicating the generation is still in progress.
+      tags:
+        - Image to Video
+      parameters:
+        - $ref: '#/components/parameters/generationId'
+      responses:
+        '200':
+          description: Video generation is complete
+          content:
+            video/mp4:
+              schema:
+                type: string
+                format: binary
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VideoGenerationResponse'
+        '202':
+          description: Generation is still in progress
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsyncGenerationResponse'
+        '401':
+          description: Unauthorized due to missing or invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Generation ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        API key authentication. Pass your Stability AI API key as a Bearer token
+        in the Authorization header.
+  parameters:
+    generationId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: >-
+        The unique identifier of the asynchronous generation to poll for results.
+  schemas:
+    ImageToVideoRequest:
+      type: object
+      required:
+        - image
+      properties:
+        image:
+          type: string
+          format: binary
+          description: >-
+            The source image to animate. The image should contain a clear subject
+            with a stable composition suitable for animation. Supported
+            resolutions include 1024x576, 576x1024, and 768x768.
+        seed:
+          type: integer
+          minimum: 0
+          maximum: 4294967294
+          default: 0
+          description: >-
+            A value to control randomness in the video generation.
+        cfg_scale:
+          type: number
+          minimum: 0
+          maximum: 10
+          default: 1.8
+          description: >-
+            Controls how closely the video follows the conditioning from the
+            input image. Higher values produce videos more faithful to the
+            input but may reduce motion quality.
+        motion_bucket_id:
+          type: integer
+          minimum: 1
+          maximum: 255
+          default: 127
+          description: >-
+            Controls the amount of motion in the generated video. Lower values
+            produce less motion, higher values produce more dynamic motion.
+    VideoGenerationResponse:
+      type: object
+      properties:
+        video:
+          type: string
+          description: >-
+            Base64-encoded video data when Accept header is set to
+            application/json.
+        finish_reason:
+          type: string
+          enum:
+            - SUCCESS
+            - CONTENT_FILTERED
+          description: >-
+            The reason the generation finished.
+        seed:
+          type: integer
+          description: >-
+            The seed used for generation.
+    AsyncGenerationResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: >-
+            The unique generation ID used to poll for results.
+        status:
+          type: string
+          description: >-
+            The current status of the generation.
+    ErrorResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: >-
+            A unique identifier for the error instance.
+        name:
+          type: string
+          description: >-
+            The error type name.
+        message:
+          type: string
+          description: >-
+            A human-readable description of the error.

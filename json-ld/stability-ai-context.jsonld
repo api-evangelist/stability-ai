@@ -1,0 +1,152 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "stability": "https://platform.stability.ai/ns/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+
+    "ImageGeneration": {
+      "@id": "stability:ImageGeneration",
+      "@context": {
+        "prompt": "stability:prompt",
+        "negativePrompt": "stability:negativePrompt",
+        "aspectRatio": "stability:aspectRatio",
+        "outputFormat": "stability:outputFormat",
+        "seed": "stability:seed",
+        "model": "stability:model",
+        "mode": "stability:mode",
+        "strength": "stability:strength",
+        "image": {
+          "@id": "schema:image",
+          "@type": "@id"
+        },
+        "result": "stability:result",
+        "finishReason": "stability:finishReason",
+        "dateCreated": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "ImageEdit": {
+      "@id": "stability:ImageEdit",
+      "@context": {
+        "operation": "stability:editOperation",
+        "sourceImage": {
+          "@id": "stability:sourceImage",
+          "@type": "@id"
+        },
+        "maskImage": {
+          "@id": "stability:maskImage",
+          "@type": "@id"
+        },
+        "prompt": "stability:prompt",
+        "searchPrompt": "stability:searchPrompt",
+        "resultImage": {
+          "@id": "stability:resultImage",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "ImageUpscale": {
+      "@id": "stability:ImageUpscale",
+      "@context": {
+        "method": "stability:upscaleMethod",
+        "sourceImage": {
+          "@id": "stability:sourceImage",
+          "@type": "@id"
+        },
+        "prompt": "stability:prompt",
+        "resultImage": {
+          "@id": "stability:resultImage",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "ImageControl": {
+      "@id": "stability:ImageControl",
+      "@context": {
+        "controlMethod": "stability:controlMethod",
+        "controlStrength": "stability:controlStrength",
+        "fidelity": "stability:fidelity",
+        "referenceImage": {
+          "@id": "stability:referenceImage",
+          "@type": "@id"
+        },
+        "prompt": "stability:prompt",
+        "resultImage": {
+          "@id": "stability:resultImage",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "VideoGeneration": {
+      "@id": "stability:VideoGeneration",
+      "@context": {
+        "sourceImage": {
+          "@id": "stability:sourceImage",
+          "@type": "@id"
+        },
+        "cfgScale": "stability:cfgScale",
+        "motionBucketId": "stability:motionBucketId",
+        "seed": "stability:seed",
+        "resultVideo": {
+          "@id": "stability:resultVideo",
+          "@type": "@id"
+        },
+        "generationId": "stability:generationId"
+      }
+    },
+
+    "ThreeDGeneration": {
+      "@id": "stability:ThreeDGeneration",
+      "@context": {
+        "sourceImage": {
+          "@id": "stability:sourceImage",
+          "@type": "@id"
+        },
+        "textureResolution": "stability:textureResolution",
+        "foregroundRatio": "stability:foregroundRatio",
+        "remesh": "stability:remesh",
+        "resultModel": {
+          "@id": "stability:resultModel",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "GenerativeModel": {
+      "@id": "stability:GenerativeModel",
+      "@context": {
+        "modelId": "schema:identifier",
+        "name": "schema:name",
+        "description": "schema:description",
+        "version": "schema:version",
+        "capabilities": {
+          "@id": "stability:capabilities",
+          "@container": "@set"
+        }
+      }
+    },
+
+    "ApiKey": {
+      "@id": "stability:ApiKey",
+      "@context": {
+        "keyId": "schema:identifier",
+        "owner": {
+          "@id": "schema:creator",
+          "@type": "@id"
+        },
+        "dateCreated": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        }
+      }
+    }
+  }
+}

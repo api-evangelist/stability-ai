@@ -1,0 +1,163 @@
+openapi: 3.1.0
+info:
+  title: Stability AI Stable Fast 3D API
+  description: >-
+    The Stability AI Stable Fast 3D API generates textured 3D mesh assets from
+    single input images. The API rapidly produces 3D models suitable for use in
+    games, augmented reality, virtual reality, and product visualization
+    workflows. Developers can convert 2D images into fully textured 3D objects
+    with UV-unwrapped meshes, enabling rapid prototyping and asset creation
+    without manual 3D modeling.
+  version: 'v2beta'
+  contact:
+    name: Stability AI Support
+    url: https://platform.stability.ai
+  termsOfService: https://stability.ai/terms-of-service
+externalDocs:
+  description: Stability AI API Documentation
+  url: https://platform.stability.ai/docs/api-reference
+servers:
+  - url: https://api.stability.ai
+    description: Production Server
+tags:
+  - name: 3D Generation
+    description: >-
+      Generate textured 3D mesh assets from single input images using the
+      Stable Fast 3D model.
+security:
+  - bearerAuth: []
+paths:
+  /v2beta/3d/stable-fast-3d:
+    post:
+      operationId: generateStableFast3D
+      summary: Generate a 3D model from an image
+      description: >-
+        Generates a textured, UV-unwrapped 3D mesh from a single input image.
+        The model interprets the 2D image and produces a 3D object with geometry
+        and texture suitable for real-time rendering applications. Output is
+        returned as a GLB file containing the mesh and texture data.
+      tags:
+        - 3D Generation
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/StableFast3DRequest'
+      responses:
+        '200':
+          description: Successfully generated 3D model
+          content:
+            model/gltf-binary:
+              schema:
+                type: string
+                format: binary
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Generate3DResponse'
+        '400':
+          description: Bad request due to invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized due to missing or invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: >-
+            Forbidden due to content moderation or insufficient permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        API key authentication. Pass your Stability AI API key as a Bearer token
+        in the Authorization header.
+  schemas:
+    StableFast3DRequest:
+      type: object
+      required:
+        - image
+      properties:
+        image:
+          type: string
+          format: binary
+          description: >-
+            The input image of an object to convert into a 3D model. Best results
+            are achieved with images of single objects on a clean background.
+        texture_resolution:
+          type: integer
+          enum:
+            - 512
+            - 1024
+            - 2048
+          default: 1024
+          description: >-
+            The resolution of the generated texture in pixels. Higher values
+            produce more detailed textures but increase file size and processing
+            time.
+        foreground_ratio:
+          type: number
+          minimum: 0.1
+          maximum: 1.0
+          default: 0.85
+          description: >-
+            The ratio of the foreground object to the total image size. Used to
+            control how much of the image is treated as the object versus
+            background during 3D reconstruction.
+        remesh:
+          type: string
+          enum:
+            - none
+            - triangle
+            - quad
+          default: none
+          description: >-
+            The remeshing algorithm to apply to the generated mesh. Triangle and
+            quad remeshing produce cleaner topology suitable for animation and
+            further editing.
+    Generate3DResponse:
+      type: object
+      properties:
+        model:
+          type: string
+          description: >-
+            Base64-encoded GLB model data when Accept header is set to
+            application/json.
+        finish_reason:
+          type: string
+          enum:
+            - SUCCESS
+            - CONTENT_FILTERED
+          description: >-
+            The reason the generation finished.
+    ErrorResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: >-
+            A unique identifier for the error instance.
+        name:
+          type: string
+          description: >-
+            The error type name.
+        message:
+          type: string
+          description: >-
+            A human-readable description of the error.

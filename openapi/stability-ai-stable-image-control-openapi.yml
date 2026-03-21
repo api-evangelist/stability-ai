@@ -1,0 +1,401 @@
+openapi: 3.1.0
+info:
+  title: Stability AI Stable Image Control API
+  description: >-
+    The Stability AI Stable Image Control API provides image-to-image generation
+    guided by structural inputs such as sketches, reference structures, and style
+    guides. Using ControlNet-based models, developers can generate new images that
+    follow the composition, edges, or layout of a source image while applying new
+    styles or content based on text prompts. The API supports sketch-to-image,
+    structure-guided generation, and style transfer workflows.
+  version: 'v2beta'
+  contact:
+    name: Stability AI Support
+    url: https://platform.stability.ai
+  termsOfService: https://stability.ai/terms-of-service
+externalDocs:
+  description: Stability AI API Documentation
+  url: https://platform.stability.ai/docs/api-reference
+servers:
+  - url: https://api.stability.ai
+    description: Production Server
+tags:
+  - name: Sketch
+    description: >-
+      Generate images from hand-drawn sketches or line drawings, guided by a
+      text prompt to fill in details, colors, and textures.
+  - name: Structure
+    description: >-
+      Generate images guided by the structural composition of a reference image,
+      preserving edges and layout while applying new content from a text prompt.
+  - name: Style
+    description: >-
+      Generate images that adopt the visual style of a reference image while
+      following a text prompt for content direction.
+security:
+  - bearerAuth: []
+paths:
+  /v2beta/stable-image/control/sketch:
+    post:
+      operationId: controlImageSketch
+      summary: Generate an image from a sketch
+      description: >-
+        Generates a detailed image from a hand-drawn sketch or line drawing.
+        The sketch provides the structural composition while the text prompt
+        guides the content, colors, textures, and style of the output image.
+      tags:
+        - Sketch
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SketchControlRequest'
+      responses:
+        '200':
+          description: Successfully generated image from sketch
+          content:
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
+            image/png:
+              schema:
+                type: string
+                format: binary
+            image/webp:
+              schema:
+                type: string
+                format: binary
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ControlImageResponse'
+        '400':
+          description: Bad request due to invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized due to missing or invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: >-
+            Forbidden due to content moderation or insufficient permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /v2beta/stable-image/control/structure:
+    post:
+      operationId: controlImageStructure
+      summary: Generate an image guided by structural reference
+      description: >-
+        Generates a new image guided by the structural composition of a reference
+        image. The reference image provides edge and layout information while the
+        text prompt directs the content and style of the output. Useful for
+        generating variations that maintain the same composition.
+      tags:
+        - Structure
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/StructureControlRequest'
+      responses:
+        '200':
+          description: Successfully generated structurally guided image
+          content:
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
+            image/png:
+              schema:
+                type: string
+                format: binary
+            image/webp:
+              schema:
+                type: string
+                format: binary
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ControlImageResponse'
+        '400':
+          description: Bad request due to invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized due to missing or invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: >-
+            Forbidden due to content moderation or insufficient permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /v2beta/stable-image/control/style:
+    post:
+      operationId: controlImageStyle
+      summary: Generate an image with style transfer
+      description: >-
+        Generates a new image that adopts the visual style of a reference image.
+        The style image provides color palette, artistic technique, and aesthetic
+        direction while the text prompt controls the subject and composition of
+        the output.
+      tags:
+        - Style
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/StyleControlRequest'
+      responses:
+        '200':
+          description: Successfully generated style-transferred image
+          content:
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
+            image/png:
+              schema:
+                type: string
+                format: binary
+            image/webp:
+              schema:
+                type: string
+                format: binary
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ControlImageResponse'
+        '400':
+          description: Bad request due to invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized due to missing or invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: >-
+            Forbidden due to content moderation or insufficient permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        API key authentication. Pass your Stability AI API key as a Bearer token
+        in the Authorization header.
+  schemas:
+    SketchControlRequest:
+      type: object
+      required:
+        - image
+        - prompt
+      properties:
+        image:
+          type: string
+          format: binary
+          description: >-
+            The sketch or line drawing image to use as structural guidance.
+        prompt:
+          type: string
+          maxLength: 10000
+          description: >-
+            Text describing the desired output image including content, colors,
+            textures, and style.
+        negative_prompt:
+          type: string
+          maxLength: 10000
+          description: >-
+            Text describing elements to exclude from the output image.
+        control_strength:
+          type: number
+          minimum: 0
+          maximum: 1
+          default: 0.7
+          description: >-
+            Controls how closely the output follows the input sketch. Higher
+            values produce outputs more faithful to the sketch structure.
+        seed:
+          type: integer
+          minimum: 0
+          maximum: 4294967294
+          default: 0
+          description: >-
+            A value to control randomness in generation.
+        output_format:
+          type: string
+          enum:
+            - jpeg
+            - png
+            - webp
+          default: png
+          description: >-
+            The output format of the generated image.
+    StructureControlRequest:
+      type: object
+      required:
+        - image
+        - prompt
+      properties:
+        image:
+          type: string
+          format: binary
+          description: >-
+            The reference image to use for structural guidance. The edges and
+            layout of this image will guide the output composition.
+        prompt:
+          type: string
+          maxLength: 10000
+          description: >-
+            Text describing the desired output image content and style.
+        negative_prompt:
+          type: string
+          maxLength: 10000
+          description: >-
+            Text describing elements to exclude from the output image.
+        control_strength:
+          type: number
+          minimum: 0
+          maximum: 1
+          default: 0.7
+          description: >-
+            Controls how closely the output follows the reference structure.
+            Higher values produce outputs more faithful to the reference layout.
+        seed:
+          type: integer
+          minimum: 0
+          maximum: 4294967294
+          default: 0
+          description: >-
+            A value to control randomness in generation.
+        output_format:
+          type: string
+          enum:
+            - jpeg
+            - png
+            - webp
+          default: png
+          description: >-
+            The output format of the generated image.
+    StyleControlRequest:
+      type: object
+      required:
+        - image
+        - prompt
+      properties:
+        image:
+          type: string
+          format: binary
+          description: >-
+            The style reference image whose visual style will be applied to the
+            output.
+        prompt:
+          type: string
+          maxLength: 10000
+          description: >-
+            Text describing the subject and composition of the output image.
+        negative_prompt:
+          type: string
+          maxLength: 10000
+          description: >-
+            Text describing elements to exclude from the output image.
+        fidelity:
+          type: number
+          minimum: 0
+          maximum: 1
+          default: 0.5
+          description: >-
+            Controls how strongly the style of the reference image influences
+            the output. Higher values produce outputs closer to the reference
+            style.
+        seed:
+          type: integer
+          minimum: 0
+          maximum: 4294967294
+          default: 0
+          description: >-
+            A value to control randomness in generation.
+        output_format:
+          type: string
+          enum:
+            - jpeg
+            - png
+            - webp
+          default: png
+          description: >-
+            The output format of the generated image.
+    ControlImageResponse:
+      type: object
+      properties:
+        image:
+          type: string
+          description: >-
+            Base64-encoded image data when Accept header is set to
+            application/json.
+        finish_reason:
+          type: string
+          enum:
+            - SUCCESS
+            - CONTENT_FILTERED
+          description: >-
+            The reason the generation finished.
+        seed:
+          type: integer
+          description: >-
+            The seed used for generation.
+    ErrorResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: >-
+            A unique identifier for the error instance.
+        name:
+          type: string
+          description: >-
+            The error type name.
+        message:
+          type: string
+          description: >-
+            A human-readable description of the error.

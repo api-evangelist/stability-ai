@@ -1,0 +1,787 @@
+openapi: 3.1.0
+info:
+  title: Stability AI Stable Image Edit API
+  description: >-
+    The Stability AI Stable Image Edit API provides image editing capabilities
+    including inpainting, outpainting, object erasing, background removal, and
+    search-and-replace functionality. Developers can use natural language prompts
+    to modify existing images, fill in masked regions, extend image boundaries, or
+    replace specific objects within a scene. These tools enable advanced image
+    manipulation workflows without requiring traditional image editing expertise.
+  version: 'v2beta'
+  contact:
+    name: Stability AI Support
+    url: https://platform.stability.ai
+  termsOfService: https://stability.ai/terms-of-service
+externalDocs:
+  description: Stability AI API Documentation
+  url: https://platform.stability.ai/docs/api-reference
+servers:
+  - url: https://api.stability.ai
+    description: Production Server
+tags:
+  - name: Inpaint
+    description: >-
+      Fill in masked regions of an image using AI-guided inpainting with text
+      prompts to control what appears in the filled area.
+  - name: Outpaint
+    description: >-
+      Extend the boundaries of an image by generating new content that seamlessly
+      continues the existing scene in any direction.
+  - name: Erase
+    description: >-
+      Remove objects from an image by masking the area to erase and letting the
+      AI fill in the background naturally.
+  - name: Search and Replace
+    description: >-
+      Find and replace specific objects within an image using text descriptions
+      of what to search for and what to replace it with.
+  - name: Search and Recolor
+    description: >-
+      Find specific objects within an image and recolor them using text
+      descriptions of the target object and desired color.
+  - name: Remove Background
+    description: >-
+      Automatically detect and remove the background from an image, isolating
+      the foreground subject.
+  - name: Replace Background and Relight
+    description: >-
+      Replace the background of an image and adjust lighting conditions using
+      AI-powered scene understanding.
+security:
+  - bearerAuth: []
+paths:
+  /v2beta/stable-image/edit/inpaint:
+    post:
+      operationId: editImageInpaint
+      summary: Inpaint a masked region of an image
+      description: >-
+        Fills in a masked region of an input image using AI-guided inpainting.
+        Provide a source image, a mask indicating the region to fill, and a text
+        prompt describing what should appear in the filled area. The result
+        seamlessly blends with the surrounding image content.
+      tags:
+        - Inpaint
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/InpaintRequest'
+      responses:
+        '200':
+          description: Successfully inpainted image
+          content:
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
+            image/png:
+              schema:
+                type: string
+                format: binary
+            image/webp:
+              schema:
+                type: string
+                format: binary
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EditImageResponse'
+        '400':
+          description: Bad request due to invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized due to missing or invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: >-
+            Forbidden due to content moderation or insufficient permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /v2beta/stable-image/edit/outpaint:
+    post:
+      operationId: editImageOutpaint
+      summary: Extend an image beyond its boundaries
+      description: >-
+        Extends an image by generating new content beyond its current boundaries.
+        Specify the number of pixels to extend in each direction and optionally
+        provide a text prompt to guide the content of the extended regions. The
+        generated content seamlessly continues the existing scene.
+      tags:
+        - Outpaint
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/OutpaintRequest'
+      responses:
+        '200':
+          description: Successfully outpainted image
+          content:
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
+            image/png:
+              schema:
+                type: string
+                format: binary
+            image/webp:
+              schema:
+                type: string
+                format: binary
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EditImageResponse'
+        '400':
+          description: Bad request due to invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized due to missing or invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: >-
+            Forbidden due to content moderation or insufficient permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /v2beta/stable-image/edit/erase:
+    post:
+      operationId: editImageErase
+      summary: Erase an object from an image
+      description: >-
+        Removes an object or region from an image by providing a mask over the
+        area to erase. The AI fills in the erased area with contextually
+        appropriate background content that blends naturally with the surrounding
+        image.
+      tags:
+        - Erase
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/EraseRequest'
+      responses:
+        '200':
+          description: Successfully erased object from image
+          content:
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
+            image/png:
+              schema:
+                type: string
+                format: binary
+            image/webp:
+              schema:
+                type: string
+                format: binary
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EditImageResponse'
+        '400':
+          description: Bad request due to invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized due to missing or invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: >-
+            Forbidden due to content moderation or insufficient permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /v2beta/stable-image/edit/search-and-replace:
+    post:
+      operationId: editImageSearchAndReplace
+      summary: Search and replace objects in an image
+      description: >-
+        Finds specific objects within an image using a text description and
+        replaces them with new content described by a prompt. This enables
+        targeted object replacement without manually creating masks.
+      tags:
+        - Search and Replace
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SearchAndReplaceRequest'
+      responses:
+        '200':
+          description: Successfully replaced objects in image
+          content:
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
+            image/png:
+              schema:
+                type: string
+                format: binary
+            image/webp:
+              schema:
+                type: string
+                format: binary
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EditImageResponse'
+        '400':
+          description: Bad request due to invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized due to missing or invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: >-
+            Forbidden due to content moderation or insufficient permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /v2beta/stable-image/edit/search-and-recolor:
+    post:
+      operationId: editImageSearchAndRecolor
+      summary: Search and recolor objects in an image
+      description: >-
+        Finds specific objects within an image using a text description and
+        recolors them based on a provided prompt. This enables targeted color
+        changes to specific elements without affecting the rest of the image.
+      tags:
+        - Search and Recolor
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SearchAndRecolorRequest'
+      responses:
+        '200':
+          description: Successfully recolored objects in image
+          content:
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
+            image/png:
+              schema:
+                type: string
+                format: binary
+            image/webp:
+              schema:
+                type: string
+                format: binary
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EditImageResponse'
+        '400':
+          description: Bad request due to invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized due to missing or invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: >-
+            Forbidden due to content moderation or insufficient permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /v2beta/stable-image/edit/remove-background:
+    post:
+      operationId: editImageRemoveBackground
+      summary: Remove background from an image
+      description: >-
+        Automatically detects and removes the background from an image, isolating
+        the foreground subject. Returns the image with a transparent background
+        in PNG format or a white background in JPEG format.
+      tags:
+        - Remove Background
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/RemoveBackgroundRequest'
+      responses:
+        '200':
+          description: Successfully removed background from image
+          content:
+            image/png:
+              schema:
+                type: string
+                format: binary
+            image/webp:
+              schema:
+                type: string
+                format: binary
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EditImageResponse'
+        '400':
+          description: Bad request due to invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized due to missing or invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: >-
+            Forbidden due to content moderation or insufficient permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /v2beta/stable-image/edit/replace-background-and-relight:
+    post:
+      operationId: editImageReplaceBackgroundAndRelight
+      summary: Replace background and adjust lighting
+      description: >-
+        Replaces the background of an image with new content described by a text
+        prompt and adjusts lighting conditions to match the new scene. The
+        foreground subject is preserved while the background is regenerated.
+      tags:
+        - Replace Background and Relight
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ReplaceBackgroundAndRelightRequest'
+      responses:
+        '200':
+          description: Successfully replaced background and adjusted lighting
+          content:
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
+            image/png:
+              schema:
+                type: string
+                format: binary
+            image/webp:
+              schema:
+                type: string
+                format: binary
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EditImageResponse'
+        '400':
+          description: Bad request due to invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized due to missing or invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: >-
+            Forbidden due to content moderation or insufficient permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        API key authentication. Pass your Stability AI API key as a Bearer token
+        in the Authorization header.
+  schemas:
+    InpaintRequest:
+      type: object
+      required:
+        - image
+        - prompt
+      properties:
+        image:
+          type: string
+          format: binary
+          description: >-
+            The source image to inpaint. Must be a valid image file.
+        mask:
+          type: string
+          format: binary
+          description: >-
+            A mask image indicating the region to inpaint. White pixels indicate
+            areas to fill, black pixels indicate areas to preserve.
+        prompt:
+          type: string
+          maxLength: 10000
+          description: >-
+            Text describing what should appear in the masked region.
+        negative_prompt:
+          type: string
+          maxLength: 10000
+          description: >-
+            Text describing elements to exclude from the inpainted region.
+        seed:
+          type: integer
+          minimum: 0
+          maximum: 4294967294
+          default: 0
+          description: >-
+            A value to control randomness in generation.
+        output_format:
+          type: string
+          enum:
+            - jpeg
+            - png
+            - webp
+          default: png
+          description: >-
+            The output format of the edited image.
+    OutpaintRequest:
+      type: object
+      required:
+        - image
+      properties:
+        image:
+          type: string
+          format: binary
+          description: >-
+            The source image to extend.
+        prompt:
+          type: string
+          maxLength: 10000
+          description: >-
+            Optional text describing what should appear in the extended regions.
+        left:
+          type: integer
+          minimum: 0
+          description: >-
+            Number of pixels to extend to the left.
+        right:
+          type: integer
+          minimum: 0
+          description: >-
+            Number of pixels to extend to the right.
+        up:
+          type: integer
+          minimum: 0
+          description: >-
+            Number of pixels to extend upward.
+        down:
+          type: integer
+          minimum: 0
+          description: >-
+            Number of pixels to extend downward.
+        seed:
+          type: integer
+          minimum: 0
+          maximum: 4294967294
+          default: 0
+          description: >-
+            A value to control randomness in generation.
+        output_format:
+          type: string
+          enum:
+            - jpeg
+            - png
+            - webp
+          default: png
+          description: >-
+            The output format of the edited image.
+    EraseRequest:
+      type: object
+      required:
+        - image
+      properties:
+        image:
+          type: string
+          format: binary
+          description: >-
+            The source image containing the object to erase.
+        mask:
+          type: string
+          format: binary
+          description: >-
+            A mask image indicating the region to erase. White pixels indicate
+            areas to remove, black pixels indicate areas to preserve.
+        seed:
+          type: integer
+          minimum: 0
+          maximum: 4294967294
+          default: 0
+          description: >-
+            A value to control randomness in generation.
+        output_format:
+          type: string
+          enum:
+            - jpeg
+            - png
+            - webp
+          default: png
+          description: >-
+            The output format of the edited image.
+    SearchAndReplaceRequest:
+      type: object
+      required:
+        - image
+        - prompt
+        - search_prompt
+      properties:
+        image:
+          type: string
+          format: binary
+          description: >-
+            The source image containing the objects to replace.
+        prompt:
+          type: string
+          maxLength: 10000
+          description: >-
+            Text describing what should replace the found objects.
+        search_prompt:
+          type: string
+          maxLength: 10000
+          description: >-
+            Text describing the objects to find and replace in the image.
+        negative_prompt:
+          type: string
+          maxLength: 10000
+          description: >-
+            Text describing elements to exclude from the replacement.
+        seed:
+          type: integer
+          minimum: 0
+          maximum: 4294967294
+          default: 0
+          description: >-
+            A value to control randomness in generation.
+        output_format:
+          type: string
+          enum:
+            - jpeg
+            - png
+            - webp
+          default: png
+          description: >-
+            The output format of the edited image.
+    SearchAndRecolorRequest:
+      type: object
+      required:
+        - image
+        - prompt
+        - select_prompt
+      properties:
+        image:
+          type: string
+          format: binary
+          description: >-
+            The source image containing the objects to recolor.
+        prompt:
+          type: string
+          maxLength: 10000
+          description: >-
+            Text describing the desired color or appearance change.
+        select_prompt:
+          type: string
+          maxLength: 10000
+          description: >-
+            Text describing the objects to find and recolor in the image.
+        negative_prompt:
+          type: string
+          maxLength: 10000
+          description: >-
+            Text describing elements to exclude from the recoloring.
+        seed:
+          type: integer
+          minimum: 0
+          maximum: 4294967294
+          default: 0
+          description: >-
+            A value to control randomness in generation.
+        output_format:
+          type: string
+          enum:
+            - jpeg
+            - png
+            - webp
+          default: png
+          description: >-
+            The output format of the edited image.
+    RemoveBackgroundRequest:
+      type: object
+      required:
+        - image
+      properties:
+        image:
+          type: string
+          format: binary
+          description: >-
+            The source image from which to remove the background.
+        output_format:
+          type: string
+          enum:
+            - png
+            - webp
+          default: png
+          description: >-
+            The output format of the image. PNG supports transparency for
+            background removal.
+    ReplaceBackgroundAndRelightRequest:
+      type: object
+      required:
+        - image
+      properties:
+        image:
+          type: string
+          format: binary
+          description: >-
+            The source image whose background will be replaced.
+        background_prompt:
+          type: string
+          maxLength: 10000
+          description: >-
+            Text describing the new background scene and lighting conditions.
+        foreground_prompt:
+          type: string
+          maxLength: 10000
+          description: >-
+            Text describing any adjustments to the foreground subject.
+        negative_prompt:
+          type: string
+          maxLength: 10000
+          description: >-
+            Text describing elements to exclude from the result.
+        seed:
+          type: integer
+          minimum: 0
+          maximum: 4294967294
+          default: 0
+          description: >-
+            A value to control randomness in generation.
+        output_format:
+          type: string
+          enum:
+            - jpeg
+            - png
+            - webp
+          default: png
+          description: >-
+            The output format of the edited image.
+    EditImageResponse:
+      type: object
+      properties:
+        image:
+          type: string
+          description: >-
+            Base64-encoded image data when Accept header is set to
+            application/json.
+        finish_reason:
+          type: string
+          enum:
+            - SUCCESS
+            - CONTENT_FILTERED
+          description: >-
+            The reason the edit finished.
+        seed:
+          type: integer
+          description: >-
+            The seed used for generation.
+    ErrorResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: >-
+            A unique identifier for the error instance.
+        name:
+          type: string
+          description: >-
+            The error type name.
+        message:
+          type: string
+          description: >-
+            A human-readable description of the error.

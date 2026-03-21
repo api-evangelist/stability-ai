@@ -1,0 +1,252 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://stability.ai/schemas/stability-ai/image-generation.json",
+  "title": "Stability AI Image Generation",
+  "description": "Schema representing the configuration and response structures for Stability AI image generation operations including text-to-image, image-to-image, editing, upscaling, and control-guided generation.",
+  "type": "object",
+  "$defs": {
+    "Prompt": {
+      "type": "object",
+      "description": "Text prompt configuration for guiding image generation.",
+      "required": ["text"],
+      "properties": {
+        "text": {
+          "type": "string",
+          "maxLength": 10000,
+          "description": "Text describing what should appear in the generated image. Strong, descriptive prompts that clearly define elements, colors, and subjects lead to better results."
+        },
+        "weight": {
+          "type": "number",
+          "description": "The weight of the prompt relative to other prompts. Higher values give this prompt more influence."
+        }
+      }
+    },
+    "AspectRatio": {
+      "type": "string",
+      "description": "The aspect ratio of the generated image.",
+      "enum": [
+        "16:9",
+        "1:1",
+        "21:9",
+        "2:3",
+        "3:2",
+        "4:5",
+        "5:4",
+        "9:16",
+        "9:21"
+      ]
+    },
+    "OutputFormat": {
+      "type": "string",
+      "description": "The output format of the generated image.",
+      "enum": ["jpeg", "png", "webp"]
+    },
+    "Seed": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967294,
+      "description": "A value to control randomness in generation. Set to 0 for a random seed. Using the same seed with the same parameters produces similar results."
+    },
+    "GenerationModel": {
+      "type": "string",
+      "description": "The model variant used for generation.",
+      "enum": [
+        "sd3",
+        "sd3-turbo",
+        "sd3.5-large",
+        "sd3.5-large-turbo",
+        "sd3.5-medium",
+        "stable-image-core",
+        "stable-image-ultra"
+      ]
+    },
+    "GenerationMode": {
+      "type": "string",
+      "description": "The generation mode indicating whether this is a text-to-image or image-to-image operation.",
+      "enum": ["text-to-image", "image-to-image"]
+    },
+    "FinishReason": {
+      "type": "string",
+      "description": "The reason the generation finished.",
+      "enum": ["SUCCESS", "CONTENT_FILTERED"]
+    },
+    "GenerationResult": {
+      "type": "object",
+      "description": "The result of an image generation operation.",
+      "properties": {
+        "image": {
+          "type": "string",
+          "description": "Base64-encoded image data."
+        },
+        "finish_reason": {
+          "$ref": "#/$defs/FinishReason"
+        },
+        "seed": {
+          "$ref": "#/$defs/Seed"
+        }
+      }
+    },
+    "AsyncGeneration": {
+      "type": "object",
+      "description": "Response for an asynchronous generation that must be polled for results.",
+      "required": ["id"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The unique generation ID used to poll for results."
+        },
+        "status": {
+          "type": "string",
+          "description": "The current status of the generation."
+        }
+      }
+    },
+    "EditOperation": {
+      "type": "string",
+      "description": "The type of image editing operation.",
+      "enum": [
+        "inpaint",
+        "outpaint",
+        "erase",
+        "search-and-replace",
+        "search-and-recolor",
+        "remove-background",
+        "replace-background-and-relight"
+      ]
+    },
+    "ControlMethod": {
+      "type": "string",
+      "description": "The method of structural control for image-to-image generation.",
+      "enum": ["sketch", "structure", "style"]
+    },
+    "UpscaleMethod": {
+      "type": "string",
+      "description": "The upscaling method to use.",
+      "enum": ["fast", "conservative", "creative"]
+    },
+    "OutpaintExtension": {
+      "type": "object",
+      "description": "Configuration for outpainting extension directions.",
+      "properties": {
+        "left": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of pixels to extend to the left."
+        },
+        "right": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of pixels to extend to the right."
+        },
+        "up": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of pixels to extend upward."
+        },
+        "down": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of pixels to extend downward."
+        }
+      }
+    },
+    "ImageToVideoConfig": {
+      "type": "object",
+      "description": "Configuration for image-to-video generation.",
+      "properties": {
+        "seed": {
+          "$ref": "#/$defs/Seed"
+        },
+        "cfg_scale": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10,
+          "description": "Controls how closely the video follows the conditioning from the input image."
+        },
+        "motion_bucket_id": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 255,
+          "description": "Controls the amount of motion in the generated video."
+        }
+      }
+    },
+    "Fast3DConfig": {
+      "type": "object",
+      "description": "Configuration for Stable Fast 3D mesh generation.",
+      "properties": {
+        "texture_resolution": {
+          "type": "integer",
+          "enum": [512, 1024, 2048],
+          "description": "The resolution of the generated texture in pixels."
+        },
+        "foreground_ratio": {
+          "type": "number",
+          "minimum": 0.1,
+          "maximum": 1.0,
+          "description": "The ratio of the foreground object to the total image size."
+        },
+        "remesh": {
+          "type": "string",
+          "enum": ["none", "triangle", "quad"],
+          "description": "The remeshing algorithm to apply to the generated mesh."
+        }
+      }
+    },
+    "ApiError": {
+      "type": "object",
+      "description": "An error response from the Stability AI API.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "A unique identifier for the error instance."
+        },
+        "name": {
+          "type": "string",
+          "description": "The error type name."
+        },
+        "message": {
+          "type": "string",
+          "description": "A human-readable description of the error."
+        }
+      }
+    }
+  },
+  "properties": {
+    "prompt": {
+      "$ref": "#/$defs/Prompt"
+    },
+    "negative_prompt": {
+      "type": "string",
+      "maxLength": 10000,
+      "description": "Text describing elements to exclude from the output image."
+    },
+    "aspect_ratio": {
+      "$ref": "#/$defs/AspectRatio"
+    },
+    "output_format": {
+      "$ref": "#/$defs/OutputFormat"
+    },
+    "seed": {
+      "$ref": "#/$defs/Seed"
+    },
+    "model": {
+      "$ref": "#/$defs/GenerationModel"
+    },
+    "mode": {
+      "$ref": "#/$defs/GenerationMode"
+    },
+    "strength": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Controls how much influence the input image has on the output for image-to-image mode."
+    },
+    "control_strength": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Controls how closely the output follows the input control image."
+    }
+  }
+}

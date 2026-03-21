@@ -1,0 +1,384 @@
+openapi: 3.1.0
+info:
+  title: Stability AI Stable Image Upscale API
+  description: >-
+    The Stability AI Stable Image Upscale API enables developers to increase the
+    resolution of images using AI-powered upscaling models. The API offers
+    conservative upscaling, which preserves the original image closely while
+    increasing resolution, creative upscaling, which enhances and adds detail
+    to images during the upscaling process, and fast upscaling for quick
+    resolution increases. These endpoints are useful for improving image quality
+    for print, display, or further processing workflows.
+  version: 'v2beta'
+  contact:
+    name: Stability AI Support
+    url: https://platform.stability.ai
+  termsOfService: https://stability.ai/terms-of-service
+externalDocs:
+  description: Stability AI API Documentation
+  url: https://platform.stability.ai/docs/api-reference
+servers:
+  - url: https://api.stability.ai
+    description: Production Server
+tags:
+  - name: Fast Upscale
+    description: >-
+      Quickly increase image resolution with minimal processing time while
+      maintaining image quality.
+  - name: Conservative Upscale
+    description: >-
+      Increase image resolution while closely preserving the original image
+      details and composition with minimal creative additions.
+  - name: Creative Upscale
+    description: >-
+      Increase image resolution while enhancing details and adding creative
+      improvements guided by an optional text prompt. This is an asynchronous
+      endpoint that returns a generation ID for polling.
+security:
+  - bearerAuth: []
+paths:
+  /v2beta/stable-image/upscale/fast:
+    post:
+      operationId: upscaleImageFast
+      summary: Fast upscale an image
+      description: >-
+        Quickly increases the resolution of an image with minimal processing
+        time. This endpoint provides a good balance between speed and quality
+        for bulk upscaling workflows.
+      tags:
+        - Fast Upscale
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FastUpscaleRequest'
+      responses:
+        '200':
+          description: Successfully upscaled image
+          content:
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
+            image/png:
+              schema:
+                type: string
+                format: binary
+            image/webp:
+              schema:
+                type: string
+                format: binary
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpscaleImageResponse'
+        '400':
+          description: Bad request due to invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized due to missing or invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /v2beta/stable-image/upscale/conservative:
+    post:
+      operationId: upscaleImageConservative
+      summary: Conservative upscale an image
+      description: >-
+        Increases the resolution of an image while closely preserving the
+        original details and composition. This endpoint minimizes creative
+        additions, making it ideal for upscaling photographs or images where
+        fidelity to the original is important. This is an asynchronous endpoint
+        that returns a generation ID for polling.
+      tags:
+        - Conservative Upscale
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ConservativeUpscaleRequest'
+      responses:
+        '200':
+          description: Generation started successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsyncGenerationResponse'
+        '400':
+          description: Bad request due to invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized due to missing or invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /v2beta/stable-image/upscale/creative:
+    post:
+      operationId: upscaleImageCreative
+      summary: Creative upscale an image
+      description: >-
+        Increases the resolution of an image while enhancing details and adding
+        creative improvements. An optional text prompt can guide the enhancement
+        process. This produces higher quality results than conservative upscaling
+        but takes longer to process. This is an asynchronous endpoint that returns
+        a generation ID for polling.
+      tags:
+        - Creative Upscale
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CreativeUpscaleRequest'
+      responses:
+        '200':
+          description: Generation started successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsyncGenerationResponse'
+        '400':
+          description: Bad request due to invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized due to missing or invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /v2beta/stable-image/upscale/creative/result/{id}:
+    get:
+      operationId: getUpscaleCreativeResult
+      summary: Get the result of a creative upscale
+      description: >-
+        Polls for the result of an asynchronous creative upscale operation.
+        Returns the upscaled image when processing is complete or a status
+        indicating the generation is still in progress.
+      tags:
+        - Creative Upscale
+      parameters:
+        - $ref: '#/components/parameters/generationId'
+      responses:
+        '200':
+          description: Upscaled image is ready
+          content:
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
+            image/png:
+              schema:
+                type: string
+                format: binary
+            image/webp:
+              schema:
+                type: string
+                format: binary
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpscaleImageResponse'
+        '202':
+          description: Generation is still in progress
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsyncGenerationResponse'
+        '401':
+          description: Unauthorized due to missing or invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Generation ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        API key authentication. Pass your Stability AI API key as a Bearer token
+        in the Authorization header.
+  parameters:
+    generationId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: >-
+        The unique identifier of the asynchronous generation to poll for results.
+  schemas:
+    FastUpscaleRequest:
+      type: object
+      required:
+        - image
+      properties:
+        image:
+          type: string
+          format: binary
+          description: >-
+            The image to upscale. Must be a valid image file.
+        output_format:
+          type: string
+          enum:
+            - jpeg
+            - png
+            - webp
+          default: png
+          description: >-
+            The output format of the upscaled image.
+    ConservativeUpscaleRequest:
+      type: object
+      required:
+        - image
+        - prompt
+      properties:
+        image:
+          type: string
+          format: binary
+          description: >-
+            The image to upscale. Must be a valid image file.
+        prompt:
+          type: string
+          maxLength: 10000
+          description: >-
+            Text describing the image content to help guide the upscaling process.
+        negative_prompt:
+          type: string
+          maxLength: 10000
+          description: >-
+            Text describing elements to avoid adding during upscaling.
+        seed:
+          type: integer
+          minimum: 0
+          maximum: 4294967294
+          default: 0
+          description: >-
+            A value to control randomness in generation.
+        output_format:
+          type: string
+          enum:
+            - jpeg
+            - png
+            - webp
+          default: png
+          description: >-
+            The output format of the upscaled image.
+    CreativeUpscaleRequest:
+      type: object
+      required:
+        - image
+        - prompt
+      properties:
+        image:
+          type: string
+          format: binary
+          description: >-
+            The image to upscale. Must be a valid image file.
+        prompt:
+          type: string
+          maxLength: 10000
+          description: >-
+            Text describing the image content to guide the creative upscaling
+            process and enhancement of details.
+        negative_prompt:
+          type: string
+          maxLength: 10000
+          description: >-
+            Text describing elements to avoid adding during upscaling.
+        seed:
+          type: integer
+          minimum: 0
+          maximum: 4294967294
+          default: 0
+          description: >-
+            A value to control randomness in generation.
+        output_format:
+          type: string
+          enum:
+            - jpeg
+            - png
+            - webp
+          default: png
+          description: >-
+            The output format of the upscaled image.
+    UpscaleImageResponse:
+      type: object
+      properties:
+        image:
+          type: string
+          description: >-
+            Base64-encoded image data when Accept header is set to
+            application/json.
+        finish_reason:
+          type: string
+          enum:
+            - SUCCESS
+            - CONTENT_FILTERED
+          description: >-
+            The reason the upscale finished.
+        seed:
+          type: integer
+          description: >-
+            The seed used for generation.
+    AsyncGenerationResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: >-
+            The unique generation ID used to poll for results.
+        status:
+          type: string
+          description: >-
+            The current status of the generation.
+    ErrorResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: >-
+            A unique identifier for the error instance.
+        name:
+          type: string
+          description: >-
+            The error type name.
+        message:
+          type: string
+          description: >-
+            A human-readable description of the error.
