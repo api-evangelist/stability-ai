@@ -20,10 +20,6 @@ servers:
   - url: https://api.stability.ai
     description: Production Server
 tags:
-  - name: Generate Ultra
-    description: >-
-      Generate images using Stable Image Ultra, the highest quality model for
-      state-of-the-art photorealistic and artistic image generation.
   - name: Generate Core
     description: >-
       Generate images using Stable Image Core, a fast and affordable model for
@@ -32,6 +28,10 @@ tags:
     description: >-
       Generate images using Stable Diffusion 3 and 3.5 models with advanced
       text-to-image and image-to-image capabilities.
+  - name: Generate Ultra
+    description: >-
+      Generate images using Stable Image Ultra, the highest quality model for
+      state-of-the-art photorealistic and artistic image generation.
 security:
   - bearerAuth: []
 paths:

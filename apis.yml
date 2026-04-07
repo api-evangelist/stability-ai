@@ -1,16 +1,14 @@
 aid: stability-ai
-url: 
-  https://raw.githubusercontent.com/api-evangelist/stability-ai/refs/heads/main/apis.yml
+url: https://raw.githubusercontent.com/api-evangelist/stability-ai/refs/heads/main/apis.yml
 apis:
   - aid: stability-ai:stable-image-generate
     name: Stability AI Stable Image Generate API
     tags:
-      - Image Generation
-      - Text To Image
       - Generative AI
+      - Image Generation
       - Stable Diffusion
-    image: 
-      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+      - Text to Image
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.stability.ai
     humanURL: https://platform.stability.ai/docs/getting-started/stable-image
     properties:
@@ -28,13 +26,12 @@ apis:
   - aid: stability-ai:stable-image-edit
     name: Stability AI Stable Image Edit API
     tags:
+      - Generative AI
       - Image Editing
       - Inpainting
       - Outpainting
-      - Generative AI
-      - Search And Replace
-    image: 
-      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+      - Search and Replace
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.stability.ai
     humanURL: https://platform.stability.ai/docs/api-reference
     properties:
@@ -53,12 +50,11 @@ apis:
   - aid: stability-ai:stable-image-upscale
     name: Stability AI Stable Image Upscale API
     tags:
-      - Image Upscaling
-      - Image Enhancement
-      - Super Resolution
       - Generative AI
-    image: 
-      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+      - Image Enhancement
+      - Image Upscaling
+      - Super Resolution
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.stability.ai
     humanURL: https://platform.stability.ai/docs/api-reference
     properties:
@@ -76,12 +72,11 @@ apis:
   - aid: stability-ai:stable-image-control
     name: Stability AI Stable Image Control API
     tags:
-      - Image To Image
       - ControlNet
-      - Image Generation
       - Generative AI
-    image: 
-      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+      - Image Generation
+      - Image to Image
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.stability.ai
     humanURL: https://platform.stability.ai/docs/api-reference
     properties:
@@ -99,17 +94,15 @@ apis:
   - aid: stability-ai:stable-video-diffusion
     name: Stability AI Stable Video Diffusion API
     tags:
-      - Video Generation
-      - Image To Video
       - Generative AI
+      - Image to Video
       - Stable Diffusion
-    image: 
-      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+      - Video Generation
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.stability.ai
     humanURL: https://platform.stability.ai/docs/getting-started/stable-video
     properties:
-      - url: 
-          https://platform.stability.ai/docs/getting-started/stable-video-diffusion
+      - url: https://platform.stability.ai/docs/getting-started/stable-video-diffusion
         type: Documentation
       - url: openapi/stability-ai-stable-video-diffusion-openapi.yml
         type: OpenAPI
@@ -124,11 +117,10 @@ apis:
     name: Stability AI Stable Fast 3D API
     tags:
       - 3D Generation
-      - Image To 3D
-      - Mesh Generation
       - Generative AI
-    image: 
-      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+      - Image to 3D
+      - Mesh Generation
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.stability.ai
     humanURL: https://platform.stability.ai/docs/api-reference
     properties:

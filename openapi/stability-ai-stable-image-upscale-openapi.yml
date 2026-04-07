@@ -21,10 +21,6 @@ servers:
   - url: https://api.stability.ai
     description: Production Server
 tags:
-  - name: Fast Upscale
-    description: >-
-      Quickly increase image resolution with minimal processing time while
-      maintaining image quality.
   - name: Conservative Upscale
     description: >-
       Increase image resolution while closely preserving the original image
@@ -34,6 +30,10 @@ tags:
       Increase image resolution while enhancing details and adding creative
       improvements guided by an optional text prompt. This is an asynchronous
       endpoint that returns a generation ID for polling.
+  - name: Fast Upscale
+    description: >-
+      Quickly increase image resolution with minimal processing time while
+      maintaining image quality.
 security:
   - bearerAuth: []
 paths:

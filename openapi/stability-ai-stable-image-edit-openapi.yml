@@ -20,6 +20,10 @@ servers:
   - url: https://api.stability.ai
     description: Production Server
 tags:
+  - name: Erase
+    description: >-
+      Remove objects from an image by masking the area to erase and letting the
+      AI fill in the background naturally.
   - name: Inpaint
     description: >-
       Fill in masked regions of an image using AI-guided inpainting with text
@@ -28,18 +32,6 @@ tags:
     description: >-
       Extend the boundaries of an image by generating new content that seamlessly
       continues the existing scene in any direction.
-  - name: Erase
-    description: >-
-      Remove objects from an image by masking the area to erase and letting the
-      AI fill in the background naturally.
-  - name: Search and Replace
-    description: >-
-      Find and replace specific objects within an image using text descriptions
-      of what to search for and what to replace it with.
-  - name: Search and Recolor
-    description: >-
-      Find specific objects within an image and recolor them using text
-      descriptions of the target object and desired color.
   - name: Remove Background
     description: >-
       Automatically detect and remove the background from an image, isolating
@@ -48,6 +40,14 @@ tags:
     description: >-
       Replace the background of an image and adjust lighting conditions using
       AI-powered scene understanding.
+  - name: Search and Recolor
+    description: >-
+      Find specific objects within an image and recolor them using text
+      descriptions of the target object and desired color.
+  - name: Search and Replace
+    description: >-
+      Find and replace specific objects within an image using text descriptions
+      of what to search for and what to replace it with.
 security:
   - bearerAuth: []
 paths:
