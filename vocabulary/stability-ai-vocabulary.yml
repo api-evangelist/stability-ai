@@ -1,0 +1,122 @@
+name: Stability AI Vocabulary
+description: >-
+  Vocabulary for Stability AI generative AI models and APIs covering image
+  generation, image editing, upscaling, video generation, and 3D asset
+  creation including Stable Diffusion and related concepts.
+created: '2026-05-02'
+modified: '2026-05-02'
+terms:
+  - term: Stable Diffusion
+    definition: >-
+      A deep learning text-to-image generation model developed by Stability AI.
+      Uses a latent diffusion process where noise is iteratively removed from
+      a latent representation to produce high-quality images from text prompts.
+
+  - term: Text-to-Image
+    definition: >-
+      The process of generating images from natural language text descriptions
+      (prompts). Stability AI's core capability through models like Stable
+      Image Core, Stable Diffusion 3, and Stable Image Ultra.
+
+  - term: Image-to-Image
+    definition: >-
+      Generating a new image guided by an input reference image and a text
+      prompt. The strength parameter controls how much the output diverges from
+      the input image.
+
+  - term: Prompt
+    definition: >-
+      A text description that guides the image generation model. Strong prompts
+      clearly describe subjects, styles, lighting, and composition. Maximum
+      10,000 characters in the Stability AI API.
+
+  - term: Negative Prompt
+    definition: >-
+      Text describing elements to exclude from the generated image. Used to
+      steer the model away from unwanted content, artifacts, or styles.
+
+  - term: Seed
+    definition: >-
+      An integer value that initializes the random number generator used during
+      image generation. Using the same seed with identical parameters produces
+      similar results, enabling reproducibility.
+
+  - term: Aspect Ratio
+    definition: >-
+      The proportional relationship between width and height of the generated
+      image. Supported values include 1:1, 16:9, 9:16, 4:5, 5:4, 2:3, 3:2,
+      21:9, and 9:21.
+
+  - term: Output Format
+    definition: >-
+      The file format of the generated image. Stability AI APIs support JPEG,
+      PNG, and WebP output formats. PNG preserves transparency for background
+      removal operations.
+
+  - term: Inpainting
+    definition: >-
+      The process of filling in a masked region of an image with AI-generated
+      content. A mask image identifies the area to modify; a text prompt guides
+      what appears in the filled region.
+
+  - term: Outpainting
+    definition: >-
+      The process of extending an image beyond its current boundaries by
+      generating new content that seamlessly continues the existing scene.
+
+  - term: ControlNet
+    definition: >-
+      A neural network architecture for controlling image generation using
+      additional conditioning inputs such as sketches, depth maps, or
+      segmentation masks. Used in Stability AI's Stable Image Control API.
+
+  - term: Stable Image Ultra
+    definition: >-
+      Stability AI's highest quality image generation model tier, offering
+      state-of-the-art photorealistic and artistic image generation with
+      exceptional detail and composition.
+
+  - term: Stable Image Core
+    definition: >-
+      Stability AI's fast and affordable image generation model tier, optimized
+      for quick, high-quality generation suitable for most use cases.
+
+  - term: Stable Diffusion 3
+    definition: >-
+      The third generation of Stability AI's Stable Diffusion model family,
+      offering improved text rendering, multi-subject composition, and overall
+      image quality. Variants include SD3, SD3 Turbo, SD3.5 Large, and SD3.5
+      Medium.
+
+  - term: Stable Video Diffusion
+    definition: >-
+      Stability AI's image-to-video model that generates short animated video
+      clips from a single input image, producing realistic motion from static
+      images.
+
+  - term: Stable Fast 3D
+    definition: >-
+      Stability AI's rapid 3D asset generation model that creates textured 3D
+      meshes from single input images, suitable for games, AR, and VR.
+
+  - term: Finish Reason
+    definition: >-
+      The reason why a generation request completed. SUCCESS indicates a
+      successful generation; CONTENT_FILTERED indicates the output was blocked
+      by content moderation policies.
+
+  - term: Content Moderation
+    definition: >-
+      Automatic filtering applied to generation requests and outputs to prevent
+      the creation of harmful, offensive, or policy-violating content.
+
+  - term: Bearer Token
+    definition: >-
+      Authentication method used by Stability AI APIs. The API key is passed
+      as a Bearer token in the Authorization header of each request.
+
+  - term: Multipart Form Data
+    definition: >-
+      The request encoding format used by Stability AI APIs for image generation
+      and editing. Allows uploading both text parameters and binary image files
+      in a single request.

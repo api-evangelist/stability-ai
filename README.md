@@ -1,34 +1,20 @@
-# Stability AI (stability-ai)
-Stability AI is a leading generative AI company that builds open-source models for image, video, and 3D content creation. Their developer platform provides API access to the Stable Diffusion family of models, enabling text-to-image generation, image editing, upscaling, video generation, and 3D asset creation.
+# Stability AI
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/stability-ai/refs/heads/main/apis.yml)
+Stability AI is an AI company that develops open-source generative AI models for image, audio, video, and language, including the Stable Diffusion family of image generation models. The Stability AI developer platform provides REST APIs for text-to-image generation, image editing, image upscaling, image structure control, video generation, and 3D asset creation. All APIs are accessible at api.stability.ai using bearer token authentication.
 
-## Scope
+**URL:** [https://platform.stability.ai](https://platform.stability.ai)
 
-- **Type:** Contract
-- **Position:** Consuming
-- **Access:** 3rd-Party
+## Tags
 
-## Tags:
-
- - Generative AI, Image Generation, Stable Diffusion, Video Generation, 3D Generation, Machine Learning
-
-## Timestamps
-
-- **Created:** 2024-11-01
-- **Modified:** 2026-03-20
+3D Generation, AI, Generative AI, Image Generation, Image Editing, Machine Learning, Stable Diffusion, Text to Image, Video Generation
 
 ## APIs
 
 ### Stability AI Stable Image Generate API
-The Stability AI Stable Image Generate API provides text-to-image generation capabilities powered by models including Stable Diffusion 3 and Stable Image Ultra. Developers can generate high-quality images from text prompts with control over style, dimensions, and output format. The API supports multiple model tiers including Stable Image Core for fast and affordable generation and Stable Image Ultra for state-of-the-art quality results.
+
+The Stability AI Stable Image Generate API provides text-to-image generation capabilities powered by models including Stable Diffusion 3.5 and Stable Image Ultra. Developers can generate high-quality images from text prompts with control over style, dimensions, and output format.
 
 **Human URL:** [https://platform.stability.ai/docs/getting-started/stable-image](https://platform.stability.ai/docs/getting-started/stable-image)
-
-
-#### Tags:
-
- - Image Generation, Text To Image, Generative AI, Stable Diffusion
 
 #### Properties
 
@@ -36,14 +22,10 @@ The Stability AI Stable Image Generate API provides text-to-image generation cap
 - [OpenAPI](openapi/stability-ai-stable-image-generate-openapi.yml)
 
 ### Stability AI Stable Image Edit API
-The Stability AI Stable Image Edit API provides image editing capabilities including inpainting, outpainting, object erasing, background removal, and search-and-replace functionality. Developers can use natural language prompts to modify existing images, fill in masked regions, extend image boundaries, or replace specific objects within a scene. These tools enable advanced image manipulation workflows without requiring traditional image editing expertise.
+
+The Stability AI Stable Image Edit API provides image editing capabilities including inpainting, outpainting, object erasing, background removal, search-and-replace, search-and-recolor, and replace-background-and-relight functionality.
 
 **Human URL:** [https://platform.stability.ai/docs/api-reference](https://platform.stability.ai/docs/api-reference)
-
-
-#### Tags:
-
- - Image Editing, Inpainting, Outpainting, Generative AI, Search And Replace
 
 #### Properties
 
@@ -51,14 +33,10 @@ The Stability AI Stable Image Edit API provides image editing capabilities inclu
 - [OpenAPI](openapi/stability-ai-stable-image-edit-openapi.yml)
 
 ### Stability AI Stable Image Upscale API
-The Stability AI Stable Image Upscale API enables developers to increase the resolution of images using AI-powered upscaling models. The API offers both conservative upscaling, which preserves the original image closely while increasing resolution, and creative upscaling, which enhances and adds detail to images during the upscaling process. These endpoints are useful for improving image quality for print, display, or further processing workflows.
+
+The Stability AI Stable Image Upscale API enables developers to increase the resolution of images using AI-powered upscaling models. Supports conservative and creative upscaling modes.
 
 **Human URL:** [https://platform.stability.ai/docs/api-reference](https://platform.stability.ai/docs/api-reference)
-
-
-#### Tags:
-
- - Image Upscaling, Image Enhancement, Super Resolution, Generative AI
 
 #### Properties
 
@@ -66,14 +44,10 @@ The Stability AI Stable Image Upscale API enables developers to increase the res
 - [OpenAPI](openapi/stability-ai-stable-image-upscale-openapi.yml)
 
 ### Stability AI Stable Image Control API
-The Stability AI Stable Image Control API provides image-to-image generation guided by structural inputs such as sketches and reference structures. Using ControlNet-based models, developers can generate new images that follow the composition, edges, or layout of a source image while applying new styles or content based on text prompts. The API supports sketch-to-image and structure-guided generation workflows for precise creative control.
+
+The Stability AI Stable Image Control API provides image-to-image generation guided by structural inputs such as sketches and reference structures using ControlNet-based models.
 
 **Human URL:** [https://platform.stability.ai/docs/api-reference](https://platform.stability.ai/docs/api-reference)
-
-
-#### Tags:
-
- - Image To Image, ControlNet, Image Generation, Generative AI
 
 #### Properties
 
@@ -81,14 +55,10 @@ The Stability AI Stable Image Control API provides image-to-image generation gui
 - [OpenAPI](openapi/stability-ai-stable-image-control-openapi.yml)
 
 ### Stability AI Stable Video Diffusion API
-The Stability AI Stable Video Diffusion API enables developers to generate short video clips from a single input image. Powered by the Stable Video Diffusion model, the API produces smooth animated sequences that bring static images to life with realistic motion. This is useful for creating product animations, visual effects previews, and dynamic content from existing image assets.
+
+The Stability AI Stable Video Diffusion API enables developers to generate short video clips from a single input image using the Stable Video Diffusion model.
 
 **Human URL:** [https://platform.stability.ai/docs/getting-started/stable-video](https://platform.stability.ai/docs/getting-started/stable-video)
-
-
-#### Tags:
-
- - Video Generation, Image To Video, Generative AI, Stable Diffusion
 
 #### Properties
 
@@ -96,14 +66,10 @@ The Stability AI Stable Video Diffusion API enables developers to generate short
 - [OpenAPI](openapi/stability-ai-stable-video-diffusion-openapi.yml)
 
 ### Stability AI Stable Fast 3D API
-The Stability AI Stable Fast 3D API generates textured 3D mesh assets from single input images. The API rapidly produces 3D models suitable for use in games, augmented reality, virtual reality, and product visualization workflows. Developers can convert 2D images into fully textured 3D objects, enabling rapid prototyping and asset creation without manual 3D modeling.
+
+The Stability AI Stable Fast 3D API generates textured 3D mesh assets from single input images for use in games, AR, VR, and product visualization.
 
 **Human URL:** [https://platform.stability.ai/docs/api-reference](https://platform.stability.ai/docs/api-reference)
-
-
-#### Tags:
-
- - 3D Generation, Image To 3D, Mesh Generation, Generative AI
 
 #### Properties
 
@@ -113,15 +79,29 @@ The Stability AI Stable Fast 3D API generates textured 3D mesh assets from singl
 ## Common Properties
 
 - [Portal](https://platform.stability.ai)
-- [Documentation](https://platform.stability.ai/docs/api-reference)
+- [Documentation](https://platform.stability.ai/docs/getting-started)
 - [Website](https://stability.ai)
-- [PrivacyPolicy](https://stability.ai/privacy-policy)
-- [TermsOfService](https://stability.ai/terms-of-service)
-- [Blog](https://stability.ai/blog)
-- [Login](https://platform.stability.ai/account)
+- [Pricing](https://stability.ai/api-pricing-update-25)
+- [Terms of Service](https://stability.ai/terms-of-service)
+- [Privacy Policy](https://stability.ai/privacy-policy)
+- [GitHub Org](https://github.com/stability-ai)
+- [JSON-LD](json-ld/stability-ai-context.jsonld)
+- [JSON Schema](json-schema/stability-ai-image-generation-schema.json)
+- [JSON Structure](json-structure/stability-ai-image-generation-structure.json)
+- [Vocabulary](vocabulary/stability-ai-vocabulary.yml)
+- [Spectral Rules](rules/stability-ai-rules.yml)
 
-## Maintainers
+## Capabilities
 
-**FN:** API Evangelist
+### Shared Definitions (`capabilities/shared/`)
 
-**Email:** info@apievangelist.com
+| File | Description |
+|------|-------------|
+| [stable-image-generate.yaml](capabilities/shared/stable-image-generate.yaml) | Stable Image Generate — text-to-image via Ultra, Core, and SD3 models (3 operations) |
+| [stable-image-edit.yaml](capabilities/shared/stable-image-edit.yaml) | Stable Image Edit — inpainting, outpainting, erase, search-and-replace, search-and-recolor, background removal, background replacement (7 operations) |
+
+### Workflow Capabilities
+
+| File | Description |
+|------|-------------|
+| [image-creation.yaml](capabilities/image-creation.yaml) | Stability AI Image Creation — unified workflow combining generation and editing APIs (9 REST paths, 11 MCP tools) |

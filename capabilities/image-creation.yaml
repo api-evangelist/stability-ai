@@ -1,0 +1,262 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Stability AI Image Creation"
+  description: >-
+    Unified workflow for AI-powered image creation using Stability AI's complete
+    image generation and editing suite. Combines text-to-image generation across
+    all model tiers (Ultra, Core, SD3) with image editing operations including
+    inpainting, outpainting, background removal, and object replacement.
+    Designed for creative professionals, marketing teams, and product designers
+    who need programmatic control over image assets.
+  tags:
+    - Stability AI
+    - Image Creation
+    - Generative AI
+    - Image Generation
+    - Image Editing
+    - Creative Workflow
+  created: "2026-05-02"
+  modified: "2026-05-02"
+
+binds:
+  - namespace: env
+    keys:
+      STABILITY_AI_API_KEY: STABILITY_AI_API_KEY
+
+capability:
+  consumes:
+    - import: stable-image-generate
+      location: ./shared/stable-image-generate.yaml
+    - import: stable-image-edit
+      location: ./shared/stable-image-edit.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: image-creation-api
+      description: "Unified REST API for Stability AI image creation and editing workflows."
+      resources:
+        - path: /v1/generate/ultra
+          name: generate-ultra
+          description: "Generate images using Stable Image Ultra"
+          operations:
+            - method: POST
+              name: generate-image-ultra
+              description: "Generate a high-quality image from a text prompt using Stable Image Ultra"
+              call: "stable-image-generate.generate-image-ultra"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/generate/core
+          name: generate-core
+          description: "Generate images using Stable Image Core (fast)"
+          operations:
+            - method: POST
+              name: generate-image-core
+              description: "Generate an image from a text prompt using Stable Image Core"
+              call: "stable-image-generate.generate-image-core"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/generate/sd3
+          name: generate-sd3
+          description: "Generate images using Stable Diffusion 3 or 3.5"
+          operations:
+            - method: POST
+              name: generate-image-sd3
+              description: "Generate an image using Stable Diffusion 3 or 3.5 models"
+              call: "stable-image-generate.generate-image-sd3"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/edit/inpaint
+          name: inpaint
+          description: "Fill masked regions with AI-generated content"
+          operations:
+            - method: POST
+              name: inpaint-image
+              description: "Inpaint a masked region of an image using a text prompt"
+              call: "stable-image-edit.edit-image-inpaint"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/edit/outpaint
+          name: outpaint
+          description: "Extend an image beyond its boundaries"
+          operations:
+            - method: POST
+              name: outpaint-image
+              description: "Extend an image with new content in any direction"
+              call: "stable-image-edit.edit-image-outpaint"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/edit/erase
+          name: erase
+          description: "Remove objects from images"
+          operations:
+            - method: POST
+              name: erase-from-image
+              description: "Erase an object from an image using a mask"
+              call: "stable-image-edit.edit-image-erase"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/edit/search-and-replace
+          name: search-and-replace
+          description: "Find and replace objects in images"
+          operations:
+            - method: POST
+              name: search-and-replace
+              description: "Replace specific objects in an image using text descriptions"
+              call: "stable-image-edit.edit-image-search-and-replace"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/edit/remove-background
+          name: remove-background
+          description: "Remove image backgrounds"
+          operations:
+            - method: POST
+              name: remove-background
+              description: "Remove the background from an image automatically"
+              call: "stable-image-edit.edit-image-remove-background"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/edit/replace-background
+          name: replace-background
+          description: "Replace background and adjust lighting"
+          operations:
+            - method: POST
+              name: replace-background-and-relight
+              description: "Replace the image background and adjust lighting conditions"
+              call: "stable-image-edit.edit-image-replace-background-and-relight"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9090
+      namespace: image-creation-mcp
+      transport: http
+      description: "MCP server for AI-assisted image creation and editing with Stability AI."
+      tools:
+        - name: generate-ultra-image
+          description: "Generate a photorealistic or artistic image from a text prompt using Stable Image Ultra (highest quality)"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "stable-image-generate.generate-image-ultra"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: generate-core-image
+          description: "Generate an image from a text prompt using Stable Image Core (fast and affordable)"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "stable-image-generate.generate-image-core"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: generate-sd3-image
+          description: "Generate an image using Stable Diffusion 3 or 3.5 (text-to-image or image-to-image)"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "stable-image-generate.generate-image-sd3"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: inpaint-image
+          description: "Fill a masked region of an image with AI-generated content guided by a text prompt"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "stable-image-edit.edit-image-inpaint"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: outpaint-image
+          description: "Extend an image beyond its current edges by generating new content that continues the scene"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "stable-image-edit.edit-image-outpaint"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: erase-from-image
+          description: "Remove a specific object or region from an image using a mask"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "stable-image-edit.edit-image-erase"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: search-and-replace-in-image
+          description: "Find specific objects in an image by text description and replace them with new content"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "stable-image-edit.edit-image-search-and-replace"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: search-and-recolor-in-image
+          description: "Find specific objects in an image and change their color using text descriptions"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "stable-image-edit.edit-image-search-and-recolor"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: remove-image-background
+          description: "Automatically detect and remove the background from an image, isolating the foreground subject"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "stable-image-edit.edit-image-remove-background"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: replace-background-and-relight
+          description: "Replace an image's background with a new scene and adjust lighting to match"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "stable-image-edit.edit-image-replace-background-and-relight"
+          outputParameters:
+            - type: object
+              mapping: "$."

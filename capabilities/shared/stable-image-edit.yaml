@@ -1,0 +1,297 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Stability AI Stable Image Edit"
+  description: "Image editing API for inpainting, outpainting, erasing, background removal, and search-and-replace operations."
+  tags:
+    - Stability AI
+    - Image Editing
+    - Generative AI
+    - Inpainting
+    - Background Removal
+  created: "2026-05-02"
+  modified: "2026-05-02"
+
+binds:
+  - namespace: env
+    keys:
+      STABILITY_AI_API_KEY: STABILITY_AI_API_KEY
+
+capability:
+  consumes:
+    - type: http
+      namespace: stable-image-edit
+      baseUri: https://api.stability.ai
+      description: "Edit images using AI-powered inpainting, outpainting, erasing, and replacement"
+      authentication:
+        type: bearer
+        token: "{{STABILITY_AI_API_KEY}}"
+      resources:
+        - name: inpaint
+          path: /v2beta/stable-image/edit/inpaint
+          description: "Fill masked regions of an image with AI-generated content"
+          operations:
+            - name: edit-image-inpaint
+              method: POST
+              description: "Inpaint a masked region of an image using a text prompt"
+              body:
+                type: multipart
+                data:
+                  image: "{{tools.image}}"
+                  mask: "{{tools.mask}}"
+                  prompt: "{{tools.prompt}}"
+                  negative_prompt: "{{tools.negative_prompt}}"
+                  seed: "{{tools.seed}}"
+                  output_format: "{{tools.output_format}}"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: outpaint
+          path: /v2beta/stable-image/edit/outpaint
+          description: "Extend an image beyond its boundaries"
+          operations:
+            - name: edit-image-outpaint
+              method: POST
+              description: "Extend an image by generating new content beyond its borders"
+              body:
+                type: multipart
+                data:
+                  image: "{{tools.image}}"
+                  prompt: "{{tools.prompt}}"
+                  left: "{{tools.left}}"
+                  right: "{{tools.right}}"
+                  up: "{{tools.up}}"
+                  down: "{{tools.down}}"
+                  output_format: "{{tools.output_format}}"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: erase
+          path: /v2beta/stable-image/edit/erase
+          description: "Remove objects from an image"
+          operations:
+            - name: edit-image-erase
+              method: POST
+              description: "Erase an object from an image by masking the area"
+              body:
+                type: multipart
+                data:
+                  image: "{{tools.image}}"
+                  mask: "{{tools.mask}}"
+                  output_format: "{{tools.output_format}}"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: search-and-replace
+          path: /v2beta/stable-image/edit/search-and-replace
+          description: "Find and replace objects in an image"
+          operations:
+            - name: edit-image-search-and-replace
+              method: POST
+              description: "Find specific objects in an image and replace them using text descriptions"
+              body:
+                type: multipart
+                data:
+                  image: "{{tools.image}}"
+                  prompt: "{{tools.prompt}}"
+                  search_prompt: "{{tools.search_prompt}}"
+                  negative_prompt: "{{tools.negative_prompt}}"
+                  output_format: "{{tools.output_format}}"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: search-and-recolor
+          path: /v2beta/stable-image/edit/search-and-recolor
+          description: "Find and recolor objects in an image"
+          operations:
+            - name: edit-image-search-and-recolor
+              method: POST
+              description: "Find specific objects in an image and recolor them"
+              body:
+                type: multipart
+                data:
+                  image: "{{tools.image}}"
+                  prompt: "{{tools.prompt}}"
+                  select_prompt: "{{tools.select_prompt}}"
+                  output_format: "{{tools.output_format}}"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: remove-background
+          path: /v2beta/stable-image/edit/remove-background
+          description: "Remove the background from an image"
+          operations:
+            - name: edit-image-remove-background
+              method: POST
+              description: "Automatically remove the background from an image"
+              body:
+                type: multipart
+                data:
+                  image: "{{tools.image}}"
+                  output_format: "{{tools.output_format}}"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: replace-background-and-relight
+          path: /v2beta/stable-image/edit/replace-background-and-relight
+          description: "Replace background and adjust lighting in an image"
+          operations:
+            - name: edit-image-replace-background-and-relight
+              method: POST
+              description: "Replace the background of an image and adjust lighting to match"
+              body:
+                type: multipart
+                data:
+                  image: "{{tools.image}}"
+                  background_prompt: "{{tools.background_prompt}}"
+                  foreground_prompt: "{{tools.foreground_prompt}}"
+                  output_format: "{{tools.output_format}}"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8101
+      namespace: stable-image-edit-api
+      resources:
+        - path: /v1/edit/inpaint
+          name: inpaint
+          operations:
+            - method: POST
+              name: edit-image-inpaint
+              call: "stable-image-edit.edit-image-inpaint"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/edit/outpaint
+          name: outpaint
+          operations:
+            - method: POST
+              name: edit-image-outpaint
+              call: "stable-image-edit.edit-image-outpaint"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/edit/erase
+          name: erase
+          operations:
+            - method: POST
+              name: edit-image-erase
+              call: "stable-image-edit.edit-image-erase"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/edit/search-and-replace
+          name: search-and-replace
+          operations:
+            - method: POST
+              name: edit-image-search-and-replace
+              call: "stable-image-edit.edit-image-search-and-replace"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/edit/remove-background
+          name: remove-background
+          operations:
+            - method: POST
+              name: edit-image-remove-background
+              call: "stable-image-edit.edit-image-remove-background"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9101
+      namespace: stable-image-edit-mcp
+      transport: http
+      tools:
+        - name: inpaint-image
+          description: "Fill a masked region of an image with AI-generated content guided by a text prompt"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "stable-image-edit.edit-image-inpaint"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: outpaint-image
+          description: "Extend an image beyond its current boundaries with generated content"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "stable-image-edit.edit-image-outpaint"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: erase-from-image
+          description: "Remove objects from an image by masking the area to erase"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "stable-image-edit.edit-image-erase"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: search-and-replace-in-image
+          description: "Find and replace specific objects in an image using text descriptions"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "stable-image-edit.edit-image-search-and-replace"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: remove-image-background
+          description: "Automatically detect and remove the background from an image"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "stable-image-edit.edit-image-remove-background"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: replace-background-and-relight
+          description: "Replace image background and adjust lighting conditions using AI"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "stable-image-edit.edit-image-replace-background-and-relight"
+          outputParameters:
+            - type: object
+              mapping: "$."

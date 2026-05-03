@@ -1,0 +1,108 @@
+extends: spectral:oas
+rules:
+  stability-ai-operation-summaries-title-case:
+    description: All Stability AI API operation summaries must use Title Case
+    message: "Operation summary '{{value}}' must use Title Case"
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete].summary"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z][a-zA-Z0-9]*([ ][A-Z][a-zA-Z0-9]*)*$"
+
+  stability-ai-bearer-auth-required:
+    description: All Stability AI API operations must require bearer authentication
+    message: "Stability AI API operations must use bearerAuth security scheme"
+    severity: error
+    given: "$.components.securitySchemes"
+    then:
+      field: bearerAuth
+      function: truthy
+
+  stability-ai-multipart-form-data:
+    description: Stability AI image operations should use multipart/form-data request bodies
+    message: "Image generation/editing operations should use multipart/form-data encoding"
+    severity: warn
+    given: "$.paths[*].post.requestBody.content"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          minProperties: 1
+
+  stability-ai-v2beta-paths:
+    description: Stability AI API paths should use the /v2beta prefix
+    message: "Path '{{value}}' should start with /v2beta"
+    severity: warn
+    given: "$.paths[*]~"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^/v2beta/"
+
+  stability-ai-operationid-camel-case:
+    description: Stability AI operationIds must use camelCase
+    message: "operationId '{{value}}' must use camelCase"
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete].operationId"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]*$"
+
+  stability-ai-operations-must-have-operationid:
+    description: All Stability AI API operations must have an operationId
+    message: "Operation is missing operationId"
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: operationId
+      function: truthy
+
+  stability-ai-error-responses:
+    description: Stability AI API operations must define 400 and 401 error responses
+    message: "Operation should define 400 and 401 error responses"
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete].responses"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          required:
+            - '400'
+            - '401'
+
+  stability-ai-output-format-parameter:
+    description: Stability AI image generation requests should support output_format parameter
+    message: "Image request schema should include output_format property"
+    severity: warn
+    given: "$.components.schemas[*].properties"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+
+  stability-ai-response-supports-binary:
+    description: Stability AI image generation responses should support binary image output
+    message: "Image operations should return image/jpeg or image/png responses"
+    severity: warn
+    given: "$.paths[*].post.responses.200.content"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+
+  stability-ai-seed-parameter:
+    description: Stability AI generation requests should support a seed parameter for reproducibility
+    message: "Generation request schema should include a seed parameter"
+    severity: info
+    given: "$.components.schemas[*].properties"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object

@@ -1,0 +1,28 @@
+{
+  "request": {
+    "endpoint": "POST /v2beta/stable-image/generate/core",
+    "content_type": "multipart/form-data",
+    "fields": {
+      "prompt": "A photorealistic golden retriever puppy playing in autumn leaves, warm afternoon light, shallow depth of field",
+      "negative_prompt": "blurry, low quality, cartoon, artificial",
+      "aspect_ratio": "1:1",
+      "output_format": "png",
+      "seed": 42,
+      "style_preset": "photographic"
+    }
+  },
+  "response": {
+    "status": 200,
+    "content_type": "image/png",
+    "headers": {
+      "finish-reason": "SUCCESS",
+      "seed": "42"
+    },
+    "note": "Response body is binary PNG image data. When Accept: application/json is set, returns base64-encoded image."
+  },
+  "json_response_example": {
+    "image": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAA...",
+    "finish_reason": "SUCCESS",
+    "seed": 42
+  }
+}
