@@ -1,0 +1,99 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Stability AI
+providerId: stability-ai
+created: '2026-05-04'
+modified: '2026-05-04'
+reconciled: true
+tags:
+  - AI
+  - Image Generation
+  - Video Generation
+description: Stability AI credit-based pricing. 1 credit = $0.01.
+sources:
+  - https://platform.stability.ai/pricing
+plans:
+  - id: stability-membership
+    name: API Membership
+    type: subscription
+    description: $20/month with 6,000 credits ($60 effective rate).
+    entries:
+      - label: Monthly
+        name: monthly
+        type: subscription
+        metric: month
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '20.00'
+        userMultiplied: false
+      - label: Credits included
+        name: credits
+        type: quota
+        metric: credit
+        limit: 6000
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: 1 credit = $0.01
+      - name: Effective $60 worth of credits for $20
+  - id: stability-sd3
+    name: Stable Diffusion 3 (SD3)
+    type: usage-based
+    description: ~$0.035 per image (3.5 credits).
+    entries:
+      - label: Per image
+        name: image
+        type: metered
+        metric: image
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '0.035'
+        userMultiplied: false
+    elements:
+      - name: SD3 medium image quality
+      - name: Credit-based
+  - id: stability-image-ultra
+    name: Stable Image Ultra
+    type: usage-based
+    description: $0.08 per image (8 credits). Powered by SD3.5 Large.
+    entries:
+      - label: Per image
+        name: image
+        type: metered
+        metric: image
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '0.08'
+        userMultiplied: false
+    elements:
+      - name: Highest quality
+      - name: SD3.5 Large model
+  - id: stability-enterprise
+    name: Enterprise
+    type: enterprise
+    description: Custom pricing for high volume.
+    entries:
+      - label: Annual (custom)
+        name: annual
+        type: subscription
+        metric: year
+        limit: -1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: custom
+        userMultiplied: false
+    elements:
+      - name: Volume discounts
+      - name: Dedicated support
+      - name: Self-hosted/private models option
