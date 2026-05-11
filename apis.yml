@@ -179,3 +179,7 @@ common:
     sources:
       - https://platform.stability.ai/pricing
     updated: '2026-05-04'
+  - type: Integrations
+    url: https://stability.ai/partners
+integrations:
+  - name: Stability AI
