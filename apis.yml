@@ -142,13 +142,13 @@ common:
     url: https://platform.stability.ai
   - type: Pricing
     url: https://stability.ai/api-pricing-update-25
-  - type: Terms of Service
+  - type: TermsOfService
     url: https://stability.ai/terms-of-service
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://stability.ai/privacy-policy
   - type: GitHub Org
     url: https://github.com/stability-ai
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/stability-ai-context.jsonld
   - type: JSONSchema
     url: json-schema/stability-ai-image-generation-schema.json
