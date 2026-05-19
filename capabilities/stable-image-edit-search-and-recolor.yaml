@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Stability AI Stable Image Edit API — Search and Recolor
+  description: 'Stability AI Stable Image Edit API — Search and Recolor. 1 operations. Lead operation: Search and recolor
+    objects in an image. Self-contained Naftiko capability covering one Stability Ai business surface.'
+  tags:
+  - Stability Ai
+  - Search and Recolor
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    STABILITY_AI_API_KEY: STABILITY_AI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: stable-image-edit-search-and-recolor
+    baseUri: https://api.stability.ai
+    description: Stability AI Stable Image Edit API — Search and Recolor business capability. Self-contained, no shared references.
+    resources:
+    - name: v2beta-stable-image-edit-search-and-recolor
+      path: /v2beta/stable-image/edit/search-and-recolor
+      operations:
+      - name: editimagesearchandrecolor
+        method: POST
+        description: Search and recolor objects in an image
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.STABILITY_AI_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: stable-image-edit-search-and-recolor-rest
+    port: 8080
+    description: REST adapter for Stability AI Stable Image Edit API — Search and Recolor. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/v2beta/stable-image/edit/search-and-recolor
+      name: v2beta-stable-image-edit-search-and-recolor
+      description: REST surface for v2beta-stable-image-edit-search-and-recolor.
+      operations:
+      - method: POST
+        name: editimagesearchandrecolor
+        description: Search and recolor objects in an image
+        call: stable-image-edit-search-and-recolor.editimagesearchandrecolor
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: stable-image-edit-search-and-recolor-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Stability AI Stable Image Edit API — Search and Recolor. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: search-and-recolor-objects-image
+      description: Search and recolor objects in an image
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: stable-image-edit-search-and-recolor.editimagesearchandrecolor
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

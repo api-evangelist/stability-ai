@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Stability AI Stable Image Generate API — Generate Core
+  description: 'Stability AI Stable Image Generate API — Generate Core. 1 operations. Lead operation: Generate an image using
+    Stable Image Core. Self-contained Naftiko capability covering one Stability Ai business surface.'
+  tags:
+  - Stability Ai
+  - Generate Core
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    STABILITY_AI_API_KEY: STABILITY_AI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: stable-image-generate-generate-core
+    baseUri: https://api.stability.ai
+    description: Stability AI Stable Image Generate API — Generate Core business capability. Self-contained, no shared references.
+    resources:
+    - name: v2beta-stable-image-generate-core
+      path: /v2beta/stable-image/generate/core
+      operations:
+      - name: generateimagecore
+        method: POST
+        description: Generate an image using Stable Image Core
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.STABILITY_AI_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: stable-image-generate-generate-core-rest
+    port: 8080
+    description: REST adapter for Stability AI Stable Image Generate API — Generate Core. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/v2beta/stable-image/generate/core
+      name: v2beta-stable-image-generate-core
+      description: REST surface for v2beta-stable-image-generate-core.
+      operations:
+      - method: POST
+        name: generateimagecore
+        description: Generate an image using Stable Image Core
+        call: stable-image-generate-generate-core.generateimagecore
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: stable-image-generate-generate-core-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Stability AI Stable Image Generate API — Generate Core. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: generate-image-using-stable-image
+      description: Generate an image using Stable Image Core
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: stable-image-generate-generate-core.generateimagecore
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

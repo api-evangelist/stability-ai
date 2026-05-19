@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Stability AI Stable Image Control API — Sketch
+  description: 'Stability AI Stable Image Control API — Sketch. 1 operations. Lead operation: Generate an image from a sketch.
+    Self-contained Naftiko capability covering one Stability Ai business surface.'
+  tags:
+  - Stability Ai
+  - Sketch
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    STABILITY_AI_API_KEY: STABILITY_AI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: stable-image-control-sketch
+    baseUri: https://api.stability.ai
+    description: Stability AI Stable Image Control API — Sketch business capability. Self-contained, no shared references.
+    resources:
+    - name: v2beta-stable-image-control-sketch
+      path: /v2beta/stable-image/control/sketch
+      operations:
+      - name: controlimagesketch
+        method: POST
+        description: Generate an image from a sketch
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.STABILITY_AI_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: stable-image-control-sketch-rest
+    port: 8080
+    description: REST adapter for Stability AI Stable Image Control API — Sketch. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/v2beta/stable-image/control/sketch
+      name: v2beta-stable-image-control-sketch
+      description: REST surface for v2beta-stable-image-control-sketch.
+      operations:
+      - method: POST
+        name: controlimagesketch
+        description: Generate an image from a sketch
+        call: stable-image-control-sketch.controlimagesketch
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: stable-image-control-sketch-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Stability AI Stable Image Control API — Sketch. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: generate-image-sketch
+      description: Generate an image from a sketch
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: stable-image-control-sketch.controlimagesketch
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

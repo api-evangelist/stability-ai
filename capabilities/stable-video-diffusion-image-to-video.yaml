@@ -1,0 +1,112 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Stability AI Stable Video Diffusion API — Image to Video
+  description: 'Stability AI Stable Video Diffusion API — Image to Video. 2 operations. Lead operation: Start an image-to-video
+    generation. Self-contained Naftiko capability covering one Stability Ai business surface.'
+  tags:
+  - Stability Ai
+  - Image to Video
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    STABILITY_AI_API_KEY: STABILITY_AI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: stable-video-diffusion-image-to-video
+    baseUri: https://api.stability.ai
+    description: Stability AI Stable Video Diffusion API — Image to Video business capability. Self-contained, no shared references.
+    resources:
+    - name: v2beta-image-to-video
+      path: /v2beta/image-to-video
+      operations:
+      - name: startimagetovideo
+        method: POST
+        description: Start an image-to-video generation
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v2beta-image-to-video-result-id
+      path: /v2beta/image-to-video/result/{id}
+      operations:
+      - name: getimagetovideoresult
+        method: GET
+        description: Get the result of a video generation
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.STABILITY_AI_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: stable-video-diffusion-image-to-video-rest
+    port: 8080
+    description: REST adapter for Stability AI Stable Video Diffusion API — Image to Video. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/v2beta/image-to-video
+      name: v2beta-image-to-video
+      description: REST surface for v2beta-image-to-video.
+      operations:
+      - method: POST
+        name: startimagetovideo
+        description: Start an image-to-video generation
+        call: stable-video-diffusion-image-to-video.startimagetovideo
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v2beta/image-to-video/result/{id}
+      name: v2beta-image-to-video-result-id
+      description: REST surface for v2beta-image-to-video-result-id.
+      operations:
+      - method: GET
+        name: getimagetovideoresult
+        description: Get the result of a video generation
+        call: stable-video-diffusion-image-to-video.getimagetovideoresult
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: stable-video-diffusion-image-to-video-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Stability AI Stable Video Diffusion API — Image to Video. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: start-image-video-generation
+      description: Start an image-to-video generation
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: stable-video-diffusion-image-to-video.startimagetovideo
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-result-video-generation
+      description: Get the result of a video generation
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: stable-video-diffusion-image-to-video.getimagetovideoresult
+      outputParameters:
+      - type: object
+        mapping: $.

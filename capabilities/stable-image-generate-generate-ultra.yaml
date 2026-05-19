@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Stability AI Stable Image Generate API — Generate Ultra
+  description: 'Stability AI Stable Image Generate API — Generate Ultra. 1 operations. Lead operation: Generate an image using
+    Stable Image Ultra. Self-contained Naftiko capability covering one Stability Ai business surface.'
+  tags:
+  - Stability Ai
+  - Generate Ultra
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    STABILITY_AI_API_KEY: STABILITY_AI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: stable-image-generate-generate-ultra
+    baseUri: https://api.stability.ai
+    description: Stability AI Stable Image Generate API — Generate Ultra business capability. Self-contained, no shared references.
+    resources:
+    - name: v2beta-stable-image-generate-ultra
+      path: /v2beta/stable-image/generate/ultra
+      operations:
+      - name: generateimageultra
+        method: POST
+        description: Generate an image using Stable Image Ultra
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.STABILITY_AI_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: stable-image-generate-generate-ultra-rest
+    port: 8080
+    description: REST adapter for Stability AI Stable Image Generate API — Generate Ultra. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/v2beta/stable-image/generate/ultra
+      name: v2beta-stable-image-generate-ultra
+      description: REST surface for v2beta-stable-image-generate-ultra.
+      operations:
+      - method: POST
+        name: generateimageultra
+        description: Generate an image using Stable Image Ultra
+        call: stable-image-generate-generate-ultra.generateimageultra
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: stable-image-generate-generate-ultra-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Stability AI Stable Image Generate API — Generate Ultra. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: generate-image-using-stable-image
+      description: Generate an image using Stable Image Ultra
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: stable-image-generate-generate-ultra.generateimageultra
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

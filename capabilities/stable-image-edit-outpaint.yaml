@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Stability AI Stable Image Edit API — Outpaint
+  description: 'Stability AI Stable Image Edit API — Outpaint. 1 operations. Lead operation: Extend an image beyond its boundaries.
+    Self-contained Naftiko capability covering one Stability Ai business surface.'
+  tags:
+  - Stability Ai
+  - Outpaint
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    STABILITY_AI_API_KEY: STABILITY_AI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: stable-image-edit-outpaint
+    baseUri: https://api.stability.ai
+    description: Stability AI Stable Image Edit API — Outpaint business capability. Self-contained, no shared references.
+    resources:
+    - name: v2beta-stable-image-edit-outpaint
+      path: /v2beta/stable-image/edit/outpaint
+      operations:
+      - name: editimageoutpaint
+        method: POST
+        description: Extend an image beyond its boundaries
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.STABILITY_AI_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: stable-image-edit-outpaint-rest
+    port: 8080
+    description: REST adapter for Stability AI Stable Image Edit API — Outpaint. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/v2beta/stable-image/edit/outpaint
+      name: v2beta-stable-image-edit-outpaint
+      description: REST surface for v2beta-stable-image-edit-outpaint.
+      operations:
+      - method: POST
+        name: editimageoutpaint
+        description: Extend an image beyond its boundaries
+        call: stable-image-edit-outpaint.editimageoutpaint
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: stable-image-edit-outpaint-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Stability AI Stable Image Edit API — Outpaint. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: extend-image-beyond-its-boundaries
+      description: Extend an image beyond its boundaries
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: stable-image-edit-outpaint.editimageoutpaint
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Stability AI Stable Fast 3D API — 3D Generation
+  description: 'Stability AI Stable Fast 3D API — 3D Generation. 1 operations. Lead operation: Generate a 3D model from an
+    image. Self-contained Naftiko capability covering one Stability Ai business surface.'
+  tags:
+  - Stability Ai
+  - 3D Generation
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    STABILITY_AI_API_KEY: STABILITY_AI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: stable-fast-3d-3d-generation
+    baseUri: https://api.stability.ai
+    description: Stability AI Stable Fast 3D API — 3D Generation business capability. Self-contained, no shared references.
+    resources:
+    - name: v2beta-3d-stable-fast-3d
+      path: /v2beta/3d/stable-fast-3d
+      operations:
+      - name: generatestablefast3d
+        method: POST
+        description: Generate a 3D model from an image
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.STABILITY_AI_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: stable-fast-3d-3d-generation-rest
+    port: 8080
+    description: REST adapter for Stability AI Stable Fast 3D API — 3D Generation. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/v2beta/3d/stable-fast-3d
+      name: v2beta-3d-stable-fast-3d
+      description: REST surface for v2beta-3d-stable-fast-3d.
+      operations:
+      - method: POST
+        name: generatestablefast3d
+        description: Generate a 3D model from an image
+        call: stable-fast-3d-3d-generation.generatestablefast3d
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: stable-fast-3d-3d-generation-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Stability AI Stable Fast 3D API — 3D Generation. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: generate-3d-model-image
+      description: Generate a 3D model from an image
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: stable-fast-3d-3d-generation.generatestablefast3d
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

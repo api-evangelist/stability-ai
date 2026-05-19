@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Stability AI Stable Image Upscale API — Fast Upscale
+  description: 'Stability AI Stable Image Upscale API — Fast Upscale. 1 operations. Lead operation: Fast upscale an image.
+    Self-contained Naftiko capability covering one Stability Ai business surface.'
+  tags:
+  - Stability Ai
+  - Fast Upscale
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    STABILITY_AI_API_KEY: STABILITY_AI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: stable-image-upscale-fast-upscale
+    baseUri: https://api.stability.ai
+    description: Stability AI Stable Image Upscale API — Fast Upscale business capability. Self-contained, no shared references.
+    resources:
+    - name: v2beta-stable-image-upscale-fast
+      path: /v2beta/stable-image/upscale/fast
+      operations:
+      - name: upscaleimagefast
+        method: POST
+        description: Fast upscale an image
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.STABILITY_AI_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: stable-image-upscale-fast-upscale-rest
+    port: 8080
+    description: REST adapter for Stability AI Stable Image Upscale API — Fast Upscale. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/v2beta/stable-image/upscale/fast
+      name: v2beta-stable-image-upscale-fast
+      description: REST surface for v2beta-stable-image-upscale-fast.
+      operations:
+      - method: POST
+        name: upscaleimagefast
+        description: Fast upscale an image
+        call: stable-image-upscale-fast-upscale.upscaleimagefast
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: stable-image-upscale-fast-upscale-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Stability AI Stable Image Upscale API — Fast Upscale. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: fast-upscale-image
+      description: Fast upscale an image
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: stable-image-upscale-fast-upscale.upscaleimagefast
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
