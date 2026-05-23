@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RemoveBackgroundRequest",
+  "title": "RemoveBackgroundRequest",
+  "type": "object",
+  "required": [
+    "image"
+  ],
+  "properties": {
+    "image": {
+      "type": "string",
+      "format": "binary",
+      "description": "The source image from which to remove the background."
+    },
+    "output_format": {
+      "type": "string",
+      "enum": [
+        "png",
+        "webp"
+      ],
+      "default": "png",
+      "description": "The output format of the image. PNG supports transparency for background removal."
+    }
+  }
+}

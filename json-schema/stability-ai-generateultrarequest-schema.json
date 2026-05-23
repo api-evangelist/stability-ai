@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GenerateUltraRequest",
+  "title": "GenerateUltraRequest",
+  "type": "object",
+  "required": [
+    "prompt"
+  ],
+  "properties": {
+    "prompt": {
+      "type": "string",
+      "maxLength": 10000,
+      "description": "Text describing what you wish to see in the output image. Strong, descriptive prompts that clearly define elements, colors, and subjects lead to better results."
+    },
+    "negative_prompt": {
+      "type": "string",
+      "maxLength": 10000,
+      "description": "Text describing elements to exclude from the output image."
+    },
+    "aspect_ratio": {
+      "type": "string",
+      "enum": [
+        "16:9",
+        "1:1",
+        "21:9",
+        "2:3",
+        "3:2",
+        "4:5",
+        "5:4",
+        "9:16",
+        "9:21"
+      ],
+      "default": "1:1",
+      "description": "Controls the aspect ratio of the generated image."
+    },
+    "seed": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967294,
+      "default": 0,
+      "description": "A value to control randomness in generation. Set to 0 for a random seed. Using the same seed with the same parameters produces similar results."
+    },
+    "output_format": {
+      "type": "string",
+      "enum": [
+        "jpeg",
+        "png",
+        "webp"
+      ],
+      "default": "png",
+      "description": "The output format of the generated image."
+    }
+  }
+}

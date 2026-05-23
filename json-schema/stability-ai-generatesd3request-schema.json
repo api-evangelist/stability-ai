@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GenerateSD3Request",
+  "title": "GenerateSD3Request",
+  "type": "object",
+  "required": [
+    "prompt"
+  ],
+  "properties": {
+    "prompt": {
+      "type": "string",
+      "maxLength": 10000,
+      "description": "Text describing what you wish to see in the output image."
+    },
+    "negative_prompt": {
+      "type": "string",
+      "maxLength": 10000,
+      "description": "Text describing elements to exclude from the output image."
+    },
+    "image": {
+      "type": "string",
+      "format": "binary",
+      "description": "An optional input image for image-to-image generation. When provided, the model uses this image as a reference guided by the strength parameter."
+    },
+    "strength": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "default": 0.7,
+      "description": "Controls how much influence the input image has on the output. Lower values produce images closer to the input, higher values allow more creative deviation. Only applicable for image-to-image mode."
+    },
+    "aspect_ratio": {
+      "type": "string",
+      "enum": [
+        "16:9",
+        "1:1",
+        "21:9",
+        "2:3",
+        "3:2",
+        "4:5",
+        "5:4",
+        "9:16",
+        "9:21"
+      ],
+      "default": "1:1",
+      "description": "Controls the aspect ratio of the generated image. Only applicable for text-to-image mode."
+    },
+    "model": {
+      "type": "string",
+      "enum": [
+        "sd3",
+        "sd3-turbo",
+        "sd3.5-large",
+        "sd3.5-large-turbo",
+        "sd3.5-medium"
+      ],
+      "default": "sd3.5-large",
+      "description": "The Stable Diffusion 3 model variant to use for generation."
+    },
+    "seed": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967294,
+      "default": 0,
+      "description": "A value to control randomness in generation."
+    },
+    "output_format": {
+      "type": "string",
+      "enum": [
+        "jpeg",
+        "png",
+        "webp"
+      ],
+      "default": "png",
+      "description": "The output format of the generated image."
+    },
+    "mode": {
+      "type": "string",
+      "enum": [
+        "text-to-image",
+        "image-to-image"
+      ],
+      "default": "text-to-image",
+      "description": "The generation mode. Use text-to-image for prompt-only generation or image-to-image when providing a reference image."
+    }
+  }
+}

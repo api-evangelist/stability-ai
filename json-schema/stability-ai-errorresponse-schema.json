@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ErrorResponse",
+  "title": "ErrorResponse",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "A unique identifier for the error instance."
+    },
+    "name": {
+      "type": "string",
+      "description": "The error type name."
+    },
+    "message": {
+      "type": "string",
+      "description": "A human-readable description of the error."
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/StructureControlRequest",
+  "title": "StructureControlRequest",
+  "type": "object",
+  "required": [
+    "image",
+    "prompt"
+  ],
+  "properties": {
+    "image": {
+      "type": "string",
+      "format": "binary",
+      "description": "The reference image to use for structural guidance. The edges and layout of this image will guide the output composition."
+    },
+    "prompt": {
+      "type": "string",
+      "maxLength": 10000,
+      "description": "Text describing the desired output image content and style."
+    },
+    "negative_prompt": {
+      "type": "string",
+      "maxLength": 10000,
+      "description": "Text describing elements to exclude from the output image."
+    },
+    "control_strength": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "default": 0.7,
+      "description": "Controls how closely the output follows the reference structure. Higher values produce outputs more faithful to the reference layout."
+    },
+    "seed": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967294,
+      "default": 0,
+      "description": "A value to control randomness in generation."
+    },
+    "output_format": {
+      "type": "string",
+      "enum": [
+        "jpeg",
+        "png",
+        "webp"
+      ],
+      "default": "png",
+      "description": "The output format of the generated image."
+    }
+  }
+}

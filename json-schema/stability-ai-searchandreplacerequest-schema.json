@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SearchAndReplaceRequest",
+  "title": "SearchAndReplaceRequest",
+  "type": "object",
+  "required": [
+    "image",
+    "prompt",
+    "search_prompt"
+  ],
+  "properties": {
+    "image": {
+      "type": "string",
+      "format": "binary",
+      "description": "The source image containing the objects to replace."
+    },
+    "prompt": {
+      "type": "string",
+      "maxLength": 10000,
+      "description": "Text describing what should replace the found objects."
+    },
+    "search_prompt": {
+      "type": "string",
+      "maxLength": 10000,
+      "description": "Text describing the objects to find and replace in the image."
+    },
+    "negative_prompt": {
+      "type": "string",
+      "maxLength": 10000,
+      "description": "Text describing elements to exclude from the replacement."
+    },
+    "seed": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967294,
+      "default": 0,
+      "description": "A value to control randomness in generation."
+    },
+    "output_format": {
+      "type": "string",
+      "enum": [
+        "jpeg",
+        "png",
+        "webp"
+      ],
+      "default": "png",
+      "description": "The output format of the edited image."
+    }
+  }
+}

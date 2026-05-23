@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/StableFast3DRequest",
+  "title": "StableFast3DRequest",
+  "type": "object",
+  "required": [
+    "image"
+  ],
+  "properties": {
+    "image": {
+      "type": "string",
+      "format": "binary",
+      "description": "The input image of an object to convert into a 3D model. Best results are achieved with images of single objects on a clean background."
+    },
+    "texture_resolution": {
+      "type": "integer",
+      "enum": [
+        512,
+        1024,
+        2048
+      ],
+      "default": 1024,
+      "description": "The resolution of the generated texture in pixels. Higher values produce more detailed textures but increase file size and processing time."
+    },
+    "foreground_ratio": {
+      "type": "number",
+      "minimum": 0.1,
+      "maximum": 1.0,
+      "default": 0.85,
+      "description": "The ratio of the foreground object to the total image size. Used to control how much of the image is treated as the object versus background during 3D reconstruction."
+    },
+    "remesh": {
+      "type": "string",
+      "enum": [
+        "none",
+        "triangle",
+        "quad"
+      ],
+      "default": "none",
+      "description": "The remeshing algorithm to apply to the generated mesh. Triangle and quad remeshing produce cleaner topology suitable for animation and further editing."
+    }
+  }
+}

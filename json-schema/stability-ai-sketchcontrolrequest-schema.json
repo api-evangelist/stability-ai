@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SketchControlRequest",
+  "title": "SketchControlRequest",
+  "type": "object",
+  "required": [
+    "image",
+    "prompt"
+  ],
+  "properties": {
+    "image": {
+      "type": "string",
+      "format": "binary",
+      "description": "The sketch or line drawing image to use as structural guidance."
+    },
+    "prompt": {
+      "type": "string",
+      "maxLength": 10000,
+      "description": "Text describing the desired output image including content, colors, textures, and style."
+    },
+    "negative_prompt": {
+      "type": "string",
+      "maxLength": 10000,
+      "description": "Text describing elements to exclude from the output image."
+    },
+    "control_strength": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "default": 0.7,
+      "description": "Controls how closely the output follows the input sketch. Higher values produce outputs more faithful to the sketch structure."
+    },
+    "seed": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967294,
+      "default": 0,
+      "description": "A value to control randomness in generation."
+    },
+    "output_format": {
+      "type": "string",
+      "enum": [
+        "jpeg",
+        "png",
+        "webp"
+      ],
+      "default": "png",
+      "description": "The output format of the generated image."
+    }
+  }
+}

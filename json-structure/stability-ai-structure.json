@@ -1,0 +1,148 @@
+{
+  "provider": "Stability AI",
+  "providerId": "stability-ai",
+  "kind": "json-structure",
+  "description": "Structural overview of the Stability AI API surface; extracted from openapi/.",
+  "schemaCount": 9,
+  "operationCount": 7,
+  "schemas": [
+    {
+      "name": "InpaintRequest",
+      "type": "object",
+      "propertyCount": 6,
+      "required": [
+        "image",
+        "prompt"
+      ]
+    },
+    {
+      "name": "OutpaintRequest",
+      "type": "object",
+      "propertyCount": 8,
+      "required": [
+        "image"
+      ]
+    },
+    {
+      "name": "EraseRequest",
+      "type": "object",
+      "propertyCount": 4,
+      "required": [
+        "image"
+      ]
+    },
+    {
+      "name": "SearchAndReplaceRequest",
+      "type": "object",
+      "propertyCount": 6,
+      "required": [
+        "image",
+        "prompt",
+        "search_prompt"
+      ]
+    },
+    {
+      "name": "SearchAndRecolorRequest",
+      "type": "object",
+      "propertyCount": 6,
+      "required": [
+        "image",
+        "prompt",
+        "select_prompt"
+      ]
+    },
+    {
+      "name": "RemoveBackgroundRequest",
+      "type": "object",
+      "propertyCount": 2,
+      "required": [
+        "image"
+      ]
+    },
+    {
+      "name": "ReplaceBackgroundAndRelightRequest",
+      "type": "object",
+      "propertyCount": 6,
+      "required": [
+        "image"
+      ]
+    },
+    {
+      "name": "EditImageResponse",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "ErrorResponse",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "POST",
+      "path": "/v2beta/stable-image/edit/inpaint",
+      "operationId": "editImageInpaint",
+      "summary": "Inpaint a masked region of an image",
+      "tags": [
+        "Inpaint"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v2beta/stable-image/edit/outpaint",
+      "operationId": "editImageOutpaint",
+      "summary": "Extend an image beyond its boundaries",
+      "tags": [
+        "Outpaint"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v2beta/stable-image/edit/erase",
+      "operationId": "editImageErase",
+      "summary": "Erase an object from an image",
+      "tags": [
+        "Erase"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v2beta/stable-image/edit/search-and-replace",
+      "operationId": "editImageSearchAndReplace",
+      "summary": "Search and replace objects in an image",
+      "tags": [
+        "Search and Replace"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v2beta/stable-image/edit/search-and-recolor",
+      "operationId": "editImageSearchAndRecolor",
+      "summary": "Search and recolor objects in an image",
+      "tags": [
+        "Search and Recolor"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v2beta/stable-image/edit/remove-background",
+      "operationId": "editImageRemoveBackground",
+      "summary": "Remove background from an image",
+      "tags": [
+        "Remove Background"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v2beta/stable-image/edit/replace-background-and-relight",
+      "operationId": "editImageReplaceBackgroundAndRelight",
+      "summary": "Replace background and adjust lighting",
+      "tags": [
+        "Replace Background and Relight"
+      ]
+    }
+  ]
+}

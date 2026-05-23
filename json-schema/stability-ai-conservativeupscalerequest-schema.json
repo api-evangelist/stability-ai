@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ConservativeUpscaleRequest",
+  "title": "ConservativeUpscaleRequest",
+  "type": "object",
+  "required": [
+    "image",
+    "prompt"
+  ],
+  "properties": {
+    "image": {
+      "type": "string",
+      "format": "binary",
+      "description": "The image to upscale. Must be a valid image file."
+    },
+    "prompt": {
+      "type": "string",
+      "maxLength": 10000,
+      "description": "Text describing the image content to help guide the upscaling process."
+    },
+    "negative_prompt": {
+      "type": "string",
+      "maxLength": 10000,
+      "description": "Text describing elements to avoid adding during upscaling."
+    },
+    "seed": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967294,
+      "default": 0,
+      "description": "A value to control randomness in generation."
+    },
+    "output_format": {
+      "type": "string",
+      "enum": [
+        "jpeg",
+        "png",
+        "webp"
+      ],
+      "default": "png",
+      "description": "The output format of the upscaled image."
+    }
+  }
+}

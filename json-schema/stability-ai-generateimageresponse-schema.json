@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GenerateImageResponse",
+  "title": "GenerateImageResponse",
+  "type": "object",
+  "properties": {
+    "image": {
+      "type": "string",
+      "description": "Base64-encoded image data when Accept header is set to application/json."
+    },
+    "finish_reason": {
+      "type": "string",
+      "enum": [
+        "SUCCESS",
+        "CONTENT_FILTERED"
+      ],
+      "description": "The reason the generation finished. SUCCESS indicates a successful generation, CONTENT_FILTERED indicates the output was blocked by content moderation."
+    },
+    "seed": {
+      "type": "integer",
+      "description": "The seed used for generation. Useful for reproducing results."
+    }
+  }
+}

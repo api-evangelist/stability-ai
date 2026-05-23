@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EraseRequest",
+  "title": "EraseRequest",
+  "type": "object",
+  "required": [
+    "image"
+  ],
+  "properties": {
+    "image": {
+      "type": "string",
+      "format": "binary",
+      "description": "The source image containing the object to erase."
+    },
+    "mask": {
+      "type": "string",
+      "format": "binary",
+      "description": "A mask image indicating the region to erase. White pixels indicate areas to remove, black pixels indicate areas to preserve."
+    },
+    "seed": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967294,
+      "default": 0,
+      "description": "A value to control randomness in generation."
+    },
+    "output_format": {
+      "type": "string",
+      "enum": [
+        "jpeg",
+        "png",
+        "webp"
+      ],
+      "default": "png",
+      "description": "The output format of the edited image."
+    }
+  }
+}

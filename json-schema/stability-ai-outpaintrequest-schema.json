@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OutpaintRequest",
+  "title": "OutpaintRequest",
+  "type": "object",
+  "required": [
+    "image"
+  ],
+  "properties": {
+    "image": {
+      "type": "string",
+      "format": "binary",
+      "description": "The source image to extend."
+    },
+    "prompt": {
+      "type": "string",
+      "maxLength": 10000,
+      "description": "Optional text describing what should appear in the extended regions."
+    },
+    "left": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Number of pixels to extend to the left."
+    },
+    "right": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Number of pixels to extend to the right."
+    },
+    "up": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Number of pixels to extend upward."
+    },
+    "down": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Number of pixels to extend downward."
+    },
+    "seed": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967294,
+      "default": 0,
+      "description": "A value to control randomness in generation."
+    },
+    "output_format": {
+      "type": "string",
+      "enum": [
+        "jpeg",
+        "png",
+        "webp"
+      ],
+      "default": "png",
+      "description": "The output format of the edited image."
+    }
+  }
+}

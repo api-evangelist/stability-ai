@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EditImageResponse",
+  "title": "EditImageResponse",
+  "type": "object",
+  "properties": {
+    "image": {
+      "type": "string",
+      "description": "Base64-encoded image data when Accept header is set to application/json."
+    },
+    "finish_reason": {
+      "type": "string",
+      "enum": [
+        "SUCCESS",
+        "CONTENT_FILTERED"
+      ],
+      "description": "The reason the edit finished."
+    },
+    "seed": {
+      "type": "integer",
+      "description": "The seed used for generation."
+    }
+  }
+}

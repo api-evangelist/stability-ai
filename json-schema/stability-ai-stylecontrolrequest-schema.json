@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/StyleControlRequest",
+  "title": "StyleControlRequest",
+  "type": "object",
+  "required": [
+    "image",
+    "prompt"
+  ],
+  "properties": {
+    "image": {
+      "type": "string",
+      "format": "binary",
+      "description": "The style reference image whose visual style will be applied to the output."
+    },
+    "prompt": {
+      "type": "string",
+      "maxLength": 10000,
+      "description": "Text describing the subject and composition of the output image."
+    },
+    "negative_prompt": {
+      "type": "string",
+      "maxLength": 10000,
+      "description": "Text describing elements to exclude from the output image."
+    },
+    "fidelity": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "default": 0.5,
+      "description": "Controls how strongly the style of the reference image influences the output. Higher values produce outputs closer to the reference style."
+    },
+    "seed": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967294,
+      "default": 0,
+      "description": "A value to control randomness in generation."
+    },
+    "output_format": {
+      "type": "string",
+      "enum": [
+        "jpeg",
+        "png",
+        "webp"
+      ],
+      "default": "png",
+      "description": "The output format of the generated image."
+    }
+  }
+}

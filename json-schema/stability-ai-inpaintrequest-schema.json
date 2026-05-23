@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/InpaintRequest",
+  "title": "InpaintRequest",
+  "type": "object",
+  "required": [
+    "image",
+    "prompt"
+  ],
+  "properties": {
+    "image": {
+      "type": "string",
+      "format": "binary",
+      "description": "The source image to inpaint. Must be a valid image file."
+    },
+    "mask": {
+      "type": "string",
+      "format": "binary",
+      "description": "A mask image indicating the region to inpaint. White pixels indicate areas to fill, black pixels indicate areas to preserve."
+    },
+    "prompt": {
+      "type": "string",
+      "maxLength": 10000,
+      "description": "Text describing what should appear in the masked region."
+    },
+    "negative_prompt": {
+      "type": "string",
+      "maxLength": 10000,
+      "description": "Text describing elements to exclude from the inpainted region."
+    },
+    "seed": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967294,
+      "default": 0,
+      "description": "A value to control randomness in generation."
+    },
+    "output_format": {
+      "type": "string",
+      "enum": [
+        "jpeg",
+        "png",
+        "webp"
+      ],
+      "default": "png",
+      "description": "The output format of the edited image."
+    }
+  }
+}

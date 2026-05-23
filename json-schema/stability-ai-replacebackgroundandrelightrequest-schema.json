@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ReplaceBackgroundAndRelightRequest",
+  "title": "ReplaceBackgroundAndRelightRequest",
+  "type": "object",
+  "required": [
+    "image"
+  ],
+  "properties": {
+    "image": {
+      "type": "string",
+      "format": "binary",
+      "description": "The source image whose background will be replaced."
+    },
+    "background_prompt": {
+      "type": "string",
+      "maxLength": 10000,
+      "description": "Text describing the new background scene and lighting conditions."
+    },
+    "foreground_prompt": {
+      "type": "string",
+      "maxLength": 10000,
+      "description": "Text describing any adjustments to the foreground subject."
+    },
+    "negative_prompt": {
+      "type": "string",
+      "maxLength": 10000,
+      "description": "Text describing elements to exclude from the result."
+    },
+    "seed": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967294,
+      "default": 0,
+      "description": "A value to control randomness in generation."
+    },
+    "output_format": {
+      "type": "string",
+      "enum": [
+        "jpeg",
+        "png",
+        "webp"
+      ],
+      "default": "png",
+      "description": "The output format of the edited image."
+    }
+  }
+}
