@@ -1,0 +1,85 @@
+aid: stability-ai
+name: Stability AI
+review_type: AsyncAPI Surface Review
+reviewer: API Evangelist
+reviewed: '2026-05-30'
+target_spec: AsyncAPI 2.6
+verdict: NOT_APPLICABLE
+summary: >-
+  The Stability AI developer platform does not expose an event-driven,
+  streaming, or webhook-based surface that an AsyncAPI 2.6 document could
+  meaningfully describe. All generation work on api.stability.ai is delivered
+  over synchronous REST. Long-running operations (image-to-video, creative
+  upscale, conservative upscale) use an asynchronous start-and-poll pattern
+  rather than a publish/subscribe or callback-delivery pattern. Per the no
+  fabrication rule, no AsyncAPI specification was generated.
+sources_consulted:
+- type: Documentation
+  url: https://platform.stability.ai/docs/api-reference
+  note: >-
+    Reference site renders client-side; raw HTML returned only a page title
+    via fetch. Used the curated OpenAPI specs in this repo as authoritative
+    ground truth for the surface.
+- type: OpenAPI
+  url: openapi/stability-ai-stable-video-diffusion-openapi.yml
+- type: OpenAPI
+  url: openapi/stability-ai-stable-image-upscale-openapi.yml
+- type: OpenAPI
+  url: openapi/stability-ai-stable-image-generate-openapi.yml
+- type: OpenAPI
+  url: openapi/stability-ai-stable-image-edit-openapi.yml
+- type: OpenAPI
+  url: openapi/stability-ai-stable-image-control-openapi.yml
+- type: OpenAPI
+  url: openapi/stability-ai-stable-fast-3d-openapi.yml
+findings:
+- area: Webhooks / callback URLs
+  observed: None
+  evidence: >-
+    No request body across the six curated Stability AI OpenAPI specs declares
+    a callback_url, webhook_url, notification_url, or equivalent push-delivery
+    parameter. The README and apis.yml common metadata also do not advertise a
+    webhook product.
+- area: Server-Sent Events (SSE)
+  observed: None
+  evidence: >-
+    No endpoint declares a text/event-stream response media type and no
+    documentation surface references SSE or event-source semantics.
+- area: WebSockets
+  observed: None
+  evidence: >-
+    No ws:// or wss:// server, no Upgrade handshake endpoint, and no socket
+    documentation is present on the platform.
+- area: gRPC / bidirectional streaming
+  observed: None
+  evidence: >-
+    The platform is published exclusively as HTTPS REST at api.stability.ai
+    with bearer token auth.
+- area: Async generation pattern
+  observed: HTTP polling (not event-driven)
+  evidence: >-
+    Long-running endpoints return an id from POST and require the client to
+    poll a GET /result/{id} endpoint. 202 Accepted indicates in-progress; 200
+    OK delivers the asset. This is request/response polling, which AsyncAPI
+    2.6 is not designed to model.
+  endpoints:
+  - method: POST
+    path: /v2beta/image-to-video
+    returns: AsyncGenerationResponse { id, status }
+    follow_up: GET /v2beta/image-to-video/result/{id}
+  - method: POST
+    path: /v2beta/stable-image/upscale/creative
+    returns: AsyncGenerationResponse { id, status }
+    follow_up: GET /v2beta/stable-image/upscale/creative/result/{id}
+  - method: POST
+    path: /v2beta/stable-image/upscale/conservative
+    returns: AsyncGenerationResponse { id, status }
+    follow_up: GET /v2beta/stable-image/upscale/creative/result/{id}
+recommendations:
+- For Stability AI, do not produce an AsyncAPI 2.6 specification at this time.
+- Track the polling surface inside the existing OpenAPI specs (already done).
+- If Stability AI later ships a webhook product, an inbound webhook AsyncAPI
+  document (channels with subscribe operations carrying generation.completed
+  and generation.failed events) would become the right artifact.
+- Re-run this review whenever the platform.stability.ai changelog announces
+  webhooks, SSE streaming, or a realtime API.
