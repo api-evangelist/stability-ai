@@ -1,9 +1,11 @@
 aid: stability-ai
 name: Stability AI
-description: Stability AI is an AI company that develops open-source generative AI models for image, audio, video, and language,
-  including the Stable Diffusion family of image generation models. The Stability AI developer platform provides REST APIs
-  for text-to-image generation, image editing, image upscaling, image structure control, video generation, and 3D asset creation.
-  All APIs are accessible at api.stability.ai using bearer token authentication.
+description: Stability AI is an AI company that develops open-source generative AI
+  models for image, audio, video, and language, including the Stable Diffusion family
+  of image generation models. The Stability AI developer platform provides REST APIs
+  for text-to-image generation, image editing, image upscaling, image structure control,
+  video generation, and 3D asset creation. All APIs are accessible at api.stability.ai
+  using bearer token authentication.
 url: https://raw.githubusercontent.com/api-evangelist/stability-ai/refs/heads/main/apis.yml
 tags:
 - 3D Generation
@@ -28,21 +30,19 @@ apis:
   image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
   baseURL: https://api.stability.ai
   humanURL: https://platform.stability.ai/docs/getting-started/stable-image
-  description: The Stability AI Stable Image Generate API provides text-to-image generation capabilities powered by models
-    including Stable Diffusion 3.5 and Stable Image Ultra. Developers can generate high-quality images from text prompts with
-    control over style, dimensions, and output format. The API supports multiple model tiers including Stable Image Core for
-    fast and affordable generation and Stable Image Ultra for state-of-the-art quality results.
+  description: The Stability AI Stable Image Generate API provides text-to-image generation
+    capabilities powered by models including Stable Diffusion 3.5 and Stable Image
+    Ultra. Developers can generate high-quality images from text prompts with control
+    over style, dimensions, and output format. The API supports multiple model tiers
+    including Stable Image Core for fast and affordable generation and Stable Image
+    Ultra for state-of-the-art quality results.
   properties:
   - url: https://platform.stability.ai/docs/api-reference
     type: Documentation
   - url: openapi/stability-ai-stable-image-generate-openapi.yml
     type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/stable-image-generate-generate-core.yaml
-  - type: NaftikoCapability
-    url: capabilities/stable-image-generate-generate-sd3.yaml
-  - type: NaftikoCapability
-    url: capabilities/stable-image-generate-generate-ultra.yaml
+  - url: graphql/stability-ai-graphql.md
+    type: GraphQL
 - aid: stability-ai:stable-image-edit
   name: Stability AI Stable Image Edit API
   tags:
@@ -54,28 +54,16 @@ apis:
   image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
   baseURL: https://api.stability.ai
   humanURL: https://platform.stability.ai/docs/api-reference
-  description: The Stability AI Stable Image Edit API provides image editing capabilities including inpainting, outpainting,
-    object erasing, background removal, and search-and-replace functionality. Developers can use natural language prompts
-    to modify existing images, fill in masked regions, extend image boundaries, or replace specific objects within a scene.
+  description: The Stability AI Stable Image Edit API provides image editing capabilities
+    including inpainting, outpainting, object erasing, background removal, and search-and-replace
+    functionality. Developers can use natural language prompts to modify existing
+    images, fill in masked regions, extend image boundaries, or replace specific objects
+    within a scene.
   properties:
   - url: https://platform.stability.ai/docs/api-reference
     type: Documentation
   - url: openapi/stability-ai-stable-image-edit-openapi.yml
     type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/stable-image-edit-erase.yaml
-  - type: NaftikoCapability
-    url: capabilities/stable-image-edit-inpaint.yaml
-  - type: NaftikoCapability
-    url: capabilities/stable-image-edit-outpaint.yaml
-  - type: NaftikoCapability
-    url: capabilities/stable-image-edit-remove-background.yaml
-  - type: NaftikoCapability
-    url: capabilities/stable-image-edit-replace-background-and-relight.yaml
-  - type: NaftikoCapability
-    url: capabilities/stable-image-edit-search-and-recolor.yaml
-  - type: NaftikoCapability
-    url: capabilities/stable-image-edit-search-and-replace.yaml
 - aid: stability-ai:stable-image-upscale
   name: Stability AI Stable Image Upscale API
   tags:
@@ -86,20 +74,16 @@ apis:
   image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
   baseURL: https://api.stability.ai
   humanURL: https://platform.stability.ai/docs/api-reference
-  description: The Stability AI Stable Image Upscale API enables developers to increase the resolution of images using AI-powered
-    upscaling models. The API offers both conservative upscaling, which preserves the original image closely while increasing
-    resolution, and creative upscaling, which enhances and adds detail to images during the upscaling process.
+  description: The Stability AI Stable Image Upscale API enables developers to increase
+    the resolution of images using AI-powered upscaling models. The API offers both
+    conservative upscaling, which preserves the original image closely while increasing
+    resolution, and creative upscaling, which enhances and adds detail to images during
+    the upscaling process.
   properties:
   - url: https://platform.stability.ai/docs/api-reference
     type: Documentation
   - url: openapi/stability-ai-stable-image-upscale-openapi.yml
     type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/stable-image-upscale-conservative-upscale.yaml
-  - type: NaftikoCapability
-    url: capabilities/stable-image-upscale-creative-upscale.yaml
-  - type: NaftikoCapability
-    url: capabilities/stable-image-upscale-fast-upscale.yaml
 - aid: stability-ai:stable-image-control
   name: Stability AI Stable Image Control API
   tags:
@@ -110,20 +94,16 @@ apis:
   image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
   baseURL: https://api.stability.ai
   humanURL: https://platform.stability.ai/docs/api-reference
-  description: The Stability AI Stable Image Control API provides image-to-image generation guided by structural inputs such
-    as sketches and reference structures. Using ControlNet-based models, developers can generate new images that follow the
-    composition, edges, or layout of a source image while applying new styles or content based on text prompts.
+  description: The Stability AI Stable Image Control API provides image-to-image generation
+    guided by structural inputs such as sketches and reference structures. Using ControlNet-based
+    models, developers can generate new images that follow the composition, edges,
+    or layout of a source image while applying new styles or content based on text
+    prompts.
   properties:
   - url: https://platform.stability.ai/docs/api-reference
     type: Documentation
   - url: openapi/stability-ai-stable-image-control-openapi.yml
     type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/stable-image-control-sketch.yaml
-  - type: NaftikoCapability
-    url: capabilities/stable-image-control-structure.yaml
-  - type: NaftikoCapability
-    url: capabilities/stable-image-control-style.yaml
 - aid: stability-ai:stable-video-diffusion
   name: Stability AI Stable Video Diffusion API
   tags:
@@ -134,16 +114,15 @@ apis:
   image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
   baseURL: https://api.stability.ai
   humanURL: https://platform.stability.ai/docs/getting-started/stable-video
-  description: The Stability AI Stable Video Diffusion API enables developers to generate short video clips from a single
-    input image. Powered by the Stable Video Diffusion model, the API produces smooth animated sequences that bring static
-    images to life with realistic motion.
+  description: The Stability AI Stable Video Diffusion API enables developers to generate
+    short video clips from a single input image. Powered by the Stable Video Diffusion
+    model, the API produces smooth animated sequences that bring static images to
+    life with realistic motion.
   properties:
   - url: https://platform.stability.ai/docs/getting-started/stable-video-diffusion
     type: Documentation
   - url: openapi/stability-ai-stable-video-diffusion-openapi.yml
     type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/stable-video-diffusion-image-to-video.yaml
 - aid: stability-ai:stable-fast-3d
   name: Stability AI Stable Fast 3D API
   tags:
@@ -154,15 +133,14 @@ apis:
   image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
   baseURL: https://api.stability.ai
   humanURL: https://platform.stability.ai/docs/api-reference
-  description: The Stability AI Stable Fast 3D API generates textured 3D mesh assets from single input images. The API rapidly
-    produces 3D models suitable for use in games, augmented reality, virtual reality, and product visualization workflows.
+  description: The Stability AI Stable Fast 3D API generates textured 3D mesh assets
+    from single input images. The API rapidly produces 3D models suitable for use
+    in games, augmented reality, virtual reality, and product visualization workflows.
   properties:
   - url: https://platform.stability.ai/docs/api-reference
     type: Documentation
   - url: openapi/stability-ai-stable-fast-3d-openapi.yml
     type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/stable-fast-3d-3d-generation.yaml
 common:
 - type: LinkedIn
   url: https://www.linkedin.com/company/stability-ai

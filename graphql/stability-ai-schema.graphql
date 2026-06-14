@@ -1,0 +1,715 @@
+"""
+Stability AI GraphQL Schema
+Conceptual schema representing the Stability AI platform for image generation,
+image editing, video generation, audio generation, and 3D asset creation.
+Based on the Stability AI REST API at https://platform.stability.ai/docs/api-reference
+"""
+
+# ─────────────────────────────────────────────
+# Scalars
+# ─────────────────────────────────────────────
+
+scalar Base64Image
+scalar RequestID
+scalar Timestamp
+
+# ─────────────────────────────────────────────
+# Enums
+# ─────────────────────────────────────────────
+
+enum ImageFormat {
+  JPEG
+  PNG
+  WEBP
+}
+
+enum ArtifactType {
+  IMAGE
+  VIDEO
+  AUDIO
+  MASK
+}
+
+enum FinishReason {
+  SUCCESS
+  ERROR
+  CONTENT_FILTERED
+}
+
+enum MaskSource {
+  MASK_IMAGE_WHITE
+  MASK_IMAGE_BLACK
+  INIT_IMAGE_ALPHA
+}
+
+enum StylePreset {
+  ENHANCE
+  ANIME
+  PHOTOGRAPHIC
+  DIGITAL_ART
+  COMIC_BOOK
+  FANTASY_ART
+  LINE_ART
+  ANALOG_FILM
+  NEON_PUNK
+  ISOMETRIC
+  LOW_POLY
+  ORIGAMI
+  MODELING_COMPOUND
+  CINEMATIC
+  THREE_D_MODEL
+  PIXEL_ART
+  TILE_TEXTURE
+}
+
+enum Sampler {
+  DDIM
+  DDPM
+  K_DPMPP_2M
+  K_DPMPP_2S_ANCESTRAL
+  K_DPM_2
+  K_DPM_2_ANCESTRAL
+  K_EULER
+  K_EULER_ANCESTRAL
+  K_HEUN
+  K_LMS
+}
+
+enum AspectRatio {
+  RATIO_1_1
+  RATIO_16_9
+  RATIO_9_16
+  RATIO_4_3
+  RATIO_3_4
+  RATIO_21_9
+  RATIO_9_21
+}
+
+enum EngineCapabilityType {
+  TEXT_TO_IMAGE
+  IMAGE_TO_IMAGE
+  INPAINTING
+  OUTPAINTING
+  UPSCALE
+  CONTROL
+  VIDEO
+  AUDIO
+  THREE_D
+}
+
+# ─────────────────────────────────────────────
+# Engine Types
+# ─────────────────────────────────────────────
+
+"""A single Stability AI inference engine (model)."""
+type Engine {
+  id: EngineID!
+  name: String!
+  description: String
+  type: String
+  ready: Boolean!
+  capabilities: EngineCapabilities
+  details: EngineDetails
+}
+
+"""Unique identifier for an engine/model."""
+type EngineID {
+  value: String!
+}
+
+"""Detailed metadata about an engine."""
+type EngineDetails {
+  version: String
+  releaseDate: Timestamp
+  maxResolution: ImageSize
+  supportedFormats: [ImageFormat!]
+  tokenLimit: Int
+  defaultSteps: Int
+  defaultCFGScale: CFGScale
+}
+
+"""Capabilities supported by a given engine."""
+type EngineCapabilities {
+  supported: [EngineCapabilityType!]!
+  maxWidth: Int
+  maxHeight: Int
+  supportsStylePresets: Boolean!
+  supportsControlNet: Boolean!
+  supportsInpainting: Boolean!
+}
+
+# ─────────────────────────────────────────────
+# Model-specific Types
+# ─────────────────────────────────────────────
+
+"""Stable Diffusion base model configuration."""
+type StableDiffusion {
+  engineId: EngineID!
+  version: String!
+  architecture: String
+  trainingDataset: String
+  licenseType: String
+  openWeights: Boolean!
+}
+
+"""Stable Diffusion XL model."""
+type SDXL {
+  base: StableDiffusion!
+  refiner: StableDiffusion
+  maxResolution: ImageSize!
+  defaultResolution: ImageSize!
+}
+
+"""Stable Diffusion 3 and 3.5 model family."""
+type SD3 {
+  base: StableDiffusion!
+  variant: String
+  creditsPerImage: Float!
+}
+
+"""Stable Video Diffusion model."""
+type StableVideo {
+  engineId: EngineID!
+  maxFrames: Int!
+  defaultFPS: FPS!
+  motionBucketRange: MotionBucketRange!
+  maxResolution: ImageSize!
+}
+
+"""Aurora generative model."""
+type AuroraModel {
+  engineId: EngineID!
+  description: String
+  capabilities: EngineCapabilities!
+}
+
+"""Stable Audio generation model."""
+type StableAudio {
+  engineId: EngineID!
+  maxDurationSeconds: Int!
+  sampleRate: Int!
+  outputFormat: String!
+}
+
+# ─────────────────────────────────────────────
+# Prompt Types
+# ─────────────────────────────────────────────
+
+"""A positive text prompt driving generation."""
+type TextPrompt {
+  text: String!
+  weight: PromptWeight
+}
+
+"""A negative text prompt specifying what to avoid."""
+type NegativePrompt {
+  text: String!
+  weight: PromptWeight
+}
+
+"""Relative weighting of a text prompt."""
+type PromptWeight {
+  value: Float!
+}
+
+"""Weight applied to text guidance."""
+type TextWeight {
+  value: Float!
+  min: Float!
+  max: Float!
+}
+
+# ─────────────────────────────────────────────
+# Generation Parameter Types
+# ─────────────────────────────────────────────
+
+"""Classifier-free guidance scale."""
+type CFGScale {
+  value: Float!
+  min: Float!
+  max: Float!
+}
+
+"""Number of diffusion steps."""
+type Steps {
+  value: Int!
+  min: Int!
+  max: Int!
+}
+
+"""Random seed for reproducible generation."""
+type Seed {
+  value: Int!
+}
+
+"""Image width in pixels."""
+type Width {
+  value: Int!
+}
+
+"""Image height in pixels."""
+type Height {
+  value: Int!
+}
+
+"""Combined width and height dimensions."""
+type ImageSize {
+  width: Int!
+  height: Int!
+}
+
+"""Style guidance strength."""
+type StyleGuidance {
+  value: Float!
+  min: Float!
+  max: Float!
+}
+
+"""Strength of the init image influence."""
+type ImageStrength {
+  value: Float!
+  min: Float!
+  max: Float!
+}
+
+"""Motion intensity bucket for video generation."""
+type MotionBucketID {
+  value: Int!
+  min: Int!
+  max: Int!
+}
+
+"""Range of allowed motion bucket values."""
+type MotionBucketRange {
+  min: Int!
+  max: Int!
+}
+
+"""Frames per second for video output."""
+type FPS {
+  value: Int!
+}
+
+# ─────────────────────────────────────────────
+# Image Types
+# ─────────────────────────────────────────────
+
+"""A raw or encoded image artifact."""
+type Artifact {
+  base64: Base64Image
+  url: String
+  seed: Int
+  finishReason: FinishReason!
+  type: ArtifactType!
+}
+
+"""A generated output image from the API."""
+type GeneratedImage {
+  artifact: Artifact!
+  format: ImageFormat!
+  width: Int!
+  height: Int!
+  prompt: String
+}
+
+"""Resolved output image with metadata."""
+type OutputImage {
+  url: String
+  base64: Base64Image
+  format: ImageFormat!
+  width: Int
+  height: Int
+  seed: Int
+  finishReason: FinishReason!
+}
+
+"""An input initialization image for img2img workflows."""
+type InitImage {
+  base64: Base64Image
+  url: String
+  width: Int
+  height: Int
+}
+
+"""A mask image used in inpainting/outpainting."""
+type MaskImage {
+  base64: Base64Image
+  url: String
+  source: MaskSource!
+}
+
+# ─────────────────────────────────────────────
+# Generation Operation Types
+# ─────────────────────────────────────────────
+
+"""Text-to-image generation operation."""
+type TextToImage {
+  requestId: RequestID!
+  engineId: EngineID!
+  prompts: [TextPrompt!]!
+  negativePrompts: [NegativePrompt!]
+  width: Width!
+  height: Height!
+  cfgScale: CFGScale
+  steps: Steps
+  seed: Seed
+  sampler: Sampler
+  stylePreset: StylePreset
+  samples: Int
+  result: GenerationResult
+}
+
+"""Image-to-image generation operation."""
+type ImageToImage {
+  requestId: RequestID!
+  engineId: EngineID!
+  initImage: InitImage!
+  imageStrength: ImageStrength
+  prompts: [TextPrompt!]!
+  negativePrompts: [NegativePrompt!]
+  cfgScale: CFGScale
+  steps: Steps
+  seed: Seed
+  sampler: Sampler
+  stylePreset: StylePreset
+  samples: Int
+  result: GenerationResult
+}
+
+"""Inpainting operation filling masked regions."""
+type Inpainting {
+  requestId: RequestID!
+  engineId: EngineID!
+  initImage: InitImage!
+  maskImage: MaskImage!
+  prompts: [TextPrompt!]!
+  negativePrompts: [NegativePrompt!]
+  cfgScale: CFGScale
+  steps: Steps
+  seed: Seed
+  sampler: Sampler
+  result: GenerationResult
+}
+
+"""Outpainting operation extending image boundaries."""
+type Outpainting {
+  requestId: RequestID!
+  engineId: EngineID!
+  initImage: InitImage!
+  prompts: [TextPrompt!]!
+  negativePrompts: [NegativePrompt!]
+  left: Int
+  right: Int
+  up: Int
+  down: Int
+  creativity: Float
+  result: GenerationResult
+}
+
+"""AI-powered image upscaling operation."""
+type Upscale {
+  requestId: RequestID!
+  engineId: EngineID!
+  initImage: InitImage!
+  width: Width
+  height: Height
+  prompt: TextPrompt
+  creativity: Float
+  result: GenerationResult
+}
+
+"""ControlNet-guided generation."""
+type ControlNet {
+  requestId: RequestID!
+  engineId: EngineID!
+  initImage: InitImage!
+  controlStrength: Float
+  prompts: [TextPrompt!]!
+  negativePrompts: [NegativePrompt!]
+  cfgScale: CFGScale
+  steps: Steps
+  seed: Seed
+  result: GenerationResult
+}
+
+"""A complete generation job and its output."""
+type Generation {
+  id: String!
+  requestId: RequestID!
+  engineId: EngineID!
+  status: String!
+  created: Timestamp
+  completed: Timestamp
+  result: GenerationResult
+}
+
+"""Result payload from any generation operation."""
+type GenerationResult {
+  artifacts: [Artifact!]!
+  images: [OutputImage!]
+  finishReasons: [FinishReason!]!
+  seeds: [Int!]
+}
+
+# ─────────────────────────────────────────────
+# Video Generation Types
+# ─────────────────────────────────────────────
+
+"""A video generation job."""
+type VideoGeneration {
+  id: String!
+  requestId: RequestID!
+  model: StableVideo!
+  initImage: InitImage!
+  motionBucketId: MotionBucketID
+  fps: FPS
+  augmentationNoiseSeed: Int
+  status: String!
+  result: VideoOutput
+}
+
+"""A single frame within a generated video."""
+type VideoFrame {
+  index: Int!
+  timestamp: Float!
+  image: OutputImage!
+}
+
+"""The output of a video generation job."""
+type VideoOutput {
+  url: String
+  base64: Base64Image
+  format: String!
+  fps: Int!
+  frameCount: Int!
+  durationSeconds: Float!
+  frames: [VideoFrame!]
+  finishReason: FinishReason!
+}
+
+# ─────────────────────────────────────────────
+# Audio Generation Types
+# ─────────────────────────────────────────────
+
+"""An audio generation job."""
+type AudioGeneration {
+  id: String!
+  requestId: RequestID!
+  model: StableAudio!
+  prompt: TextPrompt!
+  negativePrompt: NegativePrompt
+  durationSeconds: Float!
+  steps: Steps
+  cfgScale: CFGScale
+  seed: Seed
+  status: String!
+  result: AudioOutput
+}
+
+"""The output of an audio generation job."""
+type AudioOutput {
+  url: String
+  base64: String
+  format: String!
+  durationSeconds: Float!
+  sampleRate: Int!
+  finishReason: FinishReason!
+}
+
+# ─────────────────────────────────────────────
+# Account / Access Types
+# ─────────────────────────────────────────────
+
+"""An API key credential for authenticating requests."""
+type APIKey {
+  id: String!
+  prefix: String!
+  created: Timestamp!
+  lastUsed: Timestamp
+  scopes: [String!]
+}
+
+"""Usage metrics for an account or API key."""
+type UsageMetrics {
+  creditsUsed: Float!
+  creditsRemaining: Float!
+  requestCount: Int!
+  imageCount: Int!
+  videoCount: Int!
+  audioCount: Int!
+  periodStart: Timestamp!
+  periodEnd: Timestamp!
+}
+
+"""Credits balance and transaction record."""
+type Credits {
+  balance: Float!
+  used: Float!
+  purchased: Float!
+  lastUpdated: Timestamp!
+}
+
+"""Rate limit configuration and current state."""
+type RateLimit {
+  requestsPerWindow: Int!
+  windowSeconds: Int!
+  remainingRequests: Int!
+  concurrentImageJobs: Int!
+  concurrentVideoJobs: Int!
+  resetAt: Timestamp!
+}
+
+"""A platform event delivered via webhook."""
+type WebhookEvent {
+  id: String!
+  type: String!
+  requestId: RequestID!
+  status: String!
+  timestamp: Timestamp!
+  payload: String
+}
+
+"""Available API tool/endpoint descriptor."""
+type Tool {
+  name: String!
+  description: String!
+  endpoint: String!
+  method: String!
+  engineRequired: Boolean!
+  creditsRequired: Float
+}
+
+# ─────────────────────────────────────────────
+# Root Operations
+# ─────────────────────────────────────────────
+
+type Query {
+  """List all available inference engines."""
+  engines: [Engine!]!
+
+  """Get a specific engine by ID."""
+  engine(id: String!): Engine
+
+  """Get the current account's usage metrics."""
+  usageMetrics: UsageMetrics!
+
+  """Get the current account's credit balance."""
+  credits: Credits!
+
+  """Get the current rate limit status."""
+  rateLimit: RateLimit!
+
+  """Retrieve a generation job by ID."""
+  generation(id: String!): Generation
+
+  """Retrieve a video generation job by ID."""
+  videoGeneration(id: String!): VideoGeneration
+
+  """Retrieve an audio generation job by ID."""
+  audioGeneration(id: String!): AudioGeneration
+
+  """List available tools."""
+  tools: [Tool!]!
+}
+
+type Mutation {
+  """Run a text-to-image generation."""
+  textToImage(
+    engineId: String!
+    prompt: String!
+    negativePrompt: String
+    width: Int
+    height: Int
+    aspectRatio: AspectRatio
+    cfgScale: Float
+    steps: Int
+    seed: Int
+    sampler: Sampler
+    stylePreset: StylePreset
+    samples: Int
+    outputFormat: ImageFormat
+  ): GenerationResult!
+
+  """Run an image-to-image generation."""
+  imageToImage(
+    engineId: String!
+    initImageBase64: Base64Image!
+    imageStrength: Float
+    prompt: String!
+    negativePrompt: String
+    cfgScale: Float
+    steps: Int
+    seed: Int
+    sampler: Sampler
+    stylePreset: StylePreset
+    samples: Int
+  ): GenerationResult!
+
+  """Run an inpainting operation."""
+  inpaint(
+    engineId: String!
+    initImageBase64: Base64Image!
+    maskImageBase64: Base64Image!
+    maskSource: MaskSource
+    prompt: String!
+    negativePrompt: String
+    cfgScale: Float
+    steps: Int
+    seed: Int
+  ): GenerationResult!
+
+  """Run an outpainting / image extension operation."""
+  outpaint(
+    initImageBase64: Base64Image!
+    prompt: String
+    left: Int
+    right: Int
+    up: Int
+    down: Int
+    creativity: Float
+    outputFormat: ImageFormat
+    seed: Int
+  ): GenerationResult!
+
+  """Run an AI upscale operation."""
+  upscale(
+    engineId: String!
+    initImageBase64: Base64Image!
+    prompt: String
+    width: Int
+    creativity: Float
+    outputFormat: ImageFormat
+    seed: Int
+  ): GenerationResult!
+
+  """Run a ControlNet-guided generation."""
+  controlNet(
+    engineId: String!
+    initImageBase64: Base64Image!
+    prompt: String!
+    negativePrompt: String
+    controlStrength: Float
+    cfgScale: Float
+    steps: Int
+    seed: Int
+    outputFormat: ImageFormat
+  ): GenerationResult!
+
+  """Start a video generation job from an image."""
+  generateVideo(
+    initImageBase64: Base64Image!
+    motionBucketId: Int
+    fps: Int
+    augmentationNoiseSeed: Int
+  ): VideoGeneration!
+
+  """Start an audio generation job."""
+  generateAudio(
+    prompt: String!
+    negativePrompt: String
+    durationSeconds: Float
+    steps: Int
+    cfgScale: Float
+    seed: Int
+  ): AudioGeneration!
+}
