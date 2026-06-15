@@ -1,0 +1,85 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Stability AI Stable Image Control API",
+    "version": "v2beta"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sketch",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate an image from a sketch",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.stability.ai/v2beta/stable-image/control/sketch",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Generates a detailed image from a hand-drawn sketch or line drawing. The sketch provides the structural composition while the text prompt guides the content, colors, textures, and style of the output image."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Structure",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate an image guided by structural reference",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.stability.ai/v2beta/stable-image/control/structure",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Generates a new image guided by the structural composition of a reference image. The reference image provides edge and layout information while the text prompt directs the content and style of the output. Useful for generating variations that maintain the same composition."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Style",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate an image with style transfer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.stability.ai/v2beta/stable-image/control/style",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Generates a new image that adopts the visual style of a reference image. The style image provides color palette, artistic technique, and aesthetic direction while the text prompt controls the subject and composition of the output."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

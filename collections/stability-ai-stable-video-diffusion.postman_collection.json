@@ -1,0 +1,707 @@
+{
+  "item": [
+    {
+      "id": "379e6986-422a-44ad-b448-1c234b3a6bed",
+      "name": "Image to Video",
+      "description": {
+        "content": "Generate short video clips from a single input image using the Stable Video Diffusion model. The API uses an asynchronous start-and-poll pattern.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "062ff1aa-8123-4843-8cd4-fb47fabd0208",
+          "name": "Start an image-to-video generation",
+          "request": {
+            "name": "Start an image-to-video generation",
+            "description": {
+              "content": "Initiates an asynchronous video generation from a single input image. Returns a generation ID that can be used to poll for the completed video. The model produces a short animated sequence with realistic motion derived from the input image. Parameters control the strength of motion and conditioning.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2beta",
+                "image-to-video"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "image",
+                  "type": "file",
+                  "description": "(Required) The source image to animate. The image should contain a clear subject with a stable composition suitable for animation. Supported resolutions include 1024x576, 576x1024, and 768x768."
+                },
+                {
+                  "key": "seed",
+                  "value": "0",
+                  "type": "text",
+                  "description": "A value to control randomness in the video generation."
+                },
+                {
+                  "key": "cfg_scale",
+                  "value": "1.8",
+                  "type": "text",
+                  "description": "Controls how closely the video follows the conditioning from the input image. Higher values produce videos more faithful to the input but may reduce motion quality."
+                },
+                {
+                  "key": "motion_bucket_id",
+                  "value": "127",
+                  "type": "text",
+                  "description": "Controls the amount of motion in the generated video. Lower values produce less motion, higher values produce more dynamic motion."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "689e2d28-5a68-40af-9e61-7034fc8f4689",
+              "name": "Video generation started successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2beta",
+                    "image-to-video"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The source image to animate. The image should contain a clear subject with a stable composition suitable for animation. Supported resolutions include 1024x576, 576x1024, and 768x768.",
+                        "type": "text/plain"
+                      },
+                      "key": "image",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "A value to control randomness in the video generation.",
+                        "type": "text/plain"
+                      },
+                      "key": "seed",
+                      "value": "0",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Controls how closely the video follows the conditioning from the input image. Higher values produce videos more faithful to the input but may reduce motion quality.",
+                        "type": "text/plain"
+                      },
+                      "key": "cfg_scale",
+                      "value": "1.8",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Controls the amount of motion in the generated video. Lower values produce less motion, higher values produce more dynamic motion.",
+                        "type": "text/plain"
+                      },
+                      "key": "motion_bucket_id",
+                      "value": "127",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c9e21efb-66f4-4b8e-9dd6-2d22694ffcf7",
+              "name": "Bad request due to invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2beta",
+                    "image-to-video"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The source image to animate. The image should contain a clear subject with a stable composition suitable for animation. Supported resolutions include 1024x576, 576x1024, and 768x768.",
+                        "type": "text/plain"
+                      },
+                      "key": "image",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "A value to control randomness in the video generation.",
+                        "type": "text/plain"
+                      },
+                      "key": "seed",
+                      "value": "0",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Controls how closely the video follows the conditioning from the input image. Higher values produce videos more faithful to the input but may reduce motion quality.",
+                        "type": "text/plain"
+                      },
+                      "key": "cfg_scale",
+                      "value": "1.8",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Controls the amount of motion in the generated video. Lower values produce less motion, higher values produce more dynamic motion.",
+                        "type": "text/plain"
+                      },
+                      "key": "motion_bucket_id",
+                      "value": "127",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "82765079-3e9c-4e53-8ef3-7f62aac17b45",
+              "name": "Unauthorized due to missing or invalid API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2beta",
+                    "image-to-video"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The source image to animate. The image should contain a clear subject with a stable composition suitable for animation. Supported resolutions include 1024x576, 576x1024, and 768x768.",
+                        "type": "text/plain"
+                      },
+                      "key": "image",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "A value to control randomness in the video generation.",
+                        "type": "text/plain"
+                      },
+                      "key": "seed",
+                      "value": "0",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Controls how closely the video follows the conditioning from the input image. Higher values produce videos more faithful to the input but may reduce motion quality.",
+                        "type": "text/plain"
+                      },
+                      "key": "cfg_scale",
+                      "value": "1.8",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Controls the amount of motion in the generated video. Lower values produce less motion, higher values produce more dynamic motion.",
+                        "type": "text/plain"
+                      },
+                      "key": "motion_bucket_id",
+                      "value": "127",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2348eb1c-f124-46b8-9add-f8b563089c3f",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2beta",
+                    "image-to-video"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The source image to animate. The image should contain a clear subject with a stable composition suitable for animation. Supported resolutions include 1024x576, 576x1024, and 768x768.",
+                        "type": "text/plain"
+                      },
+                      "key": "image",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "A value to control randomness in the video generation.",
+                        "type": "text/plain"
+                      },
+                      "key": "seed",
+                      "value": "0",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Controls how closely the video follows the conditioning from the input image. Higher values produce videos more faithful to the input but may reduce motion quality.",
+                        "type": "text/plain"
+                      },
+                      "key": "cfg_scale",
+                      "value": "1.8",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Controls the amount of motion in the generated video. Lower values produce less motion, higher values produce more dynamic motion.",
+                        "type": "text/plain"
+                      },
+                      "key": "motion_bucket_id",
+                      "value": "127",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f82c732a-452d-4288-b7a2-1cc5ae680483",
+          "name": "Get the result of a video generation",
+          "request": {
+            "name": "Get the result of a video generation",
+            "description": {
+              "content": "Polls for the result of an asynchronous image-to-video generation. Returns the generated video when processing is complete or a status indicating the generation is still in progress.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2beta",
+                "image-to-video",
+                "result",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier of the asynchronous generation to poll for results."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "video/mp4"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dbe0b149-cecd-49a7-b63e-21b00643be22",
+              "name": "Video generation is complete",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2beta",
+                    "image-to-video",
+                    "result",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the asynchronous generation to poll for results."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "video/mp4"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"video\": \"string\",\n  \"finish_reason\": \"CONTENT_FILTERED\",\n  \"seed\": 7465\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ff2a31aa-91aa-49ea-82b5-b77672840a1b",
+              "name": "Generation is still in progress",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2beta",
+                    "image-to-video",
+                    "result",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the asynchronous generation to poll for results."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9f4dad2a-4008-4737-a341-6b43068d5d66",
+              "name": "Unauthorized due to missing or invalid API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2beta",
+                    "image-to-video",
+                    "result",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the asynchronous generation to poll for results."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dc0e141e-1f64-460a-b1f3-413bd906e6fc",
+              "name": "Generation ID not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2beta",
+                    "image-to-video",
+                    "result",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the asynchronous generation to poll for results."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.stability.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "cb2cd668-9070-4351-8013-46616eb44372",
+    "name": "Stability AI Stable Video Diffusion API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Stability AI Stable Video Diffusion API enables developers to generate short video clips from a single input image. Powered by the Stable Video Diffusion model, the API produces smooth animated sequences that bring static images to life with realistic motion. This is useful for creating product animations, visual effects previews, and dynamic content from existing image assets. The API uses an asynchronous workflow where a generation is started and then polled for completion.\n\nContact Support:\n Name: Stability AI Support",
+      "type": "text/plain"
+    }
+  }
+}

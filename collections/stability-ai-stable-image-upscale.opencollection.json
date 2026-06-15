@@ -1,0 +1,104 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Stability AI Stable Image Upscale API",
+    "version": "v2beta"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Fast Upscale",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fast upscale an image",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.stability.ai/v2beta/stable-image/upscale/fast",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Quickly increases the resolution of an image with minimal processing time. This endpoint provides a good balance between speed and quality for bulk upscaling workflows."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Conservative Upscale",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Conservative upscale an image",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.stability.ai/v2beta/stable-image/upscale/conservative",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Increases the resolution of an image while closely preserving the original details and composition. This endpoint minimizes creative additions, making it ideal for upscaling photographs or images where fidelity to the original is important. This is an asynchronous endpoint that returns a generation ID for polling."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Creative Upscale",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Creative upscale an image",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.stability.ai/v2beta/stable-image/upscale/creative",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Increases the resolution of an image while enhancing details and adding creative improvements. An optional text prompt can guide the enhancement process. This produces higher quality results than conservative upscaling but takes longer to process. This is an asynchronous endpoint that returns a generation ID for polling."
+        },
+        {
+          "info": {
+            "name": "Get the result of a creative upscale",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stability.ai/v2beta/stable-image/upscale/creative/result/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the asynchronous generation to poll for results."
+              }
+            ]
+          },
+          "docs": "Polls for the result of an asynchronous creative upscale operation. Returns the upscaled image when processing is complete or a status indicating the generation is still in progress."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

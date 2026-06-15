@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Stability AI Stable Fast 3D API",
+    "version": "v2beta"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "3D Generation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate a 3D model from an image",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.stability.ai/v2beta/3d/stable-fast-3d",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Generates a textured, UV-unwrapped 3D mesh from a single input image. The model interprets the 2D image and produces a 3D object with geometry and texture suitable for real-time rendering applications. Output is returned as a GLB file containing the mesh and texture data."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

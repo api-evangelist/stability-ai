@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Stability AI Stable Video Diffusion API",
+    "version": "v2beta"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Image to Video",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Start an image-to-video generation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.stability.ai/v2beta/image-to-video",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Initiates an asynchronous video generation from a single input image. Returns a generation ID that can be used to poll for the completed video. The model produces a short animated sequence with realistic motion derived from the input image. Parameters control the strength of motion and conditioning."
+        },
+        {
+          "info": {
+            "name": "Get the result of a video generation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stability.ai/v2beta/image-to-video/result/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the asynchronous generation to poll for results."
+              }
+            ]
+          },
+          "docs": "Polls for the result of an asynchronous image-to-video generation. Returns the generated video when processing is complete or a status indicating the generation is still in progress."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,177 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Stability AI Stable Image Edit API",
+    "version": "v2beta"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Inpaint",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Inpaint a masked region of an image",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.stability.ai/v2beta/stable-image/edit/inpaint",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Fills in a masked region of an input image using AI-guided inpainting. Provide a source image, a mask indicating the region to fill, and a text prompt describing what should appear in the filled area. The result seamlessly blends with the surrounding image content."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Outpaint",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Extend an image beyond its boundaries",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.stability.ai/v2beta/stable-image/edit/outpaint",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Extends an image by generating new content beyond its current boundaries. Specify the number of pixels to extend in each direction and optionally provide a text prompt to guide the content of the extended regions. The generated content seamlessly continues the existing scene."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Erase",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Erase an object from an image",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.stability.ai/v2beta/stable-image/edit/erase",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Removes an object or region from an image by providing a mask over the area to erase. The AI fills in the erased area with contextually appropriate background content that blends naturally with the surrounding image."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Search and Replace",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search and replace objects in an image",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.stability.ai/v2beta/stable-image/edit/search-and-replace",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Finds specific objects within an image using a text description and replaces them with new content described by a prompt. This enables targeted object replacement without manually creating masks."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Search and Recolor",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search and recolor objects in an image",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.stability.ai/v2beta/stable-image/edit/search-and-recolor",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Finds specific objects within an image using a text description and recolors them based on a provided prompt. This enables targeted color changes to specific elements without affecting the rest of the image."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Remove Background",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Remove background from an image",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.stability.ai/v2beta/stable-image/edit/remove-background",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Automatically detects and removes the background from an image, isolating the foreground subject. Returns the image with a transparent background in PNG format or a white background in JPEG format."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Replace Background and Relight",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Replace background and adjust lighting",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.stability.ai/v2beta/stable-image/edit/replace-background-and-relight",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Replaces the background of an image with new content described by a text prompt and adjusts lighting conditions to match the new scene. The foreground subject is preserved while the background is regenerated."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
