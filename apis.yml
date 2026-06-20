@@ -27,7 +27,7 @@ apis:
   - Image Generation
   - Stable Diffusion
   - Text to Image
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://api.stability.ai
   humanURL: https://platform.stability.ai/docs/getting-started/stable-image
   description: The Stability AI Stable Image Generate API provides text-to-image generation
@@ -51,7 +51,7 @@ apis:
   - Inpainting
   - Outpainting
   - Search and Replace
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://api.stability.ai
   humanURL: https://platform.stability.ai/docs/api-reference
   description: The Stability AI Stable Image Edit API provides image editing capabilities
@@ -71,7 +71,7 @@ apis:
   - Image Enhancement
   - Image Upscaling
   - Super Resolution
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://api.stability.ai
   humanURL: https://platform.stability.ai/docs/api-reference
   description: The Stability AI Stable Image Upscale API enables developers to increase
@@ -91,7 +91,7 @@ apis:
   - Generative AI
   - Image Generation
   - Image to Image
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://api.stability.ai
   humanURL: https://platform.stability.ai/docs/api-reference
   description: The Stability AI Stable Image Control API provides image-to-image generation
@@ -111,7 +111,7 @@ apis:
   - Image to Video
   - Stable Diffusion
   - Video Generation
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://api.stability.ai
   humanURL: https://platform.stability.ai/docs/getting-started/stable-video
   description: The Stability AI Stable Video Diffusion API enables developers to generate
@@ -130,7 +130,7 @@ apis:
   - Generative AI
   - Image to 3D
   - Mesh Generation
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://api.stability.ai
   humanURL: https://platform.stability.ai/docs/api-reference
   description: The Stability AI Stable Fast 3D API generates textured 3D mesh assets
