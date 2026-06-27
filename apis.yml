@@ -156,7 +156,7 @@ common:
   url: https://stability.ai/terms-of-service
 - type: PrivacyPolicy
   url: https://stability.ai/privacy-policy
-- type: GitHub Org
+- type: GitHubOrg
   url: https://github.com/stability-ai
 - type: JSONLD
   url: json-ld/stability-ai-context.jsonld
