@@ -1,0 +1,21 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/stability-ai-stable-fast-3d-openapi.yml, openapi/stability-ai-stable-image-control-openapi.yml,
+  openapi/stability-ai-stable-image-edit-openapi.yml, openapi/stability-ai-stable-image-generate-openapi.yml,
+  openapi/stability-ai-stable-image-upscale-openapi.yml, openapi/stability-ai-stable-video-diffusion-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: API key authentication. Pass your Stability AI API key as a Bearer token in the
+    Authorization header.
+  sources:
+  - openapi/stability-ai-stable-fast-3d-openapi.yml
+  - openapi/stability-ai-stable-image-control-openapi.yml
+  - openapi/stability-ai-stable-image-edit-openapi.yml
+  - openapi/stability-ai-stable-image-generate-openapi.yml
+  - openapi/stability-ai-stable-image-upscale-openapi.yml
+  - openapi/stability-ai-stable-video-diffusion-openapi.yml
