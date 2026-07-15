@@ -142,6 +142,8 @@ apis:
   - url: openapi/stability-ai-stable-fast-3d-openapi.yml
     type: OpenAPI
 common:
+- type: AgenticAccess
+  url: agentic-access/stability-ai-agentic-access.yml
 - type: DomainSecurity
   url: security/stability-ai-domain-security.yml
 - type: Authentication
