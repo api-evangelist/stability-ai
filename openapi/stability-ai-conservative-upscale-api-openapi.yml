@@ -1,0 +1,119 @@
+openapi: 3.1.0
+info:
+  title: Stability AI Stable Fast 3D 3D Generation Conservative Upscale API
+  description: The Stability AI Stable Fast 3D API generates textured 3D mesh assets from single input images. The API rapidly produces 3D models suitable for use in games, augmented reality, virtual reality, and product visualization workflows. Developers can convert 2D images into fully textured 3D objects with UV-unwrapped meshes, enabling rapid prototyping and asset creation without manual 3D modeling.
+  version: v2beta
+  contact:
+    name: Stability AI Support
+    url: https://platform.stability.ai
+  termsOfService: https://stability.ai/terms-of-service
+servers:
+- url: https://api.stability.ai
+  description: Production Server
+security:
+- bearerAuth: []
+tags:
+- name: Conservative Upscale
+  description: Increase image resolution while closely preserving the original image details and composition with minimal creative additions.
+paths:
+  /v2beta/stable-image/upscale/conservative:
+    post:
+      operationId: upscaleImageConservative
+      summary: Conservative upscale an image
+      description: Increases the resolution of an image while closely preserving the original details and composition. This endpoint minimizes creative additions, making it ideal for upscaling photographs or images where fidelity to the original is important. This is an asynchronous endpoint that returns a generation ID for polling.
+      tags:
+      - Conservative Upscale
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ConservativeUpscaleRequest'
+      responses:
+        '200':
+          description: Generation started successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsyncGenerationResponse'
+        '400':
+          description: Bad request due to invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized due to missing or invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    AsyncGenerationResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique generation ID used to poll for results.
+        status:
+          type: string
+          description: The current status of the generation.
+    ErrorResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: A unique identifier for the error instance.
+        name:
+          type: string
+          description: The error type name.
+        message:
+          type: string
+          description: A human-readable description of the error.
+    ConservativeUpscaleRequest:
+      type: object
+      required:
+      - image
+      - prompt
+      properties:
+        image:
+          type: string
+          format: binary
+          description: The image to upscale. Must be a valid image file.
+        prompt:
+          type: string
+          maxLength: 10000
+          description: Text describing the image content to help guide the upscaling process.
+        negative_prompt:
+          type: string
+          maxLength: 10000
+          description: Text describing elements to avoid adding during upscaling.
+        seed:
+          type: integer
+          minimum: 0
+          maximum: 4294967294
+          default: 0
+          description: A value to control randomness in generation.
+        output_format:
+          type: string
+          enum:
+          - jpeg
+          - png
+          - webp
+          default: png
+          description: The output format of the upscaled image.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: API key authentication. Pass your Stability AI API key as a Bearer token in the Authorization header.
+externalDocs:
+  description: Stability AI API Documentation
+  url: https://platform.stability.ai/docs/api-reference

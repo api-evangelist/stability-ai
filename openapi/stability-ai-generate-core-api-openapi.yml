@@ -1,0 +1,155 @@
+openapi: 3.1.0
+info:
+  title: Stability AI Stable Fast 3D 3D Generation Generate Core API
+  description: The Stability AI Stable Fast 3D API generates textured 3D mesh assets from single input images. The API rapidly produces 3D models suitable for use in games, augmented reality, virtual reality, and product visualization workflows. Developers can convert 2D images into fully textured 3D objects with UV-unwrapped meshes, enabling rapid prototyping and asset creation without manual 3D modeling.
+  version: v2beta
+  contact:
+    name: Stability AI Support
+    url: https://platform.stability.ai
+  termsOfService: https://stability.ai/terms-of-service
+servers:
+- url: https://api.stability.ai
+  description: Production Server
+security:
+- bearerAuth: []
+tags:
+- name: Generate Core
+  description: Generate images using Stable Image Core, a fast and affordable model for high-quality image generation.
+paths:
+  /v2beta/stable-image/generate/core:
+    post:
+      operationId: generateImageCore
+      summary: Generate an image using Stable Image Core
+      description: Generates an image from a text prompt using the Stable Image Core model. This endpoint provides fast and affordable generation with high-quality results suitable for most use cases. Requests use multipart form data encoding.
+      tags:
+      - Generate Core
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/GenerateCoreRequest'
+      responses:
+        '200':
+          description: Successfully generated image
+          content:
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
+            image/png:
+              schema:
+                type: string
+                format: binary
+            image/webp:
+              schema:
+                type: string
+                format: binary
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenerateImageResponse'
+        '400':
+          description: Bad request due to invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized due to missing or invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden due to content moderation or insufficient permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    GenerateImageResponse:
+      type: object
+      properties:
+        image:
+          type: string
+          description: Base64-encoded image data when Accept header is set to application/json.
+        finish_reason:
+          type: string
+          enum:
+          - SUCCESS
+          - CONTENT_FILTERED
+          description: The reason the generation finished. SUCCESS indicates a successful generation, CONTENT_FILTERED indicates the output was blocked by content moderation.
+        seed:
+          type: integer
+          description: The seed used for generation. Useful for reproducing results.
+    GenerateCoreRequest:
+      type: object
+      required:
+      - prompt
+      properties:
+        prompt:
+          type: string
+          maxLength: 10000
+          description: Text describing what you wish to see in the output image.
+        negative_prompt:
+          type: string
+          maxLength: 10000
+          description: Text describing elements to exclude from the output image.
+        aspect_ratio:
+          type: string
+          enum:
+          - '16:9'
+          - '1:1'
+          - '21:9'
+          - '2:3'
+          - '3:2'
+          - '4:5'
+          - '5:4'
+          - '9:16'
+          - '9:21'
+          default: '1:1'
+          description: Controls the aspect ratio of the generated image.
+        seed:
+          type: integer
+          minimum: 0
+          maximum: 4294967294
+          default: 0
+          description: A value to control randomness in generation.
+        output_format:
+          type: string
+          enum:
+          - jpeg
+          - png
+          - webp
+          default: png
+          description: The output format of the generated image.
+        style_preset:
+          type: string
+          description: An optional style preset to guide the image model towards a particular visual style.
+    ErrorResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: A unique identifier for the error instance.
+        name:
+          type: string
+          description: The error type name.
+        message:
+          type: string
+          description: A human-readable description of the error.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: API key authentication. Pass your Stability AI API key as a Bearer token in the Authorization header.
+externalDocs:
+  description: Stability AI API Documentation
+  url: https://platform.stability.ai/docs/api-reference

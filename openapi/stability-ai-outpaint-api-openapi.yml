@@ -1,0 +1,154 @@
+openapi: 3.1.0
+info:
+  title: Stability AI Stable Fast 3D 3D Generation Outpaint API
+  description: The Stability AI Stable Fast 3D API generates textured 3D mesh assets from single input images. The API rapidly produces 3D models suitable for use in games, augmented reality, virtual reality, and product visualization workflows. Developers can convert 2D images into fully textured 3D objects with UV-unwrapped meshes, enabling rapid prototyping and asset creation without manual 3D modeling.
+  version: v2beta
+  contact:
+    name: Stability AI Support
+    url: https://platform.stability.ai
+  termsOfService: https://stability.ai/terms-of-service
+servers:
+- url: https://api.stability.ai
+  description: Production Server
+security:
+- bearerAuth: []
+tags:
+- name: Outpaint
+  description: Extend the boundaries of an image by generating new content that seamlessly continues the existing scene in any direction.
+paths:
+  /v2beta/stable-image/edit/outpaint:
+    post:
+      operationId: editImageOutpaint
+      summary: Extend an image beyond its boundaries
+      description: Extends an image by generating new content beyond its current boundaries. Specify the number of pixels to extend in each direction and optionally provide a text prompt to guide the content of the extended regions. The generated content seamlessly continues the existing scene.
+      tags:
+      - Outpaint
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/OutpaintRequest'
+      responses:
+        '200':
+          description: Successfully outpainted image
+          content:
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
+            image/png:
+              schema:
+                type: string
+                format: binary
+            image/webp:
+              schema:
+                type: string
+                format: binary
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EditImageResponse'
+        '400':
+          description: Bad request due to invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized due to missing or invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden due to content moderation or insufficient permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    EditImageResponse:
+      type: object
+      properties:
+        image:
+          type: string
+          description: Base64-encoded image data when Accept header is set to application/json.
+        finish_reason:
+          type: string
+          enum:
+          - SUCCESS
+          - CONTENT_FILTERED
+          description: The reason the edit finished.
+        seed:
+          type: integer
+          description: The seed used for generation.
+    OutpaintRequest:
+      type: object
+      required:
+      - image
+      properties:
+        image:
+          type: string
+          format: binary
+          description: The source image to extend.
+        prompt:
+          type: string
+          maxLength: 10000
+          description: Optional text describing what should appear in the extended regions.
+        left:
+          type: integer
+          minimum: 0
+          description: Number of pixels to extend to the left.
+        right:
+          type: integer
+          minimum: 0
+          description: Number of pixels to extend to the right.
+        up:
+          type: integer
+          minimum: 0
+          description: Number of pixels to extend upward.
+        down:
+          type: integer
+          minimum: 0
+          description: Number of pixels to extend downward.
+        seed:
+          type: integer
+          minimum: 0
+          maximum: 4294967294
+          default: 0
+          description: A value to control randomness in generation.
+        output_format:
+          type: string
+          enum:
+          - jpeg
+          - png
+          - webp
+          default: png
+          description: The output format of the edited image.
+    ErrorResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: A unique identifier for the error instance.
+        name:
+          type: string
+          description: The error type name.
+        message:
+          type: string
+          description: A human-readable description of the error.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: API key authentication. Pass your Stability AI API key as a Bearer token in the Authorization header.
+externalDocs:
+  description: Stability AI API Documentation
+  url: https://platform.stability.ai/docs/api-reference

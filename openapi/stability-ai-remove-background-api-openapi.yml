@@ -1,0 +1,123 @@
+openapi: 3.1.0
+info:
+  title: Stability AI Stable Fast 3D 3D Generation Remove Background API
+  description: The Stability AI Stable Fast 3D API generates textured 3D mesh assets from single input images. The API rapidly produces 3D models suitable for use in games, augmented reality, virtual reality, and product visualization workflows. Developers can convert 2D images into fully textured 3D objects with UV-unwrapped meshes, enabling rapid prototyping and asset creation without manual 3D modeling.
+  version: v2beta
+  contact:
+    name: Stability AI Support
+    url: https://platform.stability.ai
+  termsOfService: https://stability.ai/terms-of-service
+servers:
+- url: https://api.stability.ai
+  description: Production Server
+security:
+- bearerAuth: []
+tags:
+- name: Remove Background
+  description: Automatically detect and remove the background from an image, isolating the foreground subject.
+paths:
+  /v2beta/stable-image/edit/remove-background:
+    post:
+      operationId: editImageRemoveBackground
+      summary: Remove background from an image
+      description: Automatically detects and removes the background from an image, isolating the foreground subject. Returns the image with a transparent background in PNG format or a white background in JPEG format.
+      tags:
+      - Remove Background
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/RemoveBackgroundRequest'
+      responses:
+        '200':
+          description: Successfully removed background from image
+          content:
+            image/png:
+              schema:
+                type: string
+                format: binary
+            image/webp:
+              schema:
+                type: string
+                format: binary
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EditImageResponse'
+        '400':
+          description: Bad request due to invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized due to missing or invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden due to content moderation or insufficient permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    EditImageResponse:
+      type: object
+      properties:
+        image:
+          type: string
+          description: Base64-encoded image data when Accept header is set to application/json.
+        finish_reason:
+          type: string
+          enum:
+          - SUCCESS
+          - CONTENT_FILTERED
+          description: The reason the edit finished.
+        seed:
+          type: integer
+          description: The seed used for generation.
+    RemoveBackgroundRequest:
+      type: object
+      required:
+      - image
+      properties:
+        image:
+          type: string
+          format: binary
+          description: The source image from which to remove the background.
+        output_format:
+          type: string
+          enum:
+          - png
+          - webp
+          default: png
+          description: The output format of the image. PNG supports transparency for background removal.
+    ErrorResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: A unique identifier for the error instance.
+        name:
+          type: string
+          description: The error type name.
+        message:
+          type: string
+          description: A human-readable description of the error.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: API key authentication. Pass your Stability AI API key as a Bearer token in the Authorization header.
+externalDocs:
+  description: Stability AI API Documentation
+  url: https://platform.stability.ai/docs/api-reference

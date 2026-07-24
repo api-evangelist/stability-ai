@@ -1,0 +1,147 @@
+openapi: 3.1.0
+info:
+  title: Stability AI Stable Fast 3D 3D Generation Inpaint API
+  description: The Stability AI Stable Fast 3D API generates textured 3D mesh assets from single input images. The API rapidly produces 3D models suitable for use in games, augmented reality, virtual reality, and product visualization workflows. Developers can convert 2D images into fully textured 3D objects with UV-unwrapped meshes, enabling rapid prototyping and asset creation without manual 3D modeling.
+  version: v2beta
+  contact:
+    name: Stability AI Support
+    url: https://platform.stability.ai
+  termsOfService: https://stability.ai/terms-of-service
+servers:
+- url: https://api.stability.ai
+  description: Production Server
+security:
+- bearerAuth: []
+tags:
+- name: Inpaint
+  description: Fill in masked regions of an image using AI-guided inpainting with text prompts to control what appears in the filled area.
+paths:
+  /v2beta/stable-image/edit/inpaint:
+    post:
+      operationId: editImageInpaint
+      summary: Inpaint a masked region of an image
+      description: Fills in a masked region of an input image using AI-guided inpainting. Provide a source image, a mask indicating the region to fill, and a text prompt describing what should appear in the filled area. The result seamlessly blends with the surrounding image content.
+      tags:
+      - Inpaint
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/InpaintRequest'
+      responses:
+        '200':
+          description: Successfully inpainted image
+          content:
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
+            image/png:
+              schema:
+                type: string
+                format: binary
+            image/webp:
+              schema:
+                type: string
+                format: binary
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EditImageResponse'
+        '400':
+          description: Bad request due to invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized due to missing or invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden due to content moderation or insufficient permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    InpaintRequest:
+      type: object
+      required:
+      - image
+      - prompt
+      properties:
+        image:
+          type: string
+          format: binary
+          description: The source image to inpaint. Must be a valid image file.
+        mask:
+          type: string
+          format: binary
+          description: A mask image indicating the region to inpaint. White pixels indicate areas to fill, black pixels indicate areas to preserve.
+        prompt:
+          type: string
+          maxLength: 10000
+          description: Text describing what should appear in the masked region.
+        negative_prompt:
+          type: string
+          maxLength: 10000
+          description: Text describing elements to exclude from the inpainted region.
+        seed:
+          type: integer
+          minimum: 0
+          maximum: 4294967294
+          default: 0
+          description: A value to control randomness in generation.
+        output_format:
+          type: string
+          enum:
+          - jpeg
+          - png
+          - webp
+          default: png
+          description: The output format of the edited image.
+    EditImageResponse:
+      type: object
+      properties:
+        image:
+          type: string
+          description: Base64-encoded image data when Accept header is set to application/json.
+        finish_reason:
+          type: string
+          enum:
+          - SUCCESS
+          - CONTENT_FILTERED
+          description: The reason the edit finished.
+        seed:
+          type: integer
+          description: The seed used for generation.
+    ErrorResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: A unique identifier for the error instance.
+        name:
+          type: string
+          description: The error type name.
+        message:
+          type: string
+          description: A human-readable description of the error.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: API key authentication. Pass your Stability AI API key as a Bearer token in the Authorization header.
+externalDocs:
+  description: Stability AI API Documentation
+  url: https://platform.stability.ai/docs/api-reference

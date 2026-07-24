@@ -1,0 +1,149 @@
+openapi: 3.1.0
+info:
+  title: Stability AI Stable Fast 3D 3D Generation Style API
+  description: The Stability AI Stable Fast 3D API generates textured 3D mesh assets from single input images. The API rapidly produces 3D models suitable for use in games, augmented reality, virtual reality, and product visualization workflows. Developers can convert 2D images into fully textured 3D objects with UV-unwrapped meshes, enabling rapid prototyping and asset creation without manual 3D modeling.
+  version: v2beta
+  contact:
+    name: Stability AI Support
+    url: https://platform.stability.ai
+  termsOfService: https://stability.ai/terms-of-service
+servers:
+- url: https://api.stability.ai
+  description: Production Server
+security:
+- bearerAuth: []
+tags:
+- name: Style
+  description: Generate images that adopt the visual style of a reference image while following a text prompt for content direction.
+paths:
+  /v2beta/stable-image/control/style:
+    post:
+      operationId: controlImageStyle
+      summary: Generate an image with style transfer
+      description: Generates a new image that adopts the visual style of a reference image. The style image provides color palette, artistic technique, and aesthetic direction while the text prompt controls the subject and composition of the output.
+      tags:
+      - Style
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/StyleControlRequest'
+      responses:
+        '200':
+          description: Successfully generated style-transferred image
+          content:
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
+            image/png:
+              schema:
+                type: string
+                format: binary
+            image/webp:
+              schema:
+                type: string
+                format: binary
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ControlImageResponse'
+        '400':
+          description: Bad request due to invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized due to missing or invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden due to content moderation or insufficient permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    StyleControlRequest:
+      type: object
+      required:
+      - image
+      - prompt
+      properties:
+        image:
+          type: string
+          format: binary
+          description: The style reference image whose visual style will be applied to the output.
+        prompt:
+          type: string
+          maxLength: 10000
+          description: Text describing the subject and composition of the output image.
+        negative_prompt:
+          type: string
+          maxLength: 10000
+          description: Text describing elements to exclude from the output image.
+        fidelity:
+          type: number
+          minimum: 0
+          maximum: 1
+          default: 0.5
+          description: Controls how strongly the style of the reference image influences the output. Higher values produce outputs closer to the reference style.
+        seed:
+          type: integer
+          minimum: 0
+          maximum: 4294967294
+          default: 0
+          description: A value to control randomness in generation.
+        output_format:
+          type: string
+          enum:
+          - jpeg
+          - png
+          - webp
+          default: png
+          description: The output format of the generated image.
+    ErrorResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: A unique identifier for the error instance.
+        name:
+          type: string
+          description: The error type name.
+        message:
+          type: string
+          description: A human-readable description of the error.
+    ControlImageResponse:
+      type: object
+      properties:
+        image:
+          type: string
+          description: Base64-encoded image data when Accept header is set to application/json.
+        finish_reason:
+          type: string
+          enum:
+          - SUCCESS
+          - CONTENT_FILTERED
+          description: The reason the generation finished.
+        seed:
+          type: integer
+          description: The seed used for generation.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: API key authentication. Pass your Stability AI API key as a Bearer token in the Authorization header.
+externalDocs:
+  description: Stability AI API Documentation
+  url: https://platform.stability.ai/docs/api-reference
