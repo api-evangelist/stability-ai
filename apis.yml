@@ -1,4 +1,18 @@
 aid: stability-ai
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/stability-ai.png
 name: Stability AI
 description: Stability AI is an AI company that develops open-source generative AI
   models for image, audio, video, and language, including the Stable Diffusion family
@@ -20,128 +34,328 @@ tags:
 created: '2026-03-20'
 modified: '2026-05-19'
 apis:
-- aid: stability-ai:stable-image-generate
-  name: Stability AI Stable Image Generate API
-  tags:
-  - Generative AI
-  - Image Generation
-  - Stable Diffusion
-  - Text to Image
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  baseURL: https://api.stability.ai
+- aid: stability-ai:stability-ai-3d-generation-api
+  name: Stability AI 3D Generation API
+  description: >-
+    Generate textured 3D mesh assets from single input images using the Stable Fast 3D model.
   humanURL: https://platform.stability.ai/docs/getting-started/stable-image
-  description: The Stability AI Stable Image Generate API provides text-to-image generation
-    capabilities powered by models including Stable Diffusion 3.5 and Stable Image
-    Ultra. Developers can generate high-quality images from text prompts with control
-    over style, dimensions, and output format. The API supports multiple model tiers
-    including Stable Image Core for fast and affordable generation and Stable Image
-    Ultra for state-of-the-art quality results.
-  properties:
-  - url: https://platform.stability.ai/docs/api-reference
-    type: Documentation
-  - url: openapi/stability-ai-stable-image-generate-openapi.yml
-    type: OpenAPI
-  - url: graphql/stability-ai-graphql.md
-    type: GraphQL
-- aid: stability-ai:stable-image-edit
-  name: Stability AI Stable Image Edit API
-  tags:
-  - Generative AI
-  - Image Editing
-  - Inpainting
-  - Outpainting
-  - Search and Replace
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://api.stability.ai
-  humanURL: https://platform.stability.ai/docs/api-reference
-  description: The Stability AI Stable Image Edit API provides image editing capabilities
-    including inpainting, outpainting, object erasing, background removal, and search-and-replace
-    functionality. Developers can use natural language prompts to modify existing
-    images, fill in masked regions, extend image boundaries, or replace specific objects
-    within a scene.
-  properties:
-  - url: https://platform.stability.ai/docs/api-reference
-    type: Documentation
-  - url: openapi/stability-ai-stable-image-edit-openapi.yml
-    type: OpenAPI
-- aid: stability-ai:stable-image-upscale
-  name: Stability AI Stable Image Upscale API
-  tags:
-  - Generative AI
-  - Image Enhancement
-  - Image Upscaling
-  - Super Resolution
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  baseURL: https://api.stability.ai
-  humanURL: https://platform.stability.ai/docs/api-reference
-  description: The Stability AI Stable Image Upscale API enables developers to increase
-    the resolution of images using AI-powered upscaling models. The API offers both
-    conservative upscaling, which preserves the original image closely while increasing
-    resolution, and creative upscaling, which enhances and adds detail to images during
-    the upscaling process.
-  properties:
-  - url: https://platform.stability.ai/docs/api-reference
-    type: Documentation
-  - url: openapi/stability-ai-stable-image-upscale-openapi.yml
-    type: OpenAPI
-- aid: stability-ai:stable-image-control
-  name: Stability AI Stable Image Control API
-  tags:
-  - ControlNet
-  - Generative AI
-  - Image Generation
-  - Image to Image
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  baseURL: https://api.stability.ai
-  humanURL: https://platform.stability.ai/docs/api-reference
-  description: The Stability AI Stable Image Control API provides image-to-image generation
-    guided by structural inputs such as sketches and reference structures. Using ControlNet-based
-    models, developers can generate new images that follow the composition, edges,
-    or layout of a source image while applying new styles or content based on text
-    prompts.
-  properties:
-  - url: https://platform.stability.ai/docs/api-reference
-    type: Documentation
-  - url: openapi/stability-ai-stable-image-control-openapi.yml
-    type: OpenAPI
-- aid: stability-ai:stable-video-diffusion
-  name: Stability AI Stable Video Diffusion API
-  tags:
-  - Generative AI
-  - Image to Video
-  - Stable Diffusion
-  - Video Generation
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  baseURL: https://api.stability.ai
-  humanURL: https://platform.stability.ai/docs/getting-started/stable-video
-  description: The Stability AI Stable Video Diffusion API enables developers to generate
-    short video clips from a single input image. Powered by the Stable Video Diffusion
-    model, the API produces smooth animated sequences that bring static images to
-    life with realistic motion.
-  properties:
-  - url: https://platform.stability.ai/docs/getting-started/stable-video-diffusion
-    type: Documentation
-  - url: openapi/stability-ai-stable-video-diffusion-openapi.yml
-    type: OpenAPI
-- aid: stability-ai:stable-fast-3d
-  name: Stability AI Stable Fast 3D API
   tags:
   - 3D Generation
-  - Generative AI
-  - Image to 3D
-  - Mesh Generation
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  baseURL: https://api.stability.ai
-  humanURL: https://platform.stability.ai/docs/api-reference
-  description: The Stability AI Stable Fast 3D API generates textured 3D mesh assets
-    from single input images. The API rapidly produces 3D models suitable for use
-    in games, augmented reality, virtual reality, and product visualization workflows.
   properties:
-  - url: https://platform.stability.ai/docs/api-reference
-    type: Documentation
-  - url: openapi/stability-ai-stable-fast-3d-openapi.yml
-    type: OpenAPI
+  - type: OpenAPI
+    url: openapi/stability-ai-3d-generation-api-openapi.yml
+  - type: Documentation
+    url: https://platform.stability.ai/docs/api-reference
+  - type: GraphQL
+    url: graphql/stability-ai-graphql.md
+  - type: Documentation
+    url: https://platform.stability.ai/docs/getting-started/stable-video-diffusion
+- aid: stability-ai:stability-ai-conservative-upscale-api
+  name: Stability AI Conservative Upscale API
+  description: >-
+    Increase image resolution while closely preserving the original image details and composition with
+    minimal creative additions.
+  humanURL: https://platform.stability.ai/docs/getting-started/stable-image
+  baseURL: https://api.stability.ai
+  tags:
+  - Conservative Upscale
+  properties:
+  - type: OpenAPI
+    url: openapi/stability-ai-conservative-upscale-api-openapi.yml
+  - type: Documentation
+    url: https://platform.stability.ai/docs/api-reference
+  - type: GraphQL
+    url: graphql/stability-ai-graphql.md
+  - type: Documentation
+    url: https://platform.stability.ai/docs/getting-started/stable-video-diffusion
+- aid: stability-ai:stability-ai-creative-upscale-api
+  name: Stability AI Creative Upscale API
+  description: >-
+    Increase image resolution while enhancing details and adding creative improvements guided by an optional
+    text prompt. This is an asynchronous endpoint that returns a generation ID for polling.
+  humanURL: https://platform.stability.ai/docs/getting-started/stable-image
+  baseURL: https://api.stability.ai
+  tags:
+  - Creative Upscale
+  properties:
+  - type: OpenAPI
+    url: openapi/stability-ai-creative-upscale-api-openapi.yml
+  - type: Documentation
+    url: https://platform.stability.ai/docs/api-reference
+  - type: GraphQL
+    url: graphql/stability-ai-graphql.md
+  - type: Documentation
+    url: https://platform.stability.ai/docs/getting-started/stable-video-diffusion
+- aid: stability-ai:stability-ai-erase-api
+  name: Stability AI Erase API
+  description: >-
+    Remove objects from an image by masking the area to erase and letting the AI fill in the background
+    naturally.
+  humanURL: https://platform.stability.ai/docs/getting-started/stable-image
+  baseURL: https://api.stability.ai
+  tags:
+  - Erase
+  properties:
+  - type: OpenAPI
+    url: openapi/stability-ai-erase-api-openapi.yml
+  - type: Documentation
+    url: https://platform.stability.ai/docs/api-reference
+  - type: GraphQL
+    url: graphql/stability-ai-graphql.md
+  - type: Documentation
+    url: https://platform.stability.ai/docs/getting-started/stable-video-diffusion
+- aid: stability-ai:stability-ai-fast-upscale-api
+  name: Stability AI Fast Upscale API
+  description: >-
+    Quickly increase image resolution with minimal processing time while maintaining image quality.
+  humanURL: https://platform.stability.ai/docs/getting-started/stable-image
+  baseURL: https://api.stability.ai
+  tags:
+  - Fast Upscale
+  properties:
+  - type: OpenAPI
+    url: openapi/stability-ai-fast-upscale-api-openapi.yml
+  - type: Documentation
+    url: https://platform.stability.ai/docs/api-reference
+  - type: GraphQL
+    url: graphql/stability-ai-graphql.md
+  - type: Documentation
+    url: https://platform.stability.ai/docs/getting-started/stable-video-diffusion
+- aid: stability-ai:stability-ai-generate-core-api
+  name: Stability AI Generate Core API
+  description: >-
+    Generate images using Stable Image Core, a fast and affordable model for high-quality image generation.
+  humanURL: https://platform.stability.ai/docs/getting-started/stable-image
+  baseURL: https://api.stability.ai
+  tags:
+  - Generate Core
+  properties:
+  - type: OpenAPI
+    url: openapi/stability-ai-generate-core-api-openapi.yml
+  - type: Documentation
+    url: https://platform.stability.ai/docs/api-reference
+  - type: GraphQL
+    url: graphql/stability-ai-graphql.md
+  - type: Documentation
+    url: https://platform.stability.ai/docs/getting-started/stable-video-diffusion
+- aid: stability-ai:stability-ai-generate-sd3-api
+  name: Stability AI Generate SD3 API
+  description: >-
+    Generate images using Stable Diffusion 3 and 3.5 models with advanced text-to-image and image-to-image
+    capabilities.
+  humanURL: https://platform.stability.ai/docs/getting-started/stable-image
+  baseURL: https://api.stability.ai
+  tags:
+  - Generate SD3
+  properties:
+  - type: OpenAPI
+    url: openapi/stability-ai-generate-sd3-api-openapi.yml
+  - type: Documentation
+    url: https://platform.stability.ai/docs/api-reference
+  - type: GraphQL
+    url: graphql/stability-ai-graphql.md
+  - type: Documentation
+    url: https://platform.stability.ai/docs/getting-started/stable-video-diffusion
+- aid: stability-ai:stability-ai-generate-ultra-api
+  name: Stability AI Generate Ultra API
+  description: >-
+    Generate images using Stable Image Ultra, the highest quality model for state-of-the-art photorealistic
+    and artistic image generation.
+  humanURL: https://platform.stability.ai/docs/getting-started/stable-image
+  baseURL: https://api.stability.ai
+  tags:
+  - Generate Ultra
+  properties:
+  - type: OpenAPI
+    url: openapi/stability-ai-generate-ultra-api-openapi.yml
+  - type: Documentation
+    url: https://platform.stability.ai/docs/api-reference
+  - type: GraphQL
+    url: graphql/stability-ai-graphql.md
+  - type: Documentation
+    url: https://platform.stability.ai/docs/getting-started/stable-video-diffusion
+- aid: stability-ai:stability-ai-image-to-video-api
+  name: Stability AI Image to Video API
+  description: >-
+    Generate short video clips from a single input image using the Stable Video Diffusion model. The API
+    uses an asynchronous start-and-poll pattern.
+  humanURL: https://platform.stability.ai/docs/getting-started/stable-image
+  baseURL: https://api.stability.ai
+  tags:
+  - Image to Video
+  properties:
+  - type: OpenAPI
+    url: openapi/stability-ai-image-to-video-api-openapi.yml
+  - type: Documentation
+    url: https://platform.stability.ai/docs/api-reference
+  - type: GraphQL
+    url: graphql/stability-ai-graphql.md
+  - type: Documentation
+    url: https://platform.stability.ai/docs/getting-started/stable-video-diffusion
+- aid: stability-ai:stability-ai-inpaint-api
+  name: Stability AI Inpaint API
+  description: >-
+    Fill in masked regions of an image using AI-guided inpainting with text prompts to control what appears
+    in the filled area.
+  humanURL: https://platform.stability.ai/docs/getting-started/stable-image
+  baseURL: https://api.stability.ai
+  tags:
+  - Inpaint
+  properties:
+  - type: OpenAPI
+    url: openapi/stability-ai-inpaint-api-openapi.yml
+  - type: Documentation
+    url: https://platform.stability.ai/docs/api-reference
+  - type: GraphQL
+    url: graphql/stability-ai-graphql.md
+  - type: Documentation
+    url: https://platform.stability.ai/docs/getting-started/stable-video-diffusion
+- aid: stability-ai:stability-ai-outpaint-api
+  name: Stability AI Outpaint API
+  description: >-
+    Extend the boundaries of an image by generating new content that seamlessly continues the existing
+    scene in any direction.
+  humanURL: https://platform.stability.ai/docs/getting-started/stable-image
+  baseURL: https://api.stability.ai
+  tags:
+  - Outpaint
+  properties:
+  - type: OpenAPI
+    url: openapi/stability-ai-outpaint-api-openapi.yml
+  - type: Documentation
+    url: https://platform.stability.ai/docs/api-reference
+  - type: GraphQL
+    url: graphql/stability-ai-graphql.md
+  - type: Documentation
+    url: https://platform.stability.ai/docs/getting-started/stable-video-diffusion
+- aid: stability-ai:stability-ai-remove-background-api
+  name: Stability AI Remove Background API
+  description: >-
+    Automatically detect and remove the background from an image, isolating the foreground subject.
+  humanURL: https://platform.stability.ai/docs/getting-started/stable-image
+  baseURL: https://api.stability.ai
+  tags:
+  - Remove Background
+  properties:
+  - type: OpenAPI
+    url: openapi/stability-ai-remove-background-api-openapi.yml
+  - type: Documentation
+    url: https://platform.stability.ai/docs/api-reference
+  - type: GraphQL
+    url: graphql/stability-ai-graphql.md
+  - type: Documentation
+    url: https://platform.stability.ai/docs/getting-started/stable-video-diffusion
+- aid: stability-ai:stability-ai-replace-background-and-relight-api
+  name: Stability AI Replace Background and Relight API
+  description: >-
+    Replace the background of an image and adjust lighting conditions using AI-powered scene understanding.
+  humanURL: https://platform.stability.ai/docs/getting-started/stable-image
+  baseURL: https://api.stability.ai
+  tags:
+  - Replace Background and Relight
+  properties:
+  - type: OpenAPI
+    url: openapi/stability-ai-replace-background-and-relight-api-openapi.yml
+  - type: Documentation
+    url: https://platform.stability.ai/docs/api-reference
+  - type: GraphQL
+    url: graphql/stability-ai-graphql.md
+  - type: Documentation
+    url: https://platform.stability.ai/docs/getting-started/stable-video-diffusion
+- aid: stability-ai:stability-ai-search-and-recolor-api
+  name: Stability AI Search and Recolor API
+  description: >-
+    Find specific objects within an image and recolor them using text descriptions of the target object
+    and desired color.
+  humanURL: https://platform.stability.ai/docs/getting-started/stable-image
+  baseURL: https://api.stability.ai
+  tags:
+  - Search and Recolor
+  properties:
+  - type: OpenAPI
+    url: openapi/stability-ai-search-and-recolor-api-openapi.yml
+  - type: Documentation
+    url: https://platform.stability.ai/docs/api-reference
+  - type: GraphQL
+    url: graphql/stability-ai-graphql.md
+  - type: Documentation
+    url: https://platform.stability.ai/docs/getting-started/stable-video-diffusion
+- aid: stability-ai:stability-ai-search-and-replace-api
+  name: Stability AI Search and Replace API
+  description: >-
+    Find and replace specific objects within an image using text descriptions of what to search for and
+    what to replace it with.
+  humanURL: https://platform.stability.ai/docs/getting-started/stable-image
+  baseURL: https://api.stability.ai
+  tags:
+  - Search and Replace
+  properties:
+  - type: OpenAPI
+    url: openapi/stability-ai-search-and-replace-api-openapi.yml
+  - type: Documentation
+    url: https://platform.stability.ai/docs/api-reference
+  - type: GraphQL
+    url: graphql/stability-ai-graphql.md
+  - type: Documentation
+    url: https://platform.stability.ai/docs/getting-started/stable-video-diffusion
+- aid: stability-ai:stability-ai-sketch-api
+  name: Stability AI Sketch API
+  description: >-
+    Generate images from hand-drawn sketches or line drawings, guided by a text prompt to fill in details,
+    colors, and textures.
+  humanURL: https://platform.stability.ai/docs/getting-started/stable-image
+  baseURL: https://api.stability.ai
+  tags:
+  - Sketch
+  properties:
+  - type: OpenAPI
+    url: openapi/stability-ai-sketch-api-openapi.yml
+  - type: Documentation
+    url: https://platform.stability.ai/docs/api-reference
+  - type: GraphQL
+    url: graphql/stability-ai-graphql.md
+  - type: Documentation
+    url: https://platform.stability.ai/docs/getting-started/stable-video-diffusion
+- aid: stability-ai:stability-ai-structure-api
+  name: Stability AI Structure API
+  description: >-
+    Generate images guided by the structural composition of a reference image, preserving edges and layout
+    while applying new content from a text prompt.
+  humanURL: https://platform.stability.ai/docs/getting-started/stable-image
+  baseURL: https://api.stability.ai
+  tags:
+  - Structure
+  properties:
+  - type: OpenAPI
+    url: openapi/stability-ai-structure-api-openapi.yml
+  - type: Documentation
+    url: https://platform.stability.ai/docs/api-reference
+  - type: GraphQL
+    url: graphql/stability-ai-graphql.md
+  - type: Documentation
+    url: https://platform.stability.ai/docs/getting-started/stable-video-diffusion
+- aid: stability-ai:stability-ai-style-api
+  name: Stability AI Style API
+  description: >-
+    Generate images that adopt the visual style of a reference image while following a text prompt for
+    content direction.
+  humanURL: https://platform.stability.ai/docs/getting-started/stable-image
+  baseURL: https://api.stability.ai
+  tags:
+  - Style
+  properties:
+  - type: OpenAPI
+    url: openapi/stability-ai-style-api-openapi.yml
+  - type: Documentation
+    url: https://platform.stability.ai/docs/api-reference
+  - type: GraphQL
+    url: graphql/stability-ai-graphql.md
+  - type: Documentation
+    url: https://platform.stability.ai/docs/getting-started/stable-video-diffusion
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/stability-ai/overview
 - type: AgenticAccess
   url: agentic-access/stability-ai-agentic-access.yml
 - type: DomainSecurity
