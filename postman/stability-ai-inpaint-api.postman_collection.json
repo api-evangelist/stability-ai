@@ -1,0 +1,585 @@
+{
+  "info": {
+    "_postman_id": "765dbed8-5dd9-43dd-8810-1532fa40c540",
+    "name": "Stability AI Stable Fast 3D 3D Generation Inpaint API",
+    "description": "The Stability AI Stable Fast 3D API generates textured 3D mesh assets from single input images. The API rapidly produces 3D models suitable for use in games, augmented reality, virtual reality, and product visualization workflows. Developers can convert 2D images into fully textured 3D objects with UV-unwrapped meshes, enabling rapid prototyping and asset creation without manual 3D modeling.\n\nContact Support:\n Name: Stability AI Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:01:57.000Z",
+    "updatedAt": "2026-07-28T03:01:58.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-765dbed8-5dd9-43dd-8810-1532fa40c540"
+  },
+  "item": [
+    {
+      "name": "v2beta",
+      "item": [
+        {
+          "name": "stable-image",
+          "item": [
+            {
+              "name": "edit",
+              "item": [
+                {
+                  "name": "inpaint",
+                  "item": [
+                    {
+                      "name": "Inpaint a masked region of an image",
+                      "id": "f4a95b30-3c9f-4657-8b37-2c08e85079bf",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "image/jpeg"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "description": "(Required) The source image to inpaint. Must be a valid image file.",
+                              "key": "image",
+                              "type": "file",
+                              "value": null
+                            },
+                            {
+                              "description": "(Required) Text describing what should appear in the masked region.",
+                              "key": "prompt",
+                              "value": "<string>",
+                              "type": "text"
+                            },
+                            {
+                              "description": "A mask image indicating the region to inpaint. White pixels indicate areas to fill, black pixels indicate areas to preserve.",
+                              "key": "mask",
+                              "type": "file",
+                              "value": null
+                            },
+                            {
+                              "description": "Text describing elements to exclude from the inpainted region.",
+                              "key": "negative_prompt",
+                              "value": "<string>",
+                              "type": "text"
+                            },
+                            {
+                              "description": "A value to control randomness in generation.",
+                              "key": "seed",
+                              "value": "0",
+                              "type": "text"
+                            },
+                            {
+                              "description": "The output format of the edited image. (This can only be one of jpeg,png,webp)",
+                              "key": "output_format",
+                              "value": "png",
+                              "type": "text"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2beta/stable-image/edit/inpaint",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2beta",
+                            "stable-image",
+                            "edit",
+                            "inpaint"
+                          ]
+                        },
+                        "description": "Fills in a masked region of an input image using AI-guided inpainting. Provide a source image, a mask indicating the region to fill, and a text prompt describing what should appear in the filled area. The result seamlessly blends with the surrounding image content."
+                      },
+                      "response": [
+                        {
+                          "id": "fb98fdd4-f9db-4bb1-a2a0-890a0f339a28",
+                          "name": "Successfully inpainted image",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "image/jpeg"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) The source image to inpaint. Must be a valid image file.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "(Required) Text describing what should appear in the masked region.",
+                                  "key": "prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "A mask image indicating the region to inpaint. White pixels indicate areas to fill, black pixels indicate areas to preserve.",
+                                  "key": "mask",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "Text describing elements to exclude from the inpainted region.",
+                                  "key": "negative_prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "A value to control randomness in generation.",
+                                  "key": "seed",
+                                  "value": "0",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The output format of the edited image. (This can only be one of jpeg,png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/edit/inpaint",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "edit",
+                                "inpaint"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"image\": \"<string>\",\n  \"finish_reason\": \"SUCCESS\",\n  \"seed\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T03:01:58.000Z",
+                          "updatedAt": "2026-07-28T03:01:58.000Z",
+                          "uid": "35240-fb98fdd4-f9db-4bb1-a2a0-890a0f339a28"
+                        },
+                        {
+                          "id": "267c0cda-04be-4891-901c-25859de30bf1",
+                          "name": "Bad request due to invalid parameters",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) The source image to inpaint. Must be a valid image file.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "(Required) Text describing what should appear in the masked region.",
+                                  "key": "prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "A mask image indicating the region to inpaint. White pixels indicate areas to fill, black pixels indicate areas to preserve.",
+                                  "key": "mask",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "Text describing elements to exclude from the inpainted region.",
+                                  "key": "negative_prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "A value to control randomness in generation.",
+                                  "key": "seed",
+                                  "value": "0",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The output format of the edited image. (This can only be one of jpeg,png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/edit/inpaint",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "edit",
+                                "inpaint"
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:01:58.000Z",
+                          "updatedAt": "2026-07-28T03:01:58.000Z",
+                          "uid": "35240-267c0cda-04be-4891-901c-25859de30bf1"
+                        },
+                        {
+                          "id": "56681758-e4d8-4dec-9695-d0217e103c70",
+                          "name": "Unauthorized due to missing or invalid API key",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) The source image to inpaint. Must be a valid image file.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "(Required) Text describing what should appear in the masked region.",
+                                  "key": "prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "A mask image indicating the region to inpaint. White pixels indicate areas to fill, black pixels indicate areas to preserve.",
+                                  "key": "mask",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "Text describing elements to exclude from the inpainted region.",
+                                  "key": "negative_prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "A value to control randomness in generation.",
+                                  "key": "seed",
+                                  "value": "0",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The output format of the edited image. (This can only be one of jpeg,png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/edit/inpaint",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "edit",
+                                "inpaint"
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:01:58.000Z",
+                          "updatedAt": "2026-07-28T03:01:58.000Z",
+                          "uid": "35240-56681758-e4d8-4dec-9695-d0217e103c70"
+                        },
+                        {
+                          "id": "f3c19698-271e-4e65-aef3-086e7b12c1bd",
+                          "name": "Forbidden due to content moderation or insufficient permissions",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) The source image to inpaint. Must be a valid image file.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "(Required) Text describing what should appear in the masked region.",
+                                  "key": "prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "A mask image indicating the region to inpaint. White pixels indicate areas to fill, black pixels indicate areas to preserve.",
+                                  "key": "mask",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "Text describing elements to exclude from the inpainted region.",
+                                  "key": "negative_prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "A value to control randomness in generation.",
+                                  "key": "seed",
+                                  "value": "0",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The output format of the edited image. (This can only be one of jpeg,png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/edit/inpaint",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "edit",
+                                "inpaint"
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:01:58.000Z",
+                          "updatedAt": "2026-07-28T03:01:58.000Z",
+                          "uid": "35240-f3c19698-271e-4e65-aef3-086e7b12c1bd"
+                        },
+                        {
+                          "id": "f4dfe35a-9c1a-49ee-b843-d8c579e1be47",
+                          "name": "Rate limit exceeded",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) The source image to inpaint. Must be a valid image file.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "(Required) Text describing what should appear in the masked region.",
+                                  "key": "prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "A mask image indicating the region to inpaint. White pixels indicate areas to fill, black pixels indicate areas to preserve.",
+                                  "key": "mask",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "Text describing elements to exclude from the inpainted region.",
+                                  "key": "negative_prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "A value to control randomness in generation.",
+                                  "key": "seed",
+                                  "value": "0",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The output format of the edited image. (This can only be one of jpeg,png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/edit/inpaint",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "edit",
+                                "inpaint"
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:01:58.000Z",
+                          "updatedAt": "2026-07-28T03:01:58.000Z",
+                          "uid": "35240-f4dfe35a-9c1a-49ee-b843-d8c579e1be47"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:01:58.000Z",
+                      "updatedAt": "2026-07-28T03:01:58.000Z",
+                      "uid": "35240-f4a95b30-3c9f-4657-8b37-2c08e85079bf"
+                    }
+                  ],
+                  "id": "a460a16f-59f0-401e-be5f-acb658f18f2b",
+                  "createdAt": "2026-07-28T03:01:58.000Z",
+                  "updatedAt": "2026-07-28T03:01:58.000Z",
+                  "uid": "35240-a460a16f-59f0-401e-be5f-acb658f18f2b"
+                }
+              ],
+              "id": "dc201be2-c29d-4517-b0ed-5f393aa92145",
+              "createdAt": "2026-07-28T03:01:58.000Z",
+              "updatedAt": "2026-07-28T03:01:58.000Z",
+              "uid": "35240-dc201be2-c29d-4517-b0ed-5f393aa92145"
+            }
+          ],
+          "id": "1bfe266c-53ce-4c1a-b41c-81779d07d4fc",
+          "createdAt": "2026-07-28T03:01:58.000Z",
+          "updatedAt": "2026-07-28T03:01:58.000Z",
+          "uid": "35240-1bfe266c-53ce-4c1a-b41c-81779d07d4fc"
+        }
+      ],
+      "id": "0e6281b3-56ec-445c-8a4d-9b453770c331",
+      "createdAt": "2026-07-28T03:01:58.000Z",
+      "updatedAt": "2026-07-28T03:01:58.000Z",
+      "uid": "35240-0e6281b3-56ec-445c-8a4d-9b453770c331"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.stability.ai"
+    }
+  ]
+}

@@ -1,0 +1,590 @@
+{
+  "info": {
+    "_postman_id": "cd0a4153-f835-4388-85c1-7e6b48f603f7",
+    "name": "Stability AI Stable Fast 3D 3D Generation Structure API",
+    "description": "The Stability AI Stable Fast 3D API generates textured 3D mesh assets from single input images. The API rapidly produces 3D models suitable for use in games, augmented reality, virtual reality, and product visualization workflows. Developers can convert 2D images into fully textured 3D objects with UV-unwrapped meshes, enabling rapid prototyping and asset creation without manual 3D modeling.\n\nContact Support:\n Name: Stability AI Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:04:24.000Z",
+    "updatedAt": "2026-07-28T03:04:24.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-cd0a4153-f835-4388-85c1-7e6b48f603f7"
+  },
+  "item": [
+    {
+      "name": "v2beta",
+      "item": [
+        {
+          "name": "stable-image",
+          "item": [
+            {
+              "name": "control",
+              "item": [
+                {
+                  "name": "structure",
+                  "item": [
+                    {
+                      "name": "Generate an image guided by structural reference",
+                      "id": "d6e91b7e-a0c4-4cbf-a53a-98d78fb6566c",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "image/jpeg"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "description": "(Required) The reference image to use for structural guidance. The edges and layout of this image will guide the output composition.",
+                              "key": "image",
+                              "type": "file",
+                              "value": null
+                            },
+                            {
+                              "description": "(Required) Text describing the desired output image content and style.",
+                              "key": "prompt",
+                              "value": "<string>",
+                              "type": "text"
+                            },
+                            {
+                              "description": "Text describing elements to exclude from the output image.",
+                              "key": "negative_prompt",
+                              "value": "<string>",
+                              "type": "text"
+                            },
+                            {
+                              "description": "Controls how closely the output follows the reference structure. Higher values produce outputs more faithful to the reference layout.",
+                              "key": "control_strength",
+                              "value": "0.7",
+                              "type": "text"
+                            },
+                            {
+                              "description": "A value to control randomness in generation.",
+                              "key": "seed",
+                              "value": "0",
+                              "type": "text"
+                            },
+                            {
+                              "description": "The output format of the generated image. (This can only be one of jpeg,png,webp)",
+                              "key": "output_format",
+                              "value": "png",
+                              "type": "text"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2beta/stable-image/control/structure",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2beta",
+                            "stable-image",
+                            "control",
+                            "structure"
+                          ]
+                        },
+                        "description": "Generates a new image guided by the structural composition of a reference image. The reference image provides edge and layout information while the text prompt directs the content and style of the output. Useful for generating variations that maintain the same composition."
+                      },
+                      "response": [
+                        {
+                          "id": "77b4280a-8831-432b-8dec-d3d1eddd0b67",
+                          "name": "Successfully generated structurally guided image",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "image/jpeg"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) The reference image to use for structural guidance. The edges and layout of this image will guide the output composition.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "(Required) Text describing the desired output image content and style.",
+                                  "key": "prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Text describing elements to exclude from the output image.",
+                                  "key": "negative_prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Controls how closely the output follows the reference structure. Higher values produce outputs more faithful to the reference layout.",
+                                  "key": "control_strength",
+                                  "value": "0.7",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "A value to control randomness in generation.",
+                                  "key": "seed",
+                                  "value": "0",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The output format of the generated image. (This can only be one of jpeg,png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/control/structure",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "control",
+                                "structure"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"image\": \"<string>\",\n  \"finish_reason\": \"SUCCESS\",\n  \"seed\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T03:04:25.000Z",
+                          "updatedAt": "2026-07-28T03:04:25.000Z",
+                          "uid": "35240-77b4280a-8831-432b-8dec-d3d1eddd0b67"
+                        },
+                        {
+                          "id": "967135c0-b408-42ff-ad7f-1c9a478db206",
+                          "name": "Bad request due to invalid parameters",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) The reference image to use for structural guidance. The edges and layout of this image will guide the output composition.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "(Required) Text describing the desired output image content and style.",
+                                  "key": "prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Text describing elements to exclude from the output image.",
+                                  "key": "negative_prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Controls how closely the output follows the reference structure. Higher values produce outputs more faithful to the reference layout.",
+                                  "key": "control_strength",
+                                  "value": "0.7",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "A value to control randomness in generation.",
+                                  "key": "seed",
+                                  "value": "0",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The output format of the generated image. (This can only be one of jpeg,png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/control/structure",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "control",
+                                "structure"
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:04:25.000Z",
+                          "updatedAt": "2026-07-28T03:04:25.000Z",
+                          "uid": "35240-967135c0-b408-42ff-ad7f-1c9a478db206"
+                        },
+                        {
+                          "id": "60e33e9d-f88c-4256-b014-5eac02d1fd3e",
+                          "name": "Unauthorized due to missing or invalid API key",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) The reference image to use for structural guidance. The edges and layout of this image will guide the output composition.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "(Required) Text describing the desired output image content and style.",
+                                  "key": "prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Text describing elements to exclude from the output image.",
+                                  "key": "negative_prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Controls how closely the output follows the reference structure. Higher values produce outputs more faithful to the reference layout.",
+                                  "key": "control_strength",
+                                  "value": "0.7",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "A value to control randomness in generation.",
+                                  "key": "seed",
+                                  "value": "0",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The output format of the generated image. (This can only be one of jpeg,png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/control/structure",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "control",
+                                "structure"
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:04:25.000Z",
+                          "updatedAt": "2026-07-28T03:04:25.000Z",
+                          "uid": "35240-60e33e9d-f88c-4256-b014-5eac02d1fd3e"
+                        },
+                        {
+                          "id": "e11f3705-0690-40bd-a1f3-17cbe7b56be7",
+                          "name": "Forbidden due to content moderation or insufficient permissions",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) The reference image to use for structural guidance. The edges and layout of this image will guide the output composition.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "(Required) Text describing the desired output image content and style.",
+                                  "key": "prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Text describing elements to exclude from the output image.",
+                                  "key": "negative_prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Controls how closely the output follows the reference structure. Higher values produce outputs more faithful to the reference layout.",
+                                  "key": "control_strength",
+                                  "value": "0.7",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "A value to control randomness in generation.",
+                                  "key": "seed",
+                                  "value": "0",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The output format of the generated image. (This can only be one of jpeg,png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/control/structure",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "control",
+                                "structure"
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:04:25.000Z",
+                          "updatedAt": "2026-07-28T03:04:25.000Z",
+                          "uid": "35240-e11f3705-0690-40bd-a1f3-17cbe7b56be7"
+                        },
+                        {
+                          "id": "2160cd4f-6ab4-4f64-914d-1991254a3b46",
+                          "name": "Rate limit exceeded",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) The reference image to use for structural guidance. The edges and layout of this image will guide the output composition.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "(Required) Text describing the desired output image content and style.",
+                                  "key": "prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Text describing elements to exclude from the output image.",
+                                  "key": "negative_prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Controls how closely the output follows the reference structure. Higher values produce outputs more faithful to the reference layout.",
+                                  "key": "control_strength",
+                                  "value": "0.7",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "A value to control randomness in generation.",
+                                  "key": "seed",
+                                  "value": "0",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The output format of the generated image. (This can only be one of jpeg,png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/control/structure",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "control",
+                                "structure"
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:04:25.000Z",
+                          "updatedAt": "2026-07-28T03:04:25.000Z",
+                          "uid": "35240-2160cd4f-6ab4-4f64-914d-1991254a3b46"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:04:25.000Z",
+                      "updatedAt": "2026-07-28T03:04:25.000Z",
+                      "uid": "35240-d6e91b7e-a0c4-4cbf-a53a-98d78fb6566c"
+                    }
+                  ],
+                  "id": "5c93f22e-339c-4028-8e26-1be7aa4fd303",
+                  "createdAt": "2026-07-28T03:04:25.000Z",
+                  "updatedAt": "2026-07-28T03:04:25.000Z",
+                  "uid": "35240-5c93f22e-339c-4028-8e26-1be7aa4fd303"
+                }
+              ],
+              "id": "ec030bbb-4982-4c0c-a0b4-e176bdd258e1",
+              "createdAt": "2026-07-28T03:04:25.000Z",
+              "updatedAt": "2026-07-28T03:04:25.000Z",
+              "uid": "35240-ec030bbb-4982-4c0c-a0b4-e176bdd258e1"
+            }
+          ],
+          "id": "aaaf1885-fcc7-4319-95d6-862fc260797e",
+          "createdAt": "2026-07-28T03:04:25.000Z",
+          "updatedAt": "2026-07-28T03:04:25.000Z",
+          "uid": "35240-aaaf1885-fcc7-4319-95d6-862fc260797e"
+        }
+      ],
+      "id": "cc12eb4f-4a76-4a4d-80fd-91de017361a5",
+      "createdAt": "2026-07-28T03:04:25.000Z",
+      "updatedAt": "2026-07-28T03:04:25.000Z",
+      "uid": "35240-cc12eb4f-4a76-4a4d-80fd-91de017361a5"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.stability.ai"
+    }
+  ]
+}

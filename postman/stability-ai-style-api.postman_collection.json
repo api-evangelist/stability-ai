@@ -1,0 +1,590 @@
+{
+  "info": {
+    "_postman_id": "bc0ebd4d-ee98-4b6f-b8dc-d399ba701893",
+    "name": "Stability AI Stable Fast 3D 3D Generation Style API",
+    "description": "The Stability AI Stable Fast 3D API generates textured 3D mesh assets from single input images. The API rapidly produces 3D models suitable for use in games, augmented reality, virtual reality, and product visualization workflows. Developers can convert 2D images into fully textured 3D objects with UV-unwrapped meshes, enabling rapid prototyping and asset creation without manual 3D modeling.\n\nContact Support:\n Name: Stability AI Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:04:31.000Z",
+    "updatedAt": "2026-07-28T03:04:31.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-bc0ebd4d-ee98-4b6f-b8dc-d399ba701893"
+  },
+  "item": [
+    {
+      "name": "v2beta",
+      "item": [
+        {
+          "name": "stable-image",
+          "item": [
+            {
+              "name": "control",
+              "item": [
+                {
+                  "name": "style",
+                  "item": [
+                    {
+                      "name": "Generate an image with style transfer",
+                      "id": "2863d1c9-b9a4-4806-9d1a-074a937191a0",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "image/jpeg"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "description": "(Required) The style reference image whose visual style will be applied to the output.",
+                              "key": "image",
+                              "type": "file",
+                              "value": null
+                            },
+                            {
+                              "description": "(Required) Text describing the subject and composition of the output image.",
+                              "key": "prompt",
+                              "value": "<string>",
+                              "type": "text"
+                            },
+                            {
+                              "description": "Text describing elements to exclude from the output image.",
+                              "key": "negative_prompt",
+                              "value": "<string>",
+                              "type": "text"
+                            },
+                            {
+                              "description": "Controls how strongly the style of the reference image influences the output. Higher values produce outputs closer to the reference style.",
+                              "key": "fidelity",
+                              "value": "0.5",
+                              "type": "text"
+                            },
+                            {
+                              "description": "A value to control randomness in generation.",
+                              "key": "seed",
+                              "value": "0",
+                              "type": "text"
+                            },
+                            {
+                              "description": "The output format of the generated image. (This can only be one of jpeg,png,webp)",
+                              "key": "output_format",
+                              "value": "png",
+                              "type": "text"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2beta/stable-image/control/style",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2beta",
+                            "stable-image",
+                            "control",
+                            "style"
+                          ]
+                        },
+                        "description": "Generates a new image that adopts the visual style of a reference image. The style image provides color palette, artistic technique, and aesthetic direction while the text prompt controls the subject and composition of the output."
+                      },
+                      "response": [
+                        {
+                          "id": "8d7b0685-cdd6-40a1-b563-b49150b1fea2",
+                          "name": "Successfully generated style-transferred image",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "image/jpeg"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) The style reference image whose visual style will be applied to the output.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "(Required) Text describing the subject and composition of the output image.",
+                                  "key": "prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Text describing elements to exclude from the output image.",
+                                  "key": "negative_prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Controls how strongly the style of the reference image influences the output. Higher values produce outputs closer to the reference style.",
+                                  "key": "fidelity",
+                                  "value": "0.5",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "A value to control randomness in generation.",
+                                  "key": "seed",
+                                  "value": "0",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The output format of the generated image. (This can only be one of jpeg,png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/control/style",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "control",
+                                "style"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"image\": \"<string>\",\n  \"finish_reason\": \"CONTENT_FILTERED\",\n  \"seed\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T03:04:32.000Z",
+                          "updatedAt": "2026-07-28T03:04:32.000Z",
+                          "uid": "35240-8d7b0685-cdd6-40a1-b563-b49150b1fea2"
+                        },
+                        {
+                          "id": "77bffab8-adc7-4263-930a-266e44195472",
+                          "name": "Bad request due to invalid parameters",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) The style reference image whose visual style will be applied to the output.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "(Required) Text describing the subject and composition of the output image.",
+                                  "key": "prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Text describing elements to exclude from the output image.",
+                                  "key": "negative_prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Controls how strongly the style of the reference image influences the output. Higher values produce outputs closer to the reference style.",
+                                  "key": "fidelity",
+                                  "value": "0.5",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "A value to control randomness in generation.",
+                                  "key": "seed",
+                                  "value": "0",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The output format of the generated image. (This can only be one of jpeg,png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/control/style",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "control",
+                                "style"
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:04:32.000Z",
+                          "updatedAt": "2026-07-28T03:04:32.000Z",
+                          "uid": "35240-77bffab8-adc7-4263-930a-266e44195472"
+                        },
+                        {
+                          "id": "61c7d840-9c5c-423a-a9ec-9a75d80edf71",
+                          "name": "Unauthorized due to missing or invalid API key",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) The style reference image whose visual style will be applied to the output.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "(Required) Text describing the subject and composition of the output image.",
+                                  "key": "prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Text describing elements to exclude from the output image.",
+                                  "key": "negative_prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Controls how strongly the style of the reference image influences the output. Higher values produce outputs closer to the reference style.",
+                                  "key": "fidelity",
+                                  "value": "0.5",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "A value to control randomness in generation.",
+                                  "key": "seed",
+                                  "value": "0",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The output format of the generated image. (This can only be one of jpeg,png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/control/style",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "control",
+                                "style"
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:04:32.000Z",
+                          "updatedAt": "2026-07-28T03:04:32.000Z",
+                          "uid": "35240-61c7d840-9c5c-423a-a9ec-9a75d80edf71"
+                        },
+                        {
+                          "id": "a0699407-39e2-4b98-bd18-f6985ed628f5",
+                          "name": "Forbidden due to content moderation or insufficient permissions",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) The style reference image whose visual style will be applied to the output.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "(Required) Text describing the subject and composition of the output image.",
+                                  "key": "prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Text describing elements to exclude from the output image.",
+                                  "key": "negative_prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Controls how strongly the style of the reference image influences the output. Higher values produce outputs closer to the reference style.",
+                                  "key": "fidelity",
+                                  "value": "0.5",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "A value to control randomness in generation.",
+                                  "key": "seed",
+                                  "value": "0",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The output format of the generated image. (This can only be one of jpeg,png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/control/style",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "control",
+                                "style"
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:04:32.000Z",
+                          "updatedAt": "2026-07-28T03:04:32.000Z",
+                          "uid": "35240-a0699407-39e2-4b98-bd18-f6985ed628f5"
+                        },
+                        {
+                          "id": "f15fa9c4-a2a3-4a3e-8abe-f557250ecd85",
+                          "name": "Rate limit exceeded",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) The style reference image whose visual style will be applied to the output.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "(Required) Text describing the subject and composition of the output image.",
+                                  "key": "prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Text describing elements to exclude from the output image.",
+                                  "key": "negative_prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Controls how strongly the style of the reference image influences the output. Higher values produce outputs closer to the reference style.",
+                                  "key": "fidelity",
+                                  "value": "0.5",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "A value to control randomness in generation.",
+                                  "key": "seed",
+                                  "value": "0",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The output format of the generated image. (This can only be one of jpeg,png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/control/style",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "control",
+                                "style"
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:04:32.000Z",
+                          "updatedAt": "2026-07-28T03:04:32.000Z",
+                          "uid": "35240-f15fa9c4-a2a3-4a3e-8abe-f557250ecd85"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:04:32.000Z",
+                      "updatedAt": "2026-07-28T03:04:32.000Z",
+                      "uid": "35240-2863d1c9-b9a4-4806-9d1a-074a937191a0"
+                    }
+                  ],
+                  "id": "421a3a94-bed9-446e-b677-555d4b46aafd",
+                  "createdAt": "2026-07-28T03:04:31.000Z",
+                  "updatedAt": "2026-07-28T03:04:31.000Z",
+                  "uid": "35240-421a3a94-bed9-446e-b677-555d4b46aafd"
+                }
+              ],
+              "id": "8827a8e1-3ff9-4b88-a1fd-9607a7b465fc",
+              "createdAt": "2026-07-28T03:04:31.000Z",
+              "updatedAt": "2026-07-28T03:04:31.000Z",
+              "uid": "35240-8827a8e1-3ff9-4b88-a1fd-9607a7b465fc"
+            }
+          ],
+          "id": "2ce4d890-0654-4073-afa0-38df207ca6d6",
+          "createdAt": "2026-07-28T03:04:31.000Z",
+          "updatedAt": "2026-07-28T03:04:31.000Z",
+          "uid": "35240-2ce4d890-0654-4073-afa0-38df207ca6d6"
+        }
+      ],
+      "id": "4695e104-063f-4b96-ad44-b7e4d565dae7",
+      "createdAt": "2026-07-28T03:04:31.000Z",
+      "updatedAt": "2026-07-28T03:04:31.000Z",
+      "uid": "35240-4695e104-063f-4b96-ad44-b7e4d565dae7"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.stability.ai"
+    }
+  ]
+}

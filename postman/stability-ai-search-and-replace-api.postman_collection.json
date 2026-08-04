@@ -1,0 +1,590 @@
+{
+  "info": {
+    "_postman_id": "37e19212-f7bd-4421-bd43-b474839f428c",
+    "name": "Stability AI Stable Fast 3D 3D Generation Search and Replace API",
+    "description": "The Stability AI Stable Fast 3D API generates textured 3D mesh assets from single input images. The API rapidly produces 3D models suitable for use in games, augmented reality, virtual reality, and product visualization workflows. Developers can convert 2D images into fully textured 3D objects with UV-unwrapped meshes, enabling rapid prototyping and asset creation without manual 3D modeling.\n\nContact Support:\n Name: Stability AI Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:02:20.000Z",
+    "updatedAt": "2026-07-28T03:02:20.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-37e19212-f7bd-4421-bd43-b474839f428c"
+  },
+  "item": [
+    {
+      "name": "v2beta",
+      "item": [
+        {
+          "name": "stable-image",
+          "item": [
+            {
+              "name": "edit",
+              "item": [
+                {
+                  "name": "search-and-replace",
+                  "item": [
+                    {
+                      "name": "Search and replace objects in an image",
+                      "id": "1c54fcdf-1991-411a-b83b-4d3772dd68ec",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "image/jpeg"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "description": "(Required) The source image containing the objects to replace.",
+                              "key": "image",
+                              "type": "file",
+                              "value": null
+                            },
+                            {
+                              "description": "(Required) Text describing what should replace the found objects.",
+                              "key": "prompt",
+                              "value": "<string>",
+                              "type": "text"
+                            },
+                            {
+                              "description": "(Required) Text describing the objects to find and replace in the image.",
+                              "key": "search_prompt",
+                              "value": "<string>",
+                              "type": "text"
+                            },
+                            {
+                              "description": "Text describing elements to exclude from the replacement.",
+                              "key": "negative_prompt",
+                              "value": "<string>",
+                              "type": "text"
+                            },
+                            {
+                              "description": "A value to control randomness in generation.",
+                              "key": "seed",
+                              "value": "0",
+                              "type": "text"
+                            },
+                            {
+                              "description": "The output format of the edited image. (This can only be one of jpeg,png,webp)",
+                              "key": "output_format",
+                              "value": "png",
+                              "type": "text"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2beta/stable-image/edit/search-and-replace",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2beta",
+                            "stable-image",
+                            "edit",
+                            "search-and-replace"
+                          ]
+                        },
+                        "description": "Finds specific objects within an image using a text description and replaces them with new content described by a prompt. This enables targeted object replacement without manually creating masks."
+                      },
+                      "response": [
+                        {
+                          "id": "f4021a21-27e3-47c2-9b17-f3a25ea38b0c",
+                          "name": "Successfully replaced objects in image",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "image/jpeg"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) The source image containing the objects to replace.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "(Required) Text describing what should replace the found objects.",
+                                  "key": "prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "(Required) Text describing the objects to find and replace in the image.",
+                                  "key": "search_prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Text describing elements to exclude from the replacement.",
+                                  "key": "negative_prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "A value to control randomness in generation.",
+                                  "key": "seed",
+                                  "value": "0",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The output format of the edited image. (This can only be one of jpeg,png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/edit/search-and-replace",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "edit",
+                                "search-and-replace"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"image\": \"<string>\",\n  \"finish_reason\": \"SUCCESS\",\n  \"seed\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T03:02:21.000Z",
+                          "updatedAt": "2026-07-28T03:02:21.000Z",
+                          "uid": "35240-f4021a21-27e3-47c2-9b17-f3a25ea38b0c"
+                        },
+                        {
+                          "id": "b1132edd-3441-4bf0-84d3-642360943dd6",
+                          "name": "Bad request due to invalid parameters",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) The source image containing the objects to replace.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "(Required) Text describing what should replace the found objects.",
+                                  "key": "prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "(Required) Text describing the objects to find and replace in the image.",
+                                  "key": "search_prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Text describing elements to exclude from the replacement.",
+                                  "key": "negative_prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "A value to control randomness in generation.",
+                                  "key": "seed",
+                                  "value": "0",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The output format of the edited image. (This can only be one of jpeg,png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/edit/search-and-replace",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "edit",
+                                "search-and-replace"
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:02:21.000Z",
+                          "updatedAt": "2026-07-28T03:02:21.000Z",
+                          "uid": "35240-b1132edd-3441-4bf0-84d3-642360943dd6"
+                        },
+                        {
+                          "id": "cd0c6bd2-d396-426f-8197-f5b4ad87d5e1",
+                          "name": "Unauthorized due to missing or invalid API key",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) The source image containing the objects to replace.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "(Required) Text describing what should replace the found objects.",
+                                  "key": "prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "(Required) Text describing the objects to find and replace in the image.",
+                                  "key": "search_prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Text describing elements to exclude from the replacement.",
+                                  "key": "negative_prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "A value to control randomness in generation.",
+                                  "key": "seed",
+                                  "value": "0",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The output format of the edited image. (This can only be one of jpeg,png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/edit/search-and-replace",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "edit",
+                                "search-and-replace"
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:02:21.000Z",
+                          "updatedAt": "2026-07-28T03:02:21.000Z",
+                          "uid": "35240-cd0c6bd2-d396-426f-8197-f5b4ad87d5e1"
+                        },
+                        {
+                          "id": "823b43bf-0030-4490-acb5-8965b98795d5",
+                          "name": "Forbidden due to content moderation or insufficient permissions",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) The source image containing the objects to replace.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "(Required) Text describing what should replace the found objects.",
+                                  "key": "prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "(Required) Text describing the objects to find and replace in the image.",
+                                  "key": "search_prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Text describing elements to exclude from the replacement.",
+                                  "key": "negative_prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "A value to control randomness in generation.",
+                                  "key": "seed",
+                                  "value": "0",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The output format of the edited image. (This can only be one of jpeg,png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/edit/search-and-replace",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "edit",
+                                "search-and-replace"
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:02:21.000Z",
+                          "updatedAt": "2026-07-28T03:02:21.000Z",
+                          "uid": "35240-823b43bf-0030-4490-acb5-8965b98795d5"
+                        },
+                        {
+                          "id": "6e6fd559-e845-4167-9a70-1650b07535e1",
+                          "name": "Rate limit exceeded",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) The source image containing the objects to replace.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "(Required) Text describing what should replace the found objects.",
+                                  "key": "prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "(Required) Text describing the objects to find and replace in the image.",
+                                  "key": "search_prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Text describing elements to exclude from the replacement.",
+                                  "key": "negative_prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "A value to control randomness in generation.",
+                                  "key": "seed",
+                                  "value": "0",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The output format of the edited image. (This can only be one of jpeg,png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/edit/search-and-replace",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "edit",
+                                "search-and-replace"
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:02:21.000Z",
+                          "updatedAt": "2026-07-28T03:02:21.000Z",
+                          "uid": "35240-6e6fd559-e845-4167-9a70-1650b07535e1"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:02:21.000Z",
+                      "updatedAt": "2026-07-28T03:02:21.000Z",
+                      "uid": "35240-1c54fcdf-1991-411a-b83b-4d3772dd68ec"
+                    }
+                  ],
+                  "id": "71ec8cf2-58fc-425b-a4e3-5887acc0f261",
+                  "createdAt": "2026-07-28T03:02:21.000Z",
+                  "updatedAt": "2026-07-28T03:02:21.000Z",
+                  "uid": "35240-71ec8cf2-58fc-425b-a4e3-5887acc0f261"
+                }
+              ],
+              "id": "0d90a5b5-0117-4b24-acd2-c9e588c7df27",
+              "createdAt": "2026-07-28T03:02:21.000Z",
+              "updatedAt": "2026-07-28T03:02:21.000Z",
+              "uid": "35240-0d90a5b5-0117-4b24-acd2-c9e588c7df27"
+            }
+          ],
+          "id": "f80d122d-949a-45e9-9f5e-06bca18d8b4b",
+          "createdAt": "2026-07-28T03:02:21.000Z",
+          "updatedAt": "2026-07-28T03:02:21.000Z",
+          "uid": "35240-f80d122d-949a-45e9-9f5e-06bca18d8b4b"
+        }
+      ],
+      "id": "01544ffc-0813-424a-adb5-4a2635dda554",
+      "createdAt": "2026-07-28T03:02:21.000Z",
+      "updatedAt": "2026-07-28T03:02:21.000Z",
+      "uid": "35240-01544ffc-0813-424a-adb5-4a2635dda554"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.stability.ai"
+    }
+  ]
+}

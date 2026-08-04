@@ -1,0 +1,590 @@
+{
+  "info": {
+    "_postman_id": "bfb6ac20-a2c1-4aba-b629-1ba9cfc0ef59",
+    "name": "Stability AI Stable Fast 3D 3D Generation Sketch API",
+    "description": "The Stability AI Stable Fast 3D API generates textured 3D mesh assets from single input images. The API rapidly produces 3D models suitable for use in games, augmented reality, virtual reality, and product visualization workflows. Developers can convert 2D images into fully textured 3D objects with UV-unwrapped meshes, enabling rapid prototyping and asset creation without manual 3D modeling.\n\nContact Support:\n Name: Stability AI Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:03:23.000Z",
+    "updatedAt": "2026-07-28T03:03:23.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-bfb6ac20-a2c1-4aba-b629-1ba9cfc0ef59"
+  },
+  "item": [
+    {
+      "name": "v2beta",
+      "item": [
+        {
+          "name": "stable-image",
+          "item": [
+            {
+              "name": "control",
+              "item": [
+                {
+                  "name": "sketch",
+                  "item": [
+                    {
+                      "name": "Generate an image from a sketch",
+                      "id": "7474fcb3-d09d-4fe6-9e0f-10039a0f210e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "image/jpeg"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "description": "(Required) The sketch or line drawing image to use as structural guidance.",
+                              "key": "image",
+                              "type": "file",
+                              "value": null
+                            },
+                            {
+                              "description": "(Required) Text describing the desired output image including content, colors, textures, and style.",
+                              "key": "prompt",
+                              "value": "<string>",
+                              "type": "text"
+                            },
+                            {
+                              "description": "Text describing elements to exclude from the output image.",
+                              "key": "negative_prompt",
+                              "value": "<string>",
+                              "type": "text"
+                            },
+                            {
+                              "description": "Controls how closely the output follows the input sketch. Higher values produce outputs more faithful to the sketch structure.",
+                              "key": "control_strength",
+                              "value": "0.7",
+                              "type": "text"
+                            },
+                            {
+                              "description": "A value to control randomness in generation.",
+                              "key": "seed",
+                              "value": "0",
+                              "type": "text"
+                            },
+                            {
+                              "description": "The output format of the generated image. (This can only be one of jpeg,png,webp)",
+                              "key": "output_format",
+                              "value": "png",
+                              "type": "text"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2beta/stable-image/control/sketch",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2beta",
+                            "stable-image",
+                            "control",
+                            "sketch"
+                          ]
+                        },
+                        "description": "Generates a detailed image from a hand-drawn sketch or line drawing. The sketch provides the structural composition while the text prompt guides the content, colors, textures, and style of the output image."
+                      },
+                      "response": [
+                        {
+                          "id": "cd2c47a2-b050-4793-aa36-de52d34518d0",
+                          "name": "Successfully generated image from sketch",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "image/jpeg"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) The sketch or line drawing image to use as structural guidance.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "(Required) Text describing the desired output image including content, colors, textures, and style.",
+                                  "key": "prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Text describing elements to exclude from the output image.",
+                                  "key": "negative_prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Controls how closely the output follows the input sketch. Higher values produce outputs more faithful to the sketch structure.",
+                                  "key": "control_strength",
+                                  "value": "0.7",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "A value to control randomness in generation.",
+                                  "key": "seed",
+                                  "value": "0",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The output format of the generated image. (This can only be one of jpeg,png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/control/sketch",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "control",
+                                "sketch"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"image\": \"<string>\",\n  \"finish_reason\": \"SUCCESS\",\n  \"seed\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T03:03:23.000Z",
+                          "updatedAt": "2026-07-28T03:03:23.000Z",
+                          "uid": "35240-cd2c47a2-b050-4793-aa36-de52d34518d0"
+                        },
+                        {
+                          "id": "6ef35251-a163-428d-885e-37be41cfb615",
+                          "name": "Bad request due to invalid parameters",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) The sketch or line drawing image to use as structural guidance.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "(Required) Text describing the desired output image including content, colors, textures, and style.",
+                                  "key": "prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Text describing elements to exclude from the output image.",
+                                  "key": "negative_prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Controls how closely the output follows the input sketch. Higher values produce outputs more faithful to the sketch structure.",
+                                  "key": "control_strength",
+                                  "value": "0.7",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "A value to control randomness in generation.",
+                                  "key": "seed",
+                                  "value": "0",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The output format of the generated image. (This can only be one of jpeg,png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/control/sketch",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "control",
+                                "sketch"
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:03:23.000Z",
+                          "updatedAt": "2026-07-28T03:03:23.000Z",
+                          "uid": "35240-6ef35251-a163-428d-885e-37be41cfb615"
+                        },
+                        {
+                          "id": "12e42b57-616f-404d-9a91-eb132cd3949c",
+                          "name": "Unauthorized due to missing or invalid API key",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) The sketch or line drawing image to use as structural guidance.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "(Required) Text describing the desired output image including content, colors, textures, and style.",
+                                  "key": "prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Text describing elements to exclude from the output image.",
+                                  "key": "negative_prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Controls how closely the output follows the input sketch. Higher values produce outputs more faithful to the sketch structure.",
+                                  "key": "control_strength",
+                                  "value": "0.7",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "A value to control randomness in generation.",
+                                  "key": "seed",
+                                  "value": "0",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The output format of the generated image. (This can only be one of jpeg,png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/control/sketch",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "control",
+                                "sketch"
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:03:23.000Z",
+                          "updatedAt": "2026-07-28T03:03:23.000Z",
+                          "uid": "35240-12e42b57-616f-404d-9a91-eb132cd3949c"
+                        },
+                        {
+                          "id": "0a378074-3503-41c1-a3e2-5781497e7d33",
+                          "name": "Forbidden due to content moderation or insufficient permissions",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) The sketch or line drawing image to use as structural guidance.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "(Required) Text describing the desired output image including content, colors, textures, and style.",
+                                  "key": "prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Text describing elements to exclude from the output image.",
+                                  "key": "negative_prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Controls how closely the output follows the input sketch. Higher values produce outputs more faithful to the sketch structure.",
+                                  "key": "control_strength",
+                                  "value": "0.7",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "A value to control randomness in generation.",
+                                  "key": "seed",
+                                  "value": "0",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The output format of the generated image. (This can only be one of jpeg,png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/control/sketch",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "control",
+                                "sketch"
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:03:23.000Z",
+                          "updatedAt": "2026-07-28T03:03:23.000Z",
+                          "uid": "35240-0a378074-3503-41c1-a3e2-5781497e7d33"
+                        },
+                        {
+                          "id": "4890f594-dc76-4d45-b78c-24e098e4096a",
+                          "name": "Rate limit exceeded",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) The sketch or line drawing image to use as structural guidance.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "(Required) Text describing the desired output image including content, colors, textures, and style.",
+                                  "key": "prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Text describing elements to exclude from the output image.",
+                                  "key": "negative_prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Controls how closely the output follows the input sketch. Higher values produce outputs more faithful to the sketch structure.",
+                                  "key": "control_strength",
+                                  "value": "0.7",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "A value to control randomness in generation.",
+                                  "key": "seed",
+                                  "value": "0",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The output format of the generated image. (This can only be one of jpeg,png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/control/sketch",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "control",
+                                "sketch"
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:03:23.000Z",
+                          "updatedAt": "2026-07-28T03:03:23.000Z",
+                          "uid": "35240-4890f594-dc76-4d45-b78c-24e098e4096a"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:03:23.000Z",
+                      "updatedAt": "2026-07-28T03:03:23.000Z",
+                      "uid": "35240-7474fcb3-d09d-4fe6-9e0f-10039a0f210e"
+                    }
+                  ],
+                  "id": "7b3e6d95-fd6b-477f-890c-118b0602e87d",
+                  "createdAt": "2026-07-28T03:03:23.000Z",
+                  "updatedAt": "2026-07-28T03:03:23.000Z",
+                  "uid": "35240-7b3e6d95-fd6b-477f-890c-118b0602e87d"
+                }
+              ],
+              "id": "6d5a1c36-a317-4002-b326-74e4c1963855",
+              "createdAt": "2026-07-28T03:03:23.000Z",
+              "updatedAt": "2026-07-28T03:03:23.000Z",
+              "uid": "35240-6d5a1c36-a317-4002-b326-74e4c1963855"
+            }
+          ],
+          "id": "a9ad4fc7-2ef9-4ca4-ba84-0215ba59bf67",
+          "createdAt": "2026-07-28T03:03:23.000Z",
+          "updatedAt": "2026-07-28T03:03:23.000Z",
+          "uid": "35240-a9ad4fc7-2ef9-4ca4-ba84-0215ba59bf67"
+        }
+      ],
+      "id": "85d0e1f4-53ca-4152-be04-f00b60680339",
+      "createdAt": "2026-07-28T03:03:23.000Z",
+      "updatedAt": "2026-07-28T03:03:23.000Z",
+      "uid": "35240-85d0e1f4-53ca-4152-be04-f00b60680339"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.stability.ai"
+    }
+  ]
+}

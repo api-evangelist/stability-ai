@@ -1,0 +1,503 @@
+{
+  "info": {
+    "_postman_id": "fcf90d0e-032e-47ab-8919-f9bef4b2ad7c",
+    "name": "Stability AI Stable Fast 3D 3D Generation API",
+    "description": "The Stability AI Stable Fast 3D API generates textured 3D mesh assets from single input images. The API rapidly produces 3D models suitable for use in games, augmented reality, virtual reality, and product visualization workflows. Developers can convert 2D images into fully textured 3D objects with UV-unwrapped meshes, enabling rapid prototyping and asset creation without manual 3D modeling.\n\nContact Support:\n Name: Stability AI Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:01:45.000Z",
+    "updatedAt": "2026-07-28T03:01:46.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-fcf90d0e-032e-47ab-8919-f9bef4b2ad7c"
+  },
+  "item": [
+    {
+      "name": "v2beta",
+      "item": [
+        {
+          "name": "3d",
+          "item": [
+            {
+              "name": "stable-fast-3d",
+              "item": [
+                {
+                  "name": "Generate a 3D model from an image",
+                  "id": "ecf81686-8e92-4ef8-a6a2-cceb32380ab0",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "model/gltf-binary"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "(Required) The input image of an object to convert into a 3D model. Best results are achieved with images of single objects on a clean background.",
+                          "key": "image",
+                          "type": "file",
+                          "value": null
+                        },
+                        {
+                          "description": "The resolution of the generated texture in pixels. Higher values produce more detailed textures but increase file size and processing time. (This can only be one of 512,1024,2048)",
+                          "key": "texture_resolution",
+                          "value": "1024",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The ratio of the foreground object to the total image size. Used to control how much of the image is treated as the object versus background during 3D reconstruction.",
+                          "key": "foreground_ratio",
+                          "value": "0.85",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The remeshing algorithm to apply to the generated mesh. Triangle and quad remeshing produce cleaner topology suitable for animation and further editing. (This can only be one of none,triangle,quad)",
+                          "key": "remesh",
+                          "value": "none",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2beta/3d/stable-fast-3d",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2beta",
+                        "3d",
+                        "stable-fast-3d"
+                      ]
+                    },
+                    "description": "Generates a textured, UV-unwrapped 3D mesh from a single input image. The model interprets the 2D image and produces a 3D object with geometry and texture suitable for real-time rendering applications. Output is returned as a GLB file containing the mesh and texture data."
+                  },
+                  "response": [
+                    {
+                      "id": "7e176af0-96ed-4144-9f24-a26b747d8acc",
+                      "name": "Successfully generated 3D model",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "model/gltf-binary"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "description": "(Required) The input image of an object to convert into a 3D model. Best results are achieved with images of single objects on a clean background.",
+                              "key": "image",
+                              "type": "file"
+                            },
+                            {
+                              "description": "The resolution of the generated texture in pixels. Higher values produce more detailed textures but increase file size and processing time. (This can only be one of 512,1024,2048)",
+                              "key": "texture_resolution",
+                              "value": "1024",
+                              "type": "text"
+                            },
+                            {
+                              "description": "The ratio of the foreground object to the total image size. Used to control how much of the image is treated as the object versus background during 3D reconstruction.",
+                              "key": "foreground_ratio",
+                              "value": "0.85",
+                              "type": "text"
+                            },
+                            {
+                              "description": "The remeshing algorithm to apply to the generated mesh. Triangle and quad remeshing produce cleaner topology suitable for animation and further editing. (This can only be one of none,triangle,quad)",
+                              "key": "remesh",
+                              "value": "none",
+                              "type": "text"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2beta/3d/stable-fast-3d",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2beta",
+                            "3d",
+                            "stable-fast-3d"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"model\": \"<string>\",\n  \"finish_reason\": \"CONTENT_FILTERED\"\n}",
+                      "createdAt": "2026-07-28T03:01:46.000Z",
+                      "updatedAt": "2026-07-28T03:01:46.000Z",
+                      "uid": "35240-7e176af0-96ed-4144-9f24-a26b747d8acc"
+                    },
+                    {
+                      "id": "42fa83e6-a88e-4354-8f37-0435639de703",
+                      "name": "Bad request due to invalid parameters",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "description": "(Required) The input image of an object to convert into a 3D model. Best results are achieved with images of single objects on a clean background.",
+                              "key": "image",
+                              "type": "file"
+                            },
+                            {
+                              "description": "The resolution of the generated texture in pixels. Higher values produce more detailed textures but increase file size and processing time. (This can only be one of 512,1024,2048)",
+                              "key": "texture_resolution",
+                              "value": "1024",
+                              "type": "text"
+                            },
+                            {
+                              "description": "The ratio of the foreground object to the total image size. Used to control how much of the image is treated as the object versus background during 3D reconstruction.",
+                              "key": "foreground_ratio",
+                              "value": "0.85",
+                              "type": "text"
+                            },
+                            {
+                              "description": "The remeshing algorithm to apply to the generated mesh. Triangle and quad remeshing produce cleaner topology suitable for animation and further editing. (This can only be one of none,triangle,quad)",
+                              "key": "remesh",
+                              "value": "none",
+                              "type": "text"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2beta/3d/stable-fast-3d",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2beta",
+                            "3d",
+                            "stable-fast-3d"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:01:46.000Z",
+                      "updatedAt": "2026-07-28T03:01:46.000Z",
+                      "uid": "35240-42fa83e6-a88e-4354-8f37-0435639de703"
+                    },
+                    {
+                      "id": "ec9fefc1-bcc2-4258-b9c9-479656240aca",
+                      "name": "Unauthorized due to missing or invalid API key",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "description": "(Required) The input image of an object to convert into a 3D model. Best results are achieved with images of single objects on a clean background.",
+                              "key": "image",
+                              "type": "file"
+                            },
+                            {
+                              "description": "The resolution of the generated texture in pixels. Higher values produce more detailed textures but increase file size and processing time. (This can only be one of 512,1024,2048)",
+                              "key": "texture_resolution",
+                              "value": "1024",
+                              "type": "text"
+                            },
+                            {
+                              "description": "The ratio of the foreground object to the total image size. Used to control how much of the image is treated as the object versus background during 3D reconstruction.",
+                              "key": "foreground_ratio",
+                              "value": "0.85",
+                              "type": "text"
+                            },
+                            {
+                              "description": "The remeshing algorithm to apply to the generated mesh. Triangle and quad remeshing produce cleaner topology suitable for animation and further editing. (This can only be one of none,triangle,quad)",
+                              "key": "remesh",
+                              "value": "none",
+                              "type": "text"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2beta/3d/stable-fast-3d",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2beta",
+                            "3d",
+                            "stable-fast-3d"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:01:46.000Z",
+                      "updatedAt": "2026-07-28T03:01:46.000Z",
+                      "uid": "35240-ec9fefc1-bcc2-4258-b9c9-479656240aca"
+                    },
+                    {
+                      "id": "690e2d80-0c50-4e64-8e50-d352a9a90831",
+                      "name": "Forbidden due to content moderation or insufficient permissions",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "description": "(Required) The input image of an object to convert into a 3D model. Best results are achieved with images of single objects on a clean background.",
+                              "key": "image",
+                              "type": "file"
+                            },
+                            {
+                              "description": "The resolution of the generated texture in pixels. Higher values produce more detailed textures but increase file size and processing time. (This can only be one of 512,1024,2048)",
+                              "key": "texture_resolution",
+                              "value": "1024",
+                              "type": "text"
+                            },
+                            {
+                              "description": "The ratio of the foreground object to the total image size. Used to control how much of the image is treated as the object versus background during 3D reconstruction.",
+                              "key": "foreground_ratio",
+                              "value": "0.85",
+                              "type": "text"
+                            },
+                            {
+                              "description": "The remeshing algorithm to apply to the generated mesh. Triangle and quad remeshing produce cleaner topology suitable for animation and further editing. (This can only be one of none,triangle,quad)",
+                              "key": "remesh",
+                              "value": "none",
+                              "type": "text"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2beta/3d/stable-fast-3d",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2beta",
+                            "3d",
+                            "stable-fast-3d"
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:01:46.000Z",
+                      "updatedAt": "2026-07-28T03:01:46.000Z",
+                      "uid": "35240-690e2d80-0c50-4e64-8e50-d352a9a90831"
+                    },
+                    {
+                      "id": "ca3b778d-c6f4-411c-9ac6-80b7202be310",
+                      "name": "Rate limit exceeded",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "description": "(Required) The input image of an object to convert into a 3D model. Best results are achieved with images of single objects on a clean background.",
+                              "key": "image",
+                              "type": "file"
+                            },
+                            {
+                              "description": "The resolution of the generated texture in pixels. Higher values produce more detailed textures but increase file size and processing time. (This can only be one of 512,1024,2048)",
+                              "key": "texture_resolution",
+                              "value": "1024",
+                              "type": "text"
+                            },
+                            {
+                              "description": "The ratio of the foreground object to the total image size. Used to control how much of the image is treated as the object versus background during 3D reconstruction.",
+                              "key": "foreground_ratio",
+                              "value": "0.85",
+                              "type": "text"
+                            },
+                            {
+                              "description": "The remeshing algorithm to apply to the generated mesh. Triangle and quad remeshing produce cleaner topology suitable for animation and further editing. (This can only be one of none,triangle,quad)",
+                              "key": "remesh",
+                              "value": "none",
+                              "type": "text"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2beta/3d/stable-fast-3d",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2beta",
+                            "3d",
+                            "stable-fast-3d"
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:01:46.000Z",
+                      "updatedAt": "2026-07-28T03:01:46.000Z",
+                      "uid": "35240-ca3b778d-c6f4-411c-9ac6-80b7202be310"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:01:46.000Z",
+                  "updatedAt": "2026-07-28T03:01:46.000Z",
+                  "uid": "35240-ecf81686-8e92-4ef8-a6a2-cceb32380ab0"
+                }
+              ],
+              "id": "cbf033c7-23d3-4920-85b0-d6295695ab5a",
+              "createdAt": "2026-07-28T03:01:46.000Z",
+              "updatedAt": "2026-07-28T03:01:46.000Z",
+              "uid": "35240-cbf033c7-23d3-4920-85b0-d6295695ab5a"
+            }
+          ],
+          "id": "f5c3251e-6143-47e5-9b20-b25657179c34",
+          "createdAt": "2026-07-28T03:01:46.000Z",
+          "updatedAt": "2026-07-28T03:01:46.000Z",
+          "uid": "35240-f5c3251e-6143-47e5-9b20-b25657179c34"
+        }
+      ],
+      "id": "c4d68406-6dc2-4e1f-b556-69e91d84220c",
+      "createdAt": "2026-07-28T03:01:46.000Z",
+      "updatedAt": "2026-07-28T03:01:46.000Z",
+      "uid": "35240-c4d68406-6dc2-4e1f-b556-69e91d84220c"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.stability.ai"
+    }
+  ]
+}

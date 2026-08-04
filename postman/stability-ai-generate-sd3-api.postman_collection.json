@@ -1,0 +1,698 @@
+{
+  "info": {
+    "_postman_id": "d422667f-5ae0-4ea8-9c2a-9ba0a84a702d",
+    "name": "Stability AI Stable Fast 3D 3D Generation Generate SD3 API",
+    "description": "The Stability AI Stable Fast 3D API generates textured 3D mesh assets from single input images. The API rapidly produces 3D models suitable for use in games, augmented reality, virtual reality, and product visualization workflows. Developers can convert 2D images into fully textured 3D objects with UV-unwrapped meshes, enabling rapid prototyping and asset creation without manual 3D modeling.\n\nContact Support:\n Name: Stability AI Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:01:51.000Z",
+    "updatedAt": "2026-07-28T03:01:51.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d422667f-5ae0-4ea8-9c2a-9ba0a84a702d"
+  },
+  "item": [
+    {
+      "name": "v2beta",
+      "item": [
+        {
+          "name": "stable-image",
+          "item": [
+            {
+              "name": "generate",
+              "item": [
+                {
+                  "name": "sd3",
+                  "item": [
+                    {
+                      "name": "Generate an image using Stable Diffusion 3",
+                      "id": "6fd87b36-d94a-4a85-ac2b-c9b08fd41c58",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "image/jpeg"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "description": "(Required) Text describing what you wish to see in the output image.",
+                              "key": "prompt",
+                              "value": "<string>",
+                              "type": "text"
+                            },
+                            {
+                              "description": "Text describing elements to exclude from the output image.",
+                              "key": "negative_prompt",
+                              "value": "<string>",
+                              "type": "text"
+                            },
+                            {
+                              "description": "An optional input image for image-to-image generation. When provided, the model uses this image as a reference guided by the strength parameter.",
+                              "key": "image",
+                              "type": "file",
+                              "value": null
+                            },
+                            {
+                              "description": "Controls how much influence the input image has on the output. Lower values produce images closer to the input, higher values allow more creative deviation. Only applicable for image-to-image mode.",
+                              "key": "strength",
+                              "value": "0.7",
+                              "type": "text"
+                            },
+                            {
+                              "description": "Controls the aspect ratio of the generated image. Only applicable for text-to-image mode. (This can only be one of 16:9,1:1,21:9,2:3,3:2,4:5,5:4,9:16,9:21)",
+                              "key": "aspect_ratio",
+                              "value": "1:1",
+                              "type": "text"
+                            },
+                            {
+                              "description": "The Stable Diffusion 3 model variant to use for generation. (This can only be one of sd3,sd3-turbo,sd3.5-large,sd3.5-large-turbo,sd3.5-medium)",
+                              "key": "model",
+                              "value": "sd3.5-large",
+                              "type": "text"
+                            },
+                            {
+                              "description": "A value to control randomness in generation.",
+                              "key": "seed",
+                              "value": "0",
+                              "type": "text"
+                            },
+                            {
+                              "description": "The output format of the generated image. (This can only be one of jpeg,png,webp)",
+                              "key": "output_format",
+                              "value": "png",
+                              "type": "text"
+                            },
+                            {
+                              "description": "The generation mode. Use text-to-image for prompt-only generation or image-to-image when providing a reference image. (This can only be one of text-to-image,image-to-image)",
+                              "key": "mode",
+                              "value": "text-to-image",
+                              "type": "text"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2beta/stable-image/generate/sd3",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2beta",
+                            "stable-image",
+                            "generate",
+                            "sd3"
+                          ]
+                        },
+                        "description": "Generates an image using Stable Diffusion 3 or 3.5 models. Supports both text-to-image and image-to-image generation modes. When an image is provided along with a prompt, the model uses it as a reference guided by the strength parameter. Requests use multipart form data encoding."
+                      },
+                      "response": [
+                        {
+                          "id": "9ea0bb5f-eedf-4bcb-9750-c0f87622fb23",
+                          "name": "Successfully generated image",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "image/jpeg"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) Text describing what you wish to see in the output image.",
+                                  "key": "prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Text describing elements to exclude from the output image.",
+                                  "key": "negative_prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "An optional input image for image-to-image generation. When provided, the model uses this image as a reference guided by the strength parameter.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "Controls how much influence the input image has on the output. Lower values produce images closer to the input, higher values allow more creative deviation. Only applicable for image-to-image mode.",
+                                  "key": "strength",
+                                  "value": "0.7",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Controls the aspect ratio of the generated image. Only applicable for text-to-image mode. (This can only be one of 16:9,1:1,21:9,2:3,3:2,4:5,5:4,9:16,9:21)",
+                                  "key": "aspect_ratio",
+                                  "value": "1:1",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The Stable Diffusion 3 model variant to use for generation. (This can only be one of sd3,sd3-turbo,sd3.5-large,sd3.5-large-turbo,sd3.5-medium)",
+                                  "key": "model",
+                                  "value": "sd3.5-large",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "A value to control randomness in generation.",
+                                  "key": "seed",
+                                  "value": "0",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The output format of the generated image. (This can only be one of jpeg,png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The generation mode. Use text-to-image for prompt-only generation or image-to-image when providing a reference image. (This can only be one of text-to-image,image-to-image)",
+                                  "key": "mode",
+                                  "value": "text-to-image",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/generate/sd3",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "generate",
+                                "sd3"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"image\": \"<string>\",\n  \"finish_reason\": \"SUCCESS\",\n  \"seed\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T03:01:52.000Z",
+                          "updatedAt": "2026-07-28T03:01:52.000Z",
+                          "uid": "35240-9ea0bb5f-eedf-4bcb-9750-c0f87622fb23"
+                        },
+                        {
+                          "id": "37453807-419e-48bf-935c-eb3a27960134",
+                          "name": "Bad request due to invalid parameters",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) Text describing what you wish to see in the output image.",
+                                  "key": "prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Text describing elements to exclude from the output image.",
+                                  "key": "negative_prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "An optional input image for image-to-image generation. When provided, the model uses this image as a reference guided by the strength parameter.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "Controls how much influence the input image has on the output. Lower values produce images closer to the input, higher values allow more creative deviation. Only applicable for image-to-image mode.",
+                                  "key": "strength",
+                                  "value": "0.7",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Controls the aspect ratio of the generated image. Only applicable for text-to-image mode. (This can only be one of 16:9,1:1,21:9,2:3,3:2,4:5,5:4,9:16,9:21)",
+                                  "key": "aspect_ratio",
+                                  "value": "1:1",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The Stable Diffusion 3 model variant to use for generation. (This can only be one of sd3,sd3-turbo,sd3.5-large,sd3.5-large-turbo,sd3.5-medium)",
+                                  "key": "model",
+                                  "value": "sd3.5-large",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "A value to control randomness in generation.",
+                                  "key": "seed",
+                                  "value": "0",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The output format of the generated image. (This can only be one of jpeg,png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The generation mode. Use text-to-image for prompt-only generation or image-to-image when providing a reference image. (This can only be one of text-to-image,image-to-image)",
+                                  "key": "mode",
+                                  "value": "text-to-image",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/generate/sd3",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "generate",
+                                "sd3"
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:01:52.000Z",
+                          "updatedAt": "2026-07-28T03:01:52.000Z",
+                          "uid": "35240-37453807-419e-48bf-935c-eb3a27960134"
+                        },
+                        {
+                          "id": "212b5710-0dfb-4aa1-97f3-b6d3d0aaae6b",
+                          "name": "Unauthorized due to missing or invalid API key",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) Text describing what you wish to see in the output image.",
+                                  "key": "prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Text describing elements to exclude from the output image.",
+                                  "key": "negative_prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "An optional input image for image-to-image generation. When provided, the model uses this image as a reference guided by the strength parameter.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "Controls how much influence the input image has on the output. Lower values produce images closer to the input, higher values allow more creative deviation. Only applicable for image-to-image mode.",
+                                  "key": "strength",
+                                  "value": "0.7",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Controls the aspect ratio of the generated image. Only applicable for text-to-image mode. (This can only be one of 16:9,1:1,21:9,2:3,3:2,4:5,5:4,9:16,9:21)",
+                                  "key": "aspect_ratio",
+                                  "value": "1:1",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The Stable Diffusion 3 model variant to use for generation. (This can only be one of sd3,sd3-turbo,sd3.5-large,sd3.5-large-turbo,sd3.5-medium)",
+                                  "key": "model",
+                                  "value": "sd3.5-large",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "A value to control randomness in generation.",
+                                  "key": "seed",
+                                  "value": "0",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The output format of the generated image. (This can only be one of jpeg,png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The generation mode. Use text-to-image for prompt-only generation or image-to-image when providing a reference image. (This can only be one of text-to-image,image-to-image)",
+                                  "key": "mode",
+                                  "value": "text-to-image",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/generate/sd3",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "generate",
+                                "sd3"
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:01:52.000Z",
+                          "updatedAt": "2026-07-28T03:01:52.000Z",
+                          "uid": "35240-212b5710-0dfb-4aa1-97f3-b6d3d0aaae6b"
+                        },
+                        {
+                          "id": "63333c61-e900-46ee-90e2-9a868639bb81",
+                          "name": "Forbidden due to content moderation or insufficient permissions",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) Text describing what you wish to see in the output image.",
+                                  "key": "prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Text describing elements to exclude from the output image.",
+                                  "key": "negative_prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "An optional input image for image-to-image generation. When provided, the model uses this image as a reference guided by the strength parameter.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "Controls how much influence the input image has on the output. Lower values produce images closer to the input, higher values allow more creative deviation. Only applicable for image-to-image mode.",
+                                  "key": "strength",
+                                  "value": "0.7",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Controls the aspect ratio of the generated image. Only applicable for text-to-image mode. (This can only be one of 16:9,1:1,21:9,2:3,3:2,4:5,5:4,9:16,9:21)",
+                                  "key": "aspect_ratio",
+                                  "value": "1:1",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The Stable Diffusion 3 model variant to use for generation. (This can only be one of sd3,sd3-turbo,sd3.5-large,sd3.5-large-turbo,sd3.5-medium)",
+                                  "key": "model",
+                                  "value": "sd3.5-large",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "A value to control randomness in generation.",
+                                  "key": "seed",
+                                  "value": "0",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The output format of the generated image. (This can only be one of jpeg,png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The generation mode. Use text-to-image for prompt-only generation or image-to-image when providing a reference image. (This can only be one of text-to-image,image-to-image)",
+                                  "key": "mode",
+                                  "value": "text-to-image",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/generate/sd3",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "generate",
+                                "sd3"
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:01:52.000Z",
+                          "updatedAt": "2026-07-28T03:01:52.000Z",
+                          "uid": "35240-63333c61-e900-46ee-90e2-9a868639bb81"
+                        },
+                        {
+                          "id": "a147edb5-a7e9-48be-b49a-a02394f5e6d7",
+                          "name": "Rate limit exceeded",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) Text describing what you wish to see in the output image.",
+                                  "key": "prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Text describing elements to exclude from the output image.",
+                                  "key": "negative_prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "An optional input image for image-to-image generation. When provided, the model uses this image as a reference guided by the strength parameter.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "Controls how much influence the input image has on the output. Lower values produce images closer to the input, higher values allow more creative deviation. Only applicable for image-to-image mode.",
+                                  "key": "strength",
+                                  "value": "0.7",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Controls the aspect ratio of the generated image. Only applicable for text-to-image mode. (This can only be one of 16:9,1:1,21:9,2:3,3:2,4:5,5:4,9:16,9:21)",
+                                  "key": "aspect_ratio",
+                                  "value": "1:1",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The Stable Diffusion 3 model variant to use for generation. (This can only be one of sd3,sd3-turbo,sd3.5-large,sd3.5-large-turbo,sd3.5-medium)",
+                                  "key": "model",
+                                  "value": "sd3.5-large",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "A value to control randomness in generation.",
+                                  "key": "seed",
+                                  "value": "0",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The output format of the generated image. (This can only be one of jpeg,png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The generation mode. Use text-to-image for prompt-only generation or image-to-image when providing a reference image. (This can only be one of text-to-image,image-to-image)",
+                                  "key": "mode",
+                                  "value": "text-to-image",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/generate/sd3",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "generate",
+                                "sd3"
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:01:52.000Z",
+                          "updatedAt": "2026-07-28T03:01:52.000Z",
+                          "uid": "35240-a147edb5-a7e9-48be-b49a-a02394f5e6d7"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:01:52.000Z",
+                      "updatedAt": "2026-07-28T03:01:52.000Z",
+                      "uid": "35240-6fd87b36-d94a-4a85-ac2b-c9b08fd41c58"
+                    }
+                  ],
+                  "id": "f074958d-285e-426a-85b8-fc5566248a76",
+                  "createdAt": "2026-07-28T03:01:52.000Z",
+                  "updatedAt": "2026-07-28T03:01:52.000Z",
+                  "uid": "35240-f074958d-285e-426a-85b8-fc5566248a76"
+                }
+              ],
+              "id": "5abd025d-47d2-49a0-a0d3-502c64581a6c",
+              "createdAt": "2026-07-28T03:01:52.000Z",
+              "updatedAt": "2026-07-28T03:01:52.000Z",
+              "uid": "35240-5abd025d-47d2-49a0-a0d3-502c64581a6c"
+            }
+          ],
+          "id": "48b51123-115a-4bf8-8641-836eb32390d1",
+          "createdAt": "2026-07-28T03:01:52.000Z",
+          "updatedAt": "2026-07-28T03:01:52.000Z",
+          "uid": "35240-48b51123-115a-4bf8-8641-836eb32390d1"
+        }
+      ],
+      "id": "6e65fda6-8888-4030-95db-306d862703cc",
+      "createdAt": "2026-07-28T03:01:52.000Z",
+      "updatedAt": "2026-07-28T03:01:52.000Z",
+      "uid": "35240-6e65fda6-8888-4030-95db-306d862703cc"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.stability.ai"
+    }
+  ]
+}

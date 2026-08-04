@@ -1,0 +1,662 @@
+{
+  "info": {
+    "_postman_id": "4b517f1b-2f2d-4df4-9c06-33ef67e9de4f",
+    "name": "Stability AI Stable Fast 3D 3D Generation Outpaint API",
+    "description": "The Stability AI Stable Fast 3D API generates textured 3D mesh assets from single input images. The API rapidly produces 3D models suitable for use in games, augmented reality, virtual reality, and product visualization workflows. Developers can convert 2D images into fully textured 3D objects with UV-unwrapped meshes, enabling rapid prototyping and asset creation without manual 3D modeling.\n\nContact Support:\n Name: Stability AI Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:01:58.000Z",
+    "updatedAt": "2026-07-28T03:01:59.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4b517f1b-2f2d-4df4-9c06-33ef67e9de4f"
+  },
+  "item": [
+    {
+      "name": "v2beta",
+      "item": [
+        {
+          "name": "stable-image",
+          "item": [
+            {
+              "name": "edit",
+              "item": [
+                {
+                  "name": "outpaint",
+                  "item": [
+                    {
+                      "name": "Extend an image beyond its boundaries",
+                      "id": "1db42b64-3478-4107-9019-1d9f724a6358",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "image/jpeg"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "description": "(Required) The source image to extend.",
+                              "key": "image",
+                              "type": "file",
+                              "value": null
+                            },
+                            {
+                              "description": "Optional text describing what should appear in the extended regions.",
+                              "key": "prompt",
+                              "value": "<string>",
+                              "type": "text"
+                            },
+                            {
+                              "description": "Number of pixels to extend to the left.",
+                              "key": "left",
+                              "value": "<integer>",
+                              "type": "text"
+                            },
+                            {
+                              "description": "Number of pixels to extend to the right.",
+                              "key": "right",
+                              "value": "<integer>",
+                              "type": "text"
+                            },
+                            {
+                              "description": "Number of pixels to extend upward.",
+                              "key": "up",
+                              "value": "<integer>",
+                              "type": "text"
+                            },
+                            {
+                              "description": "Number of pixels to extend downward.",
+                              "key": "down",
+                              "value": "<integer>",
+                              "type": "text"
+                            },
+                            {
+                              "description": "A value to control randomness in generation.",
+                              "key": "seed",
+                              "value": "0",
+                              "type": "text"
+                            },
+                            {
+                              "description": "The output format of the edited image. (This can only be one of jpeg,png,webp)",
+                              "key": "output_format",
+                              "value": "png",
+                              "type": "text"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2beta/stable-image/edit/outpaint",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2beta",
+                            "stable-image",
+                            "edit",
+                            "outpaint"
+                          ]
+                        },
+                        "description": "Extends an image by generating new content beyond its current boundaries. Specify the number of pixels to extend in each direction and optionally provide a text prompt to guide the content of the extended regions. The generated content seamlessly continues the existing scene."
+                      },
+                      "response": [
+                        {
+                          "id": "6b62449a-1212-4a8d-b505-1a9a717a6c74",
+                          "name": "Successfully outpainted image",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "image/jpeg"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) The source image to extend.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "Optional text describing what should appear in the extended regions.",
+                                  "key": "prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Number of pixels to extend to the left.",
+                                  "key": "left",
+                                  "value": "<integer>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Number of pixels to extend to the right.",
+                                  "key": "right",
+                                  "value": "<integer>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Number of pixels to extend upward.",
+                                  "key": "up",
+                                  "value": "<integer>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Number of pixels to extend downward.",
+                                  "key": "down",
+                                  "value": "<integer>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "A value to control randomness in generation.",
+                                  "key": "seed",
+                                  "value": "0",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The output format of the edited image. (This can only be one of jpeg,png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/edit/outpaint",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "edit",
+                                "outpaint"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"image\": \"<string>\",\n  \"finish_reason\": \"SUCCESS\",\n  \"seed\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T03:01:59.000Z",
+                          "updatedAt": "2026-07-28T03:01:59.000Z",
+                          "uid": "35240-6b62449a-1212-4a8d-b505-1a9a717a6c74"
+                        },
+                        {
+                          "id": "af47809e-4edb-43b6-a12d-8fca73816966",
+                          "name": "Bad request due to invalid parameters",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) The source image to extend.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "Optional text describing what should appear in the extended regions.",
+                                  "key": "prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Number of pixels to extend to the left.",
+                                  "key": "left",
+                                  "value": "<integer>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Number of pixels to extend to the right.",
+                                  "key": "right",
+                                  "value": "<integer>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Number of pixels to extend upward.",
+                                  "key": "up",
+                                  "value": "<integer>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Number of pixels to extend downward.",
+                                  "key": "down",
+                                  "value": "<integer>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "A value to control randomness in generation.",
+                                  "key": "seed",
+                                  "value": "0",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The output format of the edited image. (This can only be one of jpeg,png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/edit/outpaint",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "edit",
+                                "outpaint"
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:01:59.000Z",
+                          "updatedAt": "2026-07-28T03:01:59.000Z",
+                          "uid": "35240-af47809e-4edb-43b6-a12d-8fca73816966"
+                        },
+                        {
+                          "id": "25aa538e-4792-4376-b3bb-e41bbdf3c152",
+                          "name": "Unauthorized due to missing or invalid API key",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) The source image to extend.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "Optional text describing what should appear in the extended regions.",
+                                  "key": "prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Number of pixels to extend to the left.",
+                                  "key": "left",
+                                  "value": "<integer>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Number of pixels to extend to the right.",
+                                  "key": "right",
+                                  "value": "<integer>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Number of pixels to extend upward.",
+                                  "key": "up",
+                                  "value": "<integer>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Number of pixels to extend downward.",
+                                  "key": "down",
+                                  "value": "<integer>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "A value to control randomness in generation.",
+                                  "key": "seed",
+                                  "value": "0",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The output format of the edited image. (This can only be one of jpeg,png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/edit/outpaint",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "edit",
+                                "outpaint"
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:01:59.000Z",
+                          "updatedAt": "2026-07-28T03:01:59.000Z",
+                          "uid": "35240-25aa538e-4792-4376-b3bb-e41bbdf3c152"
+                        },
+                        {
+                          "id": "27babe8d-77cd-4649-9a45-5e6473ba5ec1",
+                          "name": "Forbidden due to content moderation or insufficient permissions",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) The source image to extend.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "Optional text describing what should appear in the extended regions.",
+                                  "key": "prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Number of pixels to extend to the left.",
+                                  "key": "left",
+                                  "value": "<integer>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Number of pixels to extend to the right.",
+                                  "key": "right",
+                                  "value": "<integer>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Number of pixels to extend upward.",
+                                  "key": "up",
+                                  "value": "<integer>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Number of pixels to extend downward.",
+                                  "key": "down",
+                                  "value": "<integer>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "A value to control randomness in generation.",
+                                  "key": "seed",
+                                  "value": "0",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The output format of the edited image. (This can only be one of jpeg,png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/edit/outpaint",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "edit",
+                                "outpaint"
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:01:59.000Z",
+                          "updatedAt": "2026-07-28T03:01:59.000Z",
+                          "uid": "35240-27babe8d-77cd-4649-9a45-5e6473ba5ec1"
+                        },
+                        {
+                          "id": "a6519eea-0f9e-4cfd-81da-b18a7cf3a582",
+                          "name": "Rate limit exceeded",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) The source image to extend.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "Optional text describing what should appear in the extended regions.",
+                                  "key": "prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Number of pixels to extend to the left.",
+                                  "key": "left",
+                                  "value": "<integer>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Number of pixels to extend to the right.",
+                                  "key": "right",
+                                  "value": "<integer>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Number of pixels to extend upward.",
+                                  "key": "up",
+                                  "value": "<integer>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Number of pixels to extend downward.",
+                                  "key": "down",
+                                  "value": "<integer>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "A value to control randomness in generation.",
+                                  "key": "seed",
+                                  "value": "0",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The output format of the edited image. (This can only be one of jpeg,png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/edit/outpaint",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "edit",
+                                "outpaint"
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:01:59.000Z",
+                          "updatedAt": "2026-07-28T03:01:59.000Z",
+                          "uid": "35240-a6519eea-0f9e-4cfd-81da-b18a7cf3a582"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:01:59.000Z",
+                      "updatedAt": "2026-07-28T03:01:59.000Z",
+                      "uid": "35240-1db42b64-3478-4107-9019-1d9f724a6358"
+                    }
+                  ],
+                  "id": "d90e9725-5919-4848-9df8-20c0d99718dc",
+                  "createdAt": "2026-07-28T03:01:59.000Z",
+                  "updatedAt": "2026-07-28T03:01:59.000Z",
+                  "uid": "35240-d90e9725-5919-4848-9df8-20c0d99718dc"
+                }
+              ],
+              "id": "e832af15-1ebe-470f-9baf-36b6ba3b0ec0",
+              "createdAt": "2026-07-28T03:01:59.000Z",
+              "updatedAt": "2026-07-28T03:01:59.000Z",
+              "uid": "35240-e832af15-1ebe-470f-9baf-36b6ba3b0ec0"
+            }
+          ],
+          "id": "133065e2-0c02-45a4-a995-8d5aac22059e",
+          "createdAt": "2026-07-28T03:01:59.000Z",
+          "updatedAt": "2026-07-28T03:01:59.000Z",
+          "uid": "35240-133065e2-0c02-45a4-a995-8d5aac22059e"
+        }
+      ],
+      "id": "4d39cf3c-0d4c-4b4c-9b50-dc350bc7c8e0",
+      "createdAt": "2026-07-28T03:01:59.000Z",
+      "updatedAt": "2026-07-28T03:01:59.000Z",
+      "uid": "35240-4d39cf3c-0d4c-4b4c-9b50-dc350bc7c8e0"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.stability.ai"
+    }
+  ]
+}

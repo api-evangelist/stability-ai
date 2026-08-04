@@ -1,0 +1,741 @@
+{
+  "info": {
+    "_postman_id": "59c2de6b-faf6-441f-b83c-455b78a337ba",
+    "name": "Stability AI Stable Fast 3D 3D Generation Creative Upscale API",
+    "description": "The Stability AI Stable Fast 3D API generates textured 3D mesh assets from single input images. The API rapidly produces 3D models suitable for use in games, augmented reality, virtual reality, and product visualization workflows. Developers can convert 2D images into fully textured 3D objects with UV-unwrapped meshes, enabling rapid prototyping and asset creation without manual 3D modeling.\n\nContact Support:\n Name: Stability AI Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:01:47.000Z",
+    "updatedAt": "2026-07-28T03:01:47.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-59c2de6b-faf6-441f-b83c-455b78a337ba"
+  },
+  "item": [
+    {
+      "name": "v2beta",
+      "item": [
+        {
+          "name": "stable-image",
+          "item": [
+            {
+              "name": "upscale",
+              "item": [
+                {
+                  "name": "creative",
+                  "item": [
+                    {
+                      "name": "result",
+                      "item": [
+                        {
+                          "name": "{id}",
+                          "item": [
+                            {
+                              "name": "Get the result of a creative upscale",
+                              "id": "42b8d1e3-a488-4d06-9611-bec6b923c374",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "image/jpeg"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2beta/stable-image/upscale/creative/result/:id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2beta",
+                                    "stable-image",
+                                    "upscale",
+                                    "creative",
+                                    "result",
+                                    ":id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "e374f8f7-5cfa-42dc-895c-113369d4b4a0",
+                                      "key": "id",
+                                      "value": "<string>",
+                                      "description": "(Required) The unique identifier of the asynchronous generation to poll for results."
+                                    }
+                                  ]
+                                },
+                                "description": "Polls for the result of an asynchronous creative upscale operation. Returns the upscaled image when processing is complete or a status indicating the generation is still in progress."
+                              },
+                              "response": [
+                                {
+                                  "id": "ba69bb82-2842-4fc9-82f2-5533843c95f1",
+                                  "name": "Upscaled image is ready",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "image/jpeg"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2beta/stable-image/upscale/creative/result/:id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2beta",
+                                        "stable-image",
+                                        "upscale",
+                                        "creative",
+                                        "result",
+                                        ":id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"image\": \"<string>\",\n  \"finish_reason\": \"CONTENT_FILTERED\",\n  \"seed\": \"<integer>\"\n}",
+                                  "createdAt": "2026-07-28T03:01:48.000Z",
+                                  "updatedAt": "2026-07-28T03:01:48.000Z",
+                                  "uid": "35240-ba69bb82-2842-4fc9-82f2-5533843c95f1"
+                                },
+                                {
+                                  "id": "719b1dc8-4f55-48a0-be8e-cdf6a82bc951",
+                                  "name": "Generation is still in progress",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2beta/stable-image/upscale/creative/result/:id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2beta",
+                                        "stable-image",
+                                        "upscale",
+                                        "creative",
+                                        "result",
+                                        ":id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Accepted",
+                                  "code": 202,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"id\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                                  "createdAt": "2026-07-28T03:01:48.000Z",
+                                  "updatedAt": "2026-07-28T03:01:48.000Z",
+                                  "uid": "35240-719b1dc8-4f55-48a0-be8e-cdf6a82bc951"
+                                },
+                                {
+                                  "id": "346bd399-50b5-4fdd-8b06-daea2d97283d",
+                                  "name": "Unauthorized due to missing or invalid API key",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2beta/stable-image/upscale/creative/result/:id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2beta",
+                                        "stable-image",
+                                        "upscale",
+                                        "creative",
+                                        "result",
+                                        ":id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                                  "createdAt": "2026-07-28T03:01:48.000Z",
+                                  "updatedAt": "2026-07-28T03:01:48.000Z",
+                                  "uid": "35240-346bd399-50b5-4fdd-8b06-daea2d97283d"
+                                },
+                                {
+                                  "id": "9a47b927-bfef-438b-8360-2442cb4c7a17",
+                                  "name": "Generation ID not found",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2beta/stable-image/upscale/creative/result/:id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2beta",
+                                        "stable-image",
+                                        "upscale",
+                                        "creative",
+                                        "result",
+                                        ":id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                                  "createdAt": "2026-07-28T03:01:48.000Z",
+                                  "updatedAt": "2026-07-28T03:01:48.000Z",
+                                  "uid": "35240-9a47b927-bfef-438b-8360-2442cb4c7a17"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T03:01:48.000Z",
+                              "updatedAt": "2026-07-28T03:01:48.000Z",
+                              "uid": "35240-42b8d1e3-a488-4d06-9611-bec6b923c374"
+                            }
+                          ],
+                          "id": "23e147e0-8609-4f1d-aa34-8cf382ced8fc",
+                          "createdAt": "2026-07-28T03:01:48.000Z",
+                          "updatedAt": "2026-07-28T03:01:48.000Z",
+                          "uid": "35240-23e147e0-8609-4f1d-aa34-8cf382ced8fc"
+                        }
+                      ],
+                      "id": "45400222-08ce-4779-82da-ba9d6f8ac196",
+                      "createdAt": "2026-07-28T03:01:48.000Z",
+                      "updatedAt": "2026-07-28T03:01:48.000Z",
+                      "uid": "35240-45400222-08ce-4779-82da-ba9d6f8ac196"
+                    },
+                    {
+                      "name": "Creative upscale an image",
+                      "id": "1ba617ec-e5de-4a7d-a136-930e6e4a18df",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "description": "(Required) The image to upscale. Must be a valid image file.",
+                              "key": "image",
+                              "type": "file",
+                              "value": null
+                            },
+                            {
+                              "description": "(Required) Text describing the image content to guide the creative upscaling process and enhancement of details.",
+                              "key": "prompt",
+                              "value": "<string>",
+                              "type": "text"
+                            },
+                            {
+                              "description": "Text describing elements to avoid adding during upscaling.",
+                              "key": "negative_prompt",
+                              "value": "<string>",
+                              "type": "text"
+                            },
+                            {
+                              "description": "A value to control randomness in generation.",
+                              "key": "seed",
+                              "value": "0",
+                              "type": "text"
+                            },
+                            {
+                              "description": "The output format of the upscaled image. (This can only be one of jpeg,png,webp)",
+                              "key": "output_format",
+                              "value": "png",
+                              "type": "text"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2beta/stable-image/upscale/creative",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2beta",
+                            "stable-image",
+                            "upscale",
+                            "creative"
+                          ]
+                        },
+                        "description": "Increases the resolution of an image while enhancing details and adding creative improvements. An optional text prompt can guide the enhancement process. This produces higher quality results than conservative upscaling but takes longer to process. This is an asynchronous endpoint that returns a generation ID for polling."
+                      },
+                      "response": [
+                        {
+                          "id": "80e0542f-9391-4d08-b112-727d3b250986",
+                          "name": "Generation started successfully",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) The image to upscale. Must be a valid image file.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "(Required) Text describing the image content to guide the creative upscaling process and enhancement of details.",
+                                  "key": "prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Text describing elements to avoid adding during upscaling.",
+                                  "key": "negative_prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "A value to control randomness in generation.",
+                                  "key": "seed",
+                                  "value": "0",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The output format of the upscaled image. (This can only be one of jpeg,png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/upscale/creative",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "upscale",
+                                "creative"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:01:48.000Z",
+                          "updatedAt": "2026-07-28T03:01:48.000Z",
+                          "uid": "35240-80e0542f-9391-4d08-b112-727d3b250986"
+                        },
+                        {
+                          "id": "352bebee-93db-4e25-a32e-71bf4be610e5",
+                          "name": "Bad request due to invalid parameters",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) The image to upscale. Must be a valid image file.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "(Required) Text describing the image content to guide the creative upscaling process and enhancement of details.",
+                                  "key": "prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Text describing elements to avoid adding during upscaling.",
+                                  "key": "negative_prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "A value to control randomness in generation.",
+                                  "key": "seed",
+                                  "value": "0",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The output format of the upscaled image. (This can only be one of jpeg,png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/upscale/creative",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "upscale",
+                                "creative"
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:01:48.000Z",
+                          "updatedAt": "2026-07-28T03:01:48.000Z",
+                          "uid": "35240-352bebee-93db-4e25-a32e-71bf4be610e5"
+                        },
+                        {
+                          "id": "08481c7e-4a48-4931-bcc8-bc7396198563",
+                          "name": "Unauthorized due to missing or invalid API key",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) The image to upscale. Must be a valid image file.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "(Required) Text describing the image content to guide the creative upscaling process and enhancement of details.",
+                                  "key": "prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Text describing elements to avoid adding during upscaling.",
+                                  "key": "negative_prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "A value to control randomness in generation.",
+                                  "key": "seed",
+                                  "value": "0",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The output format of the upscaled image. (This can only be one of jpeg,png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/upscale/creative",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "upscale",
+                                "creative"
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:01:48.000Z",
+                          "updatedAt": "2026-07-28T03:01:48.000Z",
+                          "uid": "35240-08481c7e-4a48-4931-bcc8-bc7396198563"
+                        },
+                        {
+                          "id": "51c24dec-f15d-43f7-8819-6f75a3bbc5a3",
+                          "name": "Rate limit exceeded",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) The image to upscale. Must be a valid image file.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "(Required) Text describing the image content to guide the creative upscaling process and enhancement of details.",
+                                  "key": "prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "Text describing elements to avoid adding during upscaling.",
+                                  "key": "negative_prompt",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "A value to control randomness in generation.",
+                                  "key": "seed",
+                                  "value": "0",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The output format of the upscaled image. (This can only be one of jpeg,png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/upscale/creative",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "upscale",
+                                "creative"
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:01:48.000Z",
+                          "updatedAt": "2026-07-28T03:01:48.000Z",
+                          "uid": "35240-51c24dec-f15d-43f7-8819-6f75a3bbc5a3"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:01:48.000Z",
+                      "updatedAt": "2026-07-28T03:01:48.000Z",
+                      "uid": "35240-1ba617ec-e5de-4a7d-a136-930e6e4a18df"
+                    }
+                  ],
+                  "id": "c62d685e-6dd8-4105-aed0-887416e300f3",
+                  "createdAt": "2026-07-28T03:01:48.000Z",
+                  "updatedAt": "2026-07-28T03:01:48.000Z",
+                  "uid": "35240-c62d685e-6dd8-4105-aed0-887416e300f3"
+                }
+              ],
+              "id": "d656f153-7069-48b3-9b3d-cf5fa7773cf8",
+              "createdAt": "2026-07-28T03:01:48.000Z",
+              "updatedAt": "2026-07-28T03:01:48.000Z",
+              "uid": "35240-d656f153-7069-48b3-9b3d-cf5fa7773cf8"
+            }
+          ],
+          "id": "bafb1647-1ead-4ab2-873c-eeb94502dd57",
+          "createdAt": "2026-07-28T03:01:48.000Z",
+          "updatedAt": "2026-07-28T03:01:48.000Z",
+          "uid": "35240-bafb1647-1ead-4ab2-873c-eeb94502dd57"
+        }
+      ],
+      "id": "c10c6ab2-2387-43d8-8cb3-98bc3b40776a",
+      "createdAt": "2026-07-28T03:01:48.000Z",
+      "updatedAt": "2026-07-28T03:01:48.000Z",
+      "uid": "35240-c10c6ab2-2387-43d8-8cb3-98bc3b40776a"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.stability.ai"
+    }
+  ]
+}

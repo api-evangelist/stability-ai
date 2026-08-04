@@ -1,0 +1,513 @@
+{
+  "info": {
+    "_postman_id": "665893bf-f0ba-478d-80c6-c41c63c4a331",
+    "name": "Stability AI Stable Fast 3D 3D Generation Erase API",
+    "description": "The Stability AI Stable Fast 3D API generates textured 3D mesh assets from single input images. The API rapidly produces 3D models suitable for use in games, augmented reality, virtual reality, and product visualization workflows. Developers can convert 2D images into fully textured 3D objects with UV-unwrapped meshes, enabling rapid prototyping and asset creation without manual 3D modeling.\n\nContact Support:\n Name: Stability AI Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:01:48.000Z",
+    "updatedAt": "2026-07-28T03:01:48.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-665893bf-f0ba-478d-80c6-c41c63c4a331"
+  },
+  "item": [
+    {
+      "name": "v2beta",
+      "item": [
+        {
+          "name": "stable-image",
+          "item": [
+            {
+              "name": "edit",
+              "item": [
+                {
+                  "name": "erase",
+                  "item": [
+                    {
+                      "name": "Erase an object from an image",
+                      "id": "128e3342-e0d1-42f5-8bfb-62ca88f9e778",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "image/jpeg"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "description": "(Required) The source image containing the object to erase.",
+                              "key": "image",
+                              "type": "file",
+                              "value": null
+                            },
+                            {
+                              "description": "A mask image indicating the region to erase. White pixels indicate areas to remove, black pixels indicate areas to preserve.",
+                              "key": "mask",
+                              "type": "file",
+                              "value": null
+                            },
+                            {
+                              "description": "A value to control randomness in generation.",
+                              "key": "seed",
+                              "value": "0",
+                              "type": "text"
+                            },
+                            {
+                              "description": "The output format of the edited image. (This can only be one of jpeg,png,webp)",
+                              "key": "output_format",
+                              "value": "png",
+                              "type": "text"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2beta/stable-image/edit/erase",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2beta",
+                            "stable-image",
+                            "edit",
+                            "erase"
+                          ]
+                        },
+                        "description": "Removes an object or region from an image by providing a mask over the area to erase. The AI fills in the erased area with contextually appropriate background content that blends naturally with the surrounding image."
+                      },
+                      "response": [
+                        {
+                          "id": "b835b63e-5f43-41f6-a244-dca81fb3990c",
+                          "name": "Successfully erased object from image",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "image/jpeg"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) The source image containing the object to erase.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "A mask image indicating the region to erase. White pixels indicate areas to remove, black pixels indicate areas to preserve.",
+                                  "key": "mask",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "A value to control randomness in generation.",
+                                  "key": "seed",
+                                  "value": "0",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The output format of the edited image. (This can only be one of jpeg,png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/edit/erase",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "edit",
+                                "erase"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"image\": \"<string>\",\n  \"finish_reason\": \"CONTENT_FILTERED\",\n  \"seed\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T03:01:49.000Z",
+                          "updatedAt": "2026-07-28T03:01:49.000Z",
+                          "uid": "35240-b835b63e-5f43-41f6-a244-dca81fb3990c"
+                        },
+                        {
+                          "id": "c80344a4-a789-4f37-b450-96d402d6370c",
+                          "name": "Bad request due to invalid parameters",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) The source image containing the object to erase.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "A mask image indicating the region to erase. White pixels indicate areas to remove, black pixels indicate areas to preserve.",
+                                  "key": "mask",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "A value to control randomness in generation.",
+                                  "key": "seed",
+                                  "value": "0",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The output format of the edited image. (This can only be one of jpeg,png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/edit/erase",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "edit",
+                                "erase"
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:01:49.000Z",
+                          "updatedAt": "2026-07-28T03:01:49.000Z",
+                          "uid": "35240-c80344a4-a789-4f37-b450-96d402d6370c"
+                        },
+                        {
+                          "id": "89253427-4d70-414c-be71-c8e046965576",
+                          "name": "Unauthorized due to missing or invalid API key",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) The source image containing the object to erase.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "A mask image indicating the region to erase. White pixels indicate areas to remove, black pixels indicate areas to preserve.",
+                                  "key": "mask",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "A value to control randomness in generation.",
+                                  "key": "seed",
+                                  "value": "0",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The output format of the edited image. (This can only be one of jpeg,png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/edit/erase",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "edit",
+                                "erase"
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:01:49.000Z",
+                          "updatedAt": "2026-07-28T03:01:49.000Z",
+                          "uid": "35240-89253427-4d70-414c-be71-c8e046965576"
+                        },
+                        {
+                          "id": "3192d8d3-78de-4529-bd90-c55f5d618f13",
+                          "name": "Forbidden due to content moderation or insufficient permissions",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) The source image containing the object to erase.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "A mask image indicating the region to erase. White pixels indicate areas to remove, black pixels indicate areas to preserve.",
+                                  "key": "mask",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "A value to control randomness in generation.",
+                                  "key": "seed",
+                                  "value": "0",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The output format of the edited image. (This can only be one of jpeg,png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/edit/erase",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "edit",
+                                "erase"
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:01:49.000Z",
+                          "updatedAt": "2026-07-28T03:01:49.000Z",
+                          "uid": "35240-3192d8d3-78de-4529-bd90-c55f5d618f13"
+                        },
+                        {
+                          "id": "bba271aa-3824-4afd-9d37-d75919752c88",
+                          "name": "Rate limit exceeded",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) The source image containing the object to erase.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "A mask image indicating the region to erase. White pixels indicate areas to remove, black pixels indicate areas to preserve.",
+                                  "key": "mask",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "A value to control randomness in generation.",
+                                  "key": "seed",
+                                  "value": "0",
+                                  "type": "text"
+                                },
+                                {
+                                  "description": "The output format of the edited image. (This can only be one of jpeg,png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/edit/erase",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "edit",
+                                "erase"
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:01:49.000Z",
+                          "updatedAt": "2026-07-28T03:01:49.000Z",
+                          "uid": "35240-bba271aa-3824-4afd-9d37-d75919752c88"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:01:49.000Z",
+                      "updatedAt": "2026-07-28T03:01:49.000Z",
+                      "uid": "35240-128e3342-e0d1-42f5-8bfb-62ca88f9e778"
+                    }
+                  ],
+                  "id": "6ed8f1a1-1d72-4443-9107-a2bd6566b2f7",
+                  "createdAt": "2026-07-28T03:01:49.000Z",
+                  "updatedAt": "2026-07-28T03:01:49.000Z",
+                  "uid": "35240-6ed8f1a1-1d72-4443-9107-a2bd6566b2f7"
+                }
+              ],
+              "id": "b3833a28-0572-4a6f-b3b5-343de988454b",
+              "createdAt": "2026-07-28T03:01:49.000Z",
+              "updatedAt": "2026-07-28T03:01:49.000Z",
+              "uid": "35240-b3833a28-0572-4a6f-b3b5-343de988454b"
+            }
+          ],
+          "id": "84b08f5a-942f-4b7d-90cf-cfe47dca8653",
+          "createdAt": "2026-07-28T03:01:49.000Z",
+          "updatedAt": "2026-07-28T03:01:49.000Z",
+          "uid": "35240-84b08f5a-942f-4b7d-90cf-cfe47dca8653"
+        }
+      ],
+      "id": "82064677-c2f1-4fc4-a6aa-6524da9ec33f",
+      "createdAt": "2026-07-28T03:01:49.000Z",
+      "updatedAt": "2026-07-28T03:01:49.000Z",
+      "uid": "35240-82064677-c2f1-4fc4-a6aa-6524da9ec33f"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.stability.ai"
+    }
+  ]
+}

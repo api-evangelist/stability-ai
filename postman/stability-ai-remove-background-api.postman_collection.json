@@ -1,0 +1,446 @@
+{
+  "info": {
+    "_postman_id": "11032da8-e328-41e0-9920-2ed68f7cde78",
+    "name": "Stability AI Stable Fast 3D 3D Generation Remove Background API",
+    "description": "The Stability AI Stable Fast 3D API generates textured 3D mesh assets from single input images. The API rapidly produces 3D models suitable for use in games, augmented reality, virtual reality, and product visualization workflows. Developers can convert 2D images into fully textured 3D objects with UV-unwrapped meshes, enabling rapid prototyping and asset creation without manual 3D modeling.\n\nContact Support:\n Name: Stability AI Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:01:59.000Z",
+    "updatedAt": "2026-07-28T03:02:00.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-11032da8-e328-41e0-9920-2ed68f7cde78"
+  },
+  "item": [
+    {
+      "name": "v2beta",
+      "item": [
+        {
+          "name": "stable-image",
+          "item": [
+            {
+              "name": "edit",
+              "item": [
+                {
+                  "name": "remove-background",
+                  "item": [
+                    {
+                      "name": "Remove background from an image",
+                      "id": "74a0c805-9ab2-4b88-bb22-2b24ed0471f8",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "image/png"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "description": "(Required) The source image from which to remove the background.",
+                              "key": "image",
+                              "type": "file",
+                              "value": null
+                            },
+                            {
+                              "description": "The output format of the image. PNG supports transparency for background removal. (This can only be one of png,webp)",
+                              "key": "output_format",
+                              "value": "png",
+                              "type": "text"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2beta/stable-image/edit/remove-background",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2beta",
+                            "stable-image",
+                            "edit",
+                            "remove-background"
+                          ]
+                        },
+                        "description": "Automatically detects and removes the background from an image, isolating the foreground subject. Returns the image with a transparent background in PNG format or a white background in JPEG format."
+                      },
+                      "response": [
+                        {
+                          "id": "8b785743-d1f4-4c81-ab73-043fcf6f86d9",
+                          "name": "Successfully removed background from image",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "image/png"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) The source image from which to remove the background.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "The output format of the image. PNG supports transparency for background removal. (This can only be one of png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/edit/remove-background",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "edit",
+                                "remove-background"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"image\": \"<string>\",\n  \"finish_reason\": \"CONTENT_FILTERED\",\n  \"seed\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T03:02:00.000Z",
+                          "updatedAt": "2026-07-28T03:02:00.000Z",
+                          "uid": "35240-8b785743-d1f4-4c81-ab73-043fcf6f86d9"
+                        },
+                        {
+                          "id": "254d2daa-8546-4f73-81d6-65c8ca6b5952",
+                          "name": "Bad request due to invalid parameters",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) The source image from which to remove the background.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "The output format of the image. PNG supports transparency for background removal. (This can only be one of png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/edit/remove-background",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "edit",
+                                "remove-background"
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:02:00.000Z",
+                          "updatedAt": "2026-07-28T03:02:00.000Z",
+                          "uid": "35240-254d2daa-8546-4f73-81d6-65c8ca6b5952"
+                        },
+                        {
+                          "id": "2e663ebb-91a8-4393-a333-24a0a978985e",
+                          "name": "Unauthorized due to missing or invalid API key",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) The source image from which to remove the background.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "The output format of the image. PNG supports transparency for background removal. (This can only be one of png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/edit/remove-background",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "edit",
+                                "remove-background"
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:02:00.000Z",
+                          "updatedAt": "2026-07-28T03:02:00.000Z",
+                          "uid": "35240-2e663ebb-91a8-4393-a333-24a0a978985e"
+                        },
+                        {
+                          "id": "606cc876-8747-41b6-963d-d2a69a09e384",
+                          "name": "Forbidden due to content moderation or insufficient permissions",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) The source image from which to remove the background.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "The output format of the image. PNG supports transparency for background removal. (This can only be one of png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/edit/remove-background",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "edit",
+                                "remove-background"
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:02:00.000Z",
+                          "updatedAt": "2026-07-28T03:02:00.000Z",
+                          "uid": "35240-606cc876-8747-41b6-963d-d2a69a09e384"
+                        },
+                        {
+                          "id": "3f4e155e-a721-4573-ab34-e88a9dcbfff8",
+                          "name": "Rate limit exceeded",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) The source image from which to remove the background.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "The output format of the image. PNG supports transparency for background removal. (This can only be one of png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/edit/remove-background",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "edit",
+                                "remove-background"
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:02:00.000Z",
+                          "updatedAt": "2026-07-28T03:02:00.000Z",
+                          "uid": "35240-3f4e155e-a721-4573-ab34-e88a9dcbfff8"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:02:00.000Z",
+                      "updatedAt": "2026-07-28T03:02:00.000Z",
+                      "uid": "35240-74a0c805-9ab2-4b88-bb22-2b24ed0471f8"
+                    }
+                  ],
+                  "id": "0c560eda-3a5f-414d-a4b2-ec6d0bd347ad",
+                  "createdAt": "2026-07-28T03:02:00.000Z",
+                  "updatedAt": "2026-07-28T03:02:00.000Z",
+                  "uid": "35240-0c560eda-3a5f-414d-a4b2-ec6d0bd347ad"
+                }
+              ],
+              "id": "0d05bc4c-7c7a-41da-bf7a-ca917b20d550",
+              "createdAt": "2026-07-28T03:02:00.000Z",
+              "updatedAt": "2026-07-28T03:02:00.000Z",
+              "uid": "35240-0d05bc4c-7c7a-41da-bf7a-ca917b20d550"
+            }
+          ],
+          "id": "8ba79934-a78a-48cd-b126-c0c12f27bca3",
+          "createdAt": "2026-07-28T03:02:00.000Z",
+          "updatedAt": "2026-07-28T03:02:00.000Z",
+          "uid": "35240-8ba79934-a78a-48cd-b126-c0c12f27bca3"
+        }
+      ],
+      "id": "9a02e550-c8c0-4044-8bd9-fe7d34a68523",
+      "createdAt": "2026-07-28T03:02:00.000Z",
+      "updatedAt": "2026-07-28T03:02:00.000Z",
+      "uid": "35240-9a02e550-c8c0-4044-8bd9-fe7d34a68523"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.stability.ai"
+    }
+  ]
+}

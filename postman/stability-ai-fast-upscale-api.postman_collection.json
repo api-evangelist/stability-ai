@@ -1,0 +1,381 @@
+{
+  "info": {
+    "_postman_id": "d37e0f1f-cd1e-4ecf-b942-0273a3fef59b",
+    "name": "Stability AI Stable Fast 3D 3D Generation Fast Upscale API",
+    "description": "The Stability AI Stable Fast 3D API generates textured 3D mesh assets from single input images. The API rapidly produces 3D models suitable for use in games, augmented reality, virtual reality, and product visualization workflows. Developers can convert 2D images into fully textured 3D objects with UV-unwrapped meshes, enabling rapid prototyping and asset creation without manual 3D modeling.\n\nContact Support:\n Name: Stability AI Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:01:49.000Z",
+    "updatedAt": "2026-07-28T03:01:49.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d37e0f1f-cd1e-4ecf-b942-0273a3fef59b"
+  },
+  "item": [
+    {
+      "name": "v2beta",
+      "item": [
+        {
+          "name": "stable-image",
+          "item": [
+            {
+              "name": "upscale",
+              "item": [
+                {
+                  "name": "fast",
+                  "item": [
+                    {
+                      "name": "Fast upscale an image",
+                      "id": "f7e84850-6e19-4bf5-9a18-ae366ca5dcaf",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "image/jpeg"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "description": "(Required) The image to upscale. Must be a valid image file.",
+                              "key": "image",
+                              "type": "file",
+                              "value": null
+                            },
+                            {
+                              "description": "The output format of the upscaled image. (This can only be one of jpeg,png,webp)",
+                              "key": "output_format",
+                              "value": "png",
+                              "type": "text"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2beta/stable-image/upscale/fast",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2beta",
+                            "stable-image",
+                            "upscale",
+                            "fast"
+                          ]
+                        },
+                        "description": "Quickly increases the resolution of an image with minimal processing time. This endpoint provides a good balance between speed and quality for bulk upscaling workflows."
+                      },
+                      "response": [
+                        {
+                          "id": "ce139b29-7e12-4d44-94db-e623c06aac9b",
+                          "name": "Successfully upscaled image",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "image/jpeg"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) The image to upscale. Must be a valid image file.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "The output format of the upscaled image. (This can only be one of jpeg,png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/upscale/fast",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "upscale",
+                                "fast"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"image\": \"<string>\",\n  \"finish_reason\": \"CONTENT_FILTERED\",\n  \"seed\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T03:01:50.000Z",
+                          "updatedAt": "2026-07-28T03:01:50.000Z",
+                          "uid": "35240-ce139b29-7e12-4d44-94db-e623c06aac9b"
+                        },
+                        {
+                          "id": "08b503de-aa7a-4996-b62d-5c2fe4cf43c2",
+                          "name": "Bad request due to invalid parameters",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) The image to upscale. Must be a valid image file.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "The output format of the upscaled image. (This can only be one of jpeg,png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/upscale/fast",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "upscale",
+                                "fast"
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:01:50.000Z",
+                          "updatedAt": "2026-07-28T03:01:50.000Z",
+                          "uid": "35240-08b503de-aa7a-4996-b62d-5c2fe4cf43c2"
+                        },
+                        {
+                          "id": "3b8dfc6e-8a6b-4c28-8a68-44ae7204b353",
+                          "name": "Unauthorized due to missing or invalid API key",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) The image to upscale. Must be a valid image file.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "The output format of the upscaled image. (This can only be one of jpeg,png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/upscale/fast",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "upscale",
+                                "fast"
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:01:50.000Z",
+                          "updatedAt": "2026-07-28T03:01:50.000Z",
+                          "uid": "35240-3b8dfc6e-8a6b-4c28-8a68-44ae7204b353"
+                        },
+                        {
+                          "id": "2154e038-da5d-4f47-92a3-0f314d8c9344",
+                          "name": "Rate limit exceeded",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) The image to upscale. Must be a valid image file.",
+                                  "key": "image",
+                                  "type": "file"
+                                },
+                                {
+                                  "description": "The output format of the upscaled image. (This can only be one of jpeg,png,webp)",
+                                  "key": "output_format",
+                                  "value": "png",
+                                  "type": "text"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2beta/stable-image/upscale/fast",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2beta",
+                                "stable-image",
+                                "upscale",
+                                "fast"
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:01:50.000Z",
+                          "updatedAt": "2026-07-28T03:01:50.000Z",
+                          "uid": "35240-2154e038-da5d-4f47-92a3-0f314d8c9344"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:01:50.000Z",
+                      "updatedAt": "2026-07-28T03:01:50.000Z",
+                      "uid": "35240-f7e84850-6e19-4bf5-9a18-ae366ca5dcaf"
+                    }
+                  ],
+                  "id": "149e1615-a097-4560-9cd8-5012cf587daa",
+                  "createdAt": "2026-07-28T03:01:50.000Z",
+                  "updatedAt": "2026-07-28T03:01:50.000Z",
+                  "uid": "35240-149e1615-a097-4560-9cd8-5012cf587daa"
+                }
+              ],
+              "id": "9f7d154b-9fef-4677-be9e-0477a1fb8102",
+              "createdAt": "2026-07-28T03:01:50.000Z",
+              "updatedAt": "2026-07-28T03:01:50.000Z",
+              "uid": "35240-9f7d154b-9fef-4677-be9e-0477a1fb8102"
+            }
+          ],
+          "id": "698ec7d5-eee6-48b5-9321-d52bc8fd30d1",
+          "createdAt": "2026-07-28T03:01:50.000Z",
+          "updatedAt": "2026-07-28T03:01:50.000Z",
+          "uid": "35240-698ec7d5-eee6-48b5-9321-d52bc8fd30d1"
+        }
+      ],
+      "id": "89a0a18e-17fa-4f4a-ab2b-d3463dc1dcce",
+      "createdAt": "2026-07-28T03:01:50.000Z",
+      "updatedAt": "2026-07-28T03:01:50.000Z",
+      "uid": "35240-89a0a18e-17fa-4f4a-ab2b-d3463dc1dcce"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.stability.ai"
+    }
+  ]
+}
