@@ -1,4 +1,5 @@
 aid: stability-ai
+specificationVersion: '0.23'
 accessModel:
   pricing: paid
   onboarding: self-serve
