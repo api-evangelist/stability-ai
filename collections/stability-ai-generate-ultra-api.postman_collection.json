@@ -1,0 +1,593 @@
+{
+  "item": [
+    {
+      "id": "29e3f904-eff1-493c-8357-0602411874e3",
+      "name": "Generate Ultra",
+      "description": {
+        "content": "Generate images using Stable Image Ultra, the highest quality model for state-of-the-art photorealistic and artistic image generation.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "61388e25-ea94-4b3e-b6fe-1c98a495fbb7",
+          "name": "Generate an image using Stable Image Ultra",
+          "request": {
+            "name": "Generate an image using Stable Image Ultra",
+            "description": {
+              "content": "Generates a high-quality image from a text prompt using the Stable Image Ultra model. This endpoint produces state-of-the-art results with exceptional detail, lighting, and composition. Requests use multipart form data encoding.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2beta",
+                "stable-image",
+                "generate",
+                "ultra"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "image/jpeg"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "prompt",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) Text describing what you wish to see in the output image. Strong, descriptive prompts that clearly define elements, colors, and subjects lead to better results."
+                },
+                {
+                  "key": "negative_prompt",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Text describing elements to exclude from the output image."
+                },
+                {
+                  "key": "aspect_ratio",
+                  "value": "1:1",
+                  "type": "text",
+                  "description": "Controls the aspect ratio of the generated image. (This can only be one of 16:9,1:1,21:9,2:3,3:2,4:5,5:4,9:16,9:21)"
+                },
+                {
+                  "key": "seed",
+                  "value": "0",
+                  "type": "text",
+                  "description": "A value to control randomness in generation. Set to 0 for a random seed. Using the same seed with the same parameters produces similar results."
+                },
+                {
+                  "key": "output_format",
+                  "value": "png",
+                  "type": "text",
+                  "description": "The output format of the generated image. (This can only be one of jpeg,png,webp)"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c92417bd-10c4-4064-8a60-4166a72f5285",
+              "name": "Successfully generated image",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2beta",
+                    "stable-image",
+                    "generate",
+                    "ultra"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "image/jpeg"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Text describing what you wish to see in the output image. Strong, descriptive prompts that clearly define elements, colors, and subjects lead to better results.",
+                        "type": "text/plain"
+                      },
+                      "key": "prompt",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Text describing elements to exclude from the output image.",
+                        "type": "text/plain"
+                      },
+                      "key": "negative_prompt",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Controls the aspect ratio of the generated image. (This can only be one of 16:9,1:1,21:9,2:3,3:2,4:5,5:4,9:16,9:21)",
+                        "type": "text/plain"
+                      },
+                      "key": "aspect_ratio",
+                      "value": "1:1",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "A value to control randomness in generation. Set to 0 for a random seed. Using the same seed with the same parameters produces similar results.",
+                        "type": "text/plain"
+                      },
+                      "key": "seed",
+                      "value": "0",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The output format of the generated image. (This can only be one of jpeg,png,webp)",
+                        "type": "text/plain"
+                      },
+                      "key": "output_format",
+                      "value": "png",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"image\": \"string\",\n  \"finish_reason\": \"CONTENT_FILTERED\",\n  \"seed\": 2559\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a81989c4-f3d8-4112-8b96-b232d4d54a44",
+              "name": "Bad request due to invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2beta",
+                    "stable-image",
+                    "generate",
+                    "ultra"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Text describing what you wish to see in the output image. Strong, descriptive prompts that clearly define elements, colors, and subjects lead to better results.",
+                        "type": "text/plain"
+                      },
+                      "key": "prompt",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Text describing elements to exclude from the output image.",
+                        "type": "text/plain"
+                      },
+                      "key": "negative_prompt",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Controls the aspect ratio of the generated image. (This can only be one of 16:9,1:1,21:9,2:3,3:2,4:5,5:4,9:16,9:21)",
+                        "type": "text/plain"
+                      },
+                      "key": "aspect_ratio",
+                      "value": "1:1",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "A value to control randomness in generation. Set to 0 for a random seed. Using the same seed with the same parameters produces similar results.",
+                        "type": "text/plain"
+                      },
+                      "key": "seed",
+                      "value": "0",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The output format of the generated image. (This can only be one of jpeg,png,webp)",
+                        "type": "text/plain"
+                      },
+                      "key": "output_format",
+                      "value": "png",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "76adee24-8ab2-489c-954a-dfc759de9a05",
+              "name": "Unauthorized due to missing or invalid API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2beta",
+                    "stable-image",
+                    "generate",
+                    "ultra"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Text describing what you wish to see in the output image. Strong, descriptive prompts that clearly define elements, colors, and subjects lead to better results.",
+                        "type": "text/plain"
+                      },
+                      "key": "prompt",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Text describing elements to exclude from the output image.",
+                        "type": "text/plain"
+                      },
+                      "key": "negative_prompt",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Controls the aspect ratio of the generated image. (This can only be one of 16:9,1:1,21:9,2:3,3:2,4:5,5:4,9:16,9:21)",
+                        "type": "text/plain"
+                      },
+                      "key": "aspect_ratio",
+                      "value": "1:1",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "A value to control randomness in generation. Set to 0 for a random seed. Using the same seed with the same parameters produces similar results.",
+                        "type": "text/plain"
+                      },
+                      "key": "seed",
+                      "value": "0",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The output format of the generated image. (This can only be one of jpeg,png,webp)",
+                        "type": "text/plain"
+                      },
+                      "key": "output_format",
+                      "value": "png",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c29f098a-b2df-4135-aaea-4e0f714b1f32",
+              "name": "Forbidden due to content moderation or insufficient permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2beta",
+                    "stable-image",
+                    "generate",
+                    "ultra"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Text describing what you wish to see in the output image. Strong, descriptive prompts that clearly define elements, colors, and subjects lead to better results.",
+                        "type": "text/plain"
+                      },
+                      "key": "prompt",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Text describing elements to exclude from the output image.",
+                        "type": "text/plain"
+                      },
+                      "key": "negative_prompt",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Controls the aspect ratio of the generated image. (This can only be one of 16:9,1:1,21:9,2:3,3:2,4:5,5:4,9:16,9:21)",
+                        "type": "text/plain"
+                      },
+                      "key": "aspect_ratio",
+                      "value": "1:1",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "A value to control randomness in generation. Set to 0 for a random seed. Using the same seed with the same parameters produces similar results.",
+                        "type": "text/plain"
+                      },
+                      "key": "seed",
+                      "value": "0",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The output format of the generated image. (This can only be one of jpeg,png,webp)",
+                        "type": "text/plain"
+                      },
+                      "key": "output_format",
+                      "value": "png",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5b88b6c3-09a8-4c1c-b34e-f9685d248b81",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2beta",
+                    "stable-image",
+                    "generate",
+                    "ultra"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Text describing what you wish to see in the output image. Strong, descriptive prompts that clearly define elements, colors, and subjects lead to better results.",
+                        "type": "text/plain"
+                      },
+                      "key": "prompt",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Text describing elements to exclude from the output image.",
+                        "type": "text/plain"
+                      },
+                      "key": "negative_prompt",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Controls the aspect ratio of the generated image. (This can only be one of 16:9,1:1,21:9,2:3,3:2,4:5,5:4,9:16,9:21)",
+                        "type": "text/plain"
+                      },
+                      "key": "aspect_ratio",
+                      "value": "1:1",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "A value to control randomness in generation. Set to 0 for a random seed. Using the same seed with the same parameters produces similar results.",
+                        "type": "text/plain"
+                      },
+                      "key": "seed",
+                      "value": "0",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The output format of the generated image. (This can only be one of jpeg,png,webp)",
+                        "type": "text/plain"
+                      },
+                      "key": "output_format",
+                      "value": "png",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.stability.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "150ec017-5e0c-4d02-aeac-41613e9adadd",
+    "name": "Stability AI Stable Fast 3D 3D Generation Generate Ultra API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Stability AI Stable Fast 3D API generates textured 3D mesh assets from single input images. The API rapidly produces 3D models suitable for use in games, augmented reality, virtual reality, and product visualization workflows. Developers can convert 2D images into fully textured 3D objects with UV-unwrapped meshes, enabling rapid prototyping and asset creation without manual 3D modeling.\n\nContact Support:\n Name: Stability AI Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,643 @@
+{
+  "item": [
+    {
+      "id": "1c8123d4-43e9-4515-98dd-457ded59f5e5",
+      "name": "Replace Background and Relight",
+      "description": {
+        "content": "Replace the background of an image and adjust lighting conditions using AI-powered scene understanding.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a9964d5e-ea91-483e-b468-24a160f5461b",
+          "name": "Replace background and adjust lighting",
+          "request": {
+            "name": "Replace background and adjust lighting",
+            "description": {
+              "content": "Replaces the background of an image with new content described by a text prompt and adjusts lighting conditions to match the new scene. The foreground subject is preserved while the background is regenerated.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2beta",
+                "stable-image",
+                "edit",
+                "replace-background-and-relight"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "image/jpeg"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "image",
+                  "type": "file",
+                  "description": "(Required) The source image whose background will be replaced."
+                },
+                {
+                  "key": "background_prompt",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Text describing the new background scene and lighting conditions."
+                },
+                {
+                  "key": "foreground_prompt",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Text describing any adjustments to the foreground subject."
+                },
+                {
+                  "key": "negative_prompt",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Text describing elements to exclude from the result."
+                },
+                {
+                  "key": "seed",
+                  "value": "0",
+                  "type": "text",
+                  "description": "A value to control randomness in generation."
+                },
+                {
+                  "key": "output_format",
+                  "value": "png",
+                  "type": "text",
+                  "description": "The output format of the edited image. (This can only be one of jpeg,png,webp)"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2e9da12c-106a-441c-8d24-9d7db08f3145",
+              "name": "Successfully replaced background and adjusted lighting",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2beta",
+                    "stable-image",
+                    "edit",
+                    "replace-background-and-relight"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "image/jpeg"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The source image whose background will be replaced.",
+                        "type": "text/plain"
+                      },
+                      "key": "image",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Text describing the new background scene and lighting conditions.",
+                        "type": "text/plain"
+                      },
+                      "key": "background_prompt",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Text describing any adjustments to the foreground subject.",
+                        "type": "text/plain"
+                      },
+                      "key": "foreground_prompt",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Text describing elements to exclude from the result.",
+                        "type": "text/plain"
+                      },
+                      "key": "negative_prompt",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "A value to control randomness in generation.",
+                        "type": "text/plain"
+                      },
+                      "key": "seed",
+                      "value": "0",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The output format of the edited image. (This can only be one of jpeg,png,webp)",
+                        "type": "text/plain"
+                      },
+                      "key": "output_format",
+                      "value": "png",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"image\": \"string\",\n  \"finish_reason\": \"SUCCESS\",\n  \"seed\": 5818\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bd5fa1c4-722a-41d7-867d-286c2fde39e8",
+              "name": "Bad request due to invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2beta",
+                    "stable-image",
+                    "edit",
+                    "replace-background-and-relight"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The source image whose background will be replaced.",
+                        "type": "text/plain"
+                      },
+                      "key": "image",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Text describing the new background scene and lighting conditions.",
+                        "type": "text/plain"
+                      },
+                      "key": "background_prompt",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Text describing any adjustments to the foreground subject.",
+                        "type": "text/plain"
+                      },
+                      "key": "foreground_prompt",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Text describing elements to exclude from the result.",
+                        "type": "text/plain"
+                      },
+                      "key": "negative_prompt",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "A value to control randomness in generation.",
+                        "type": "text/plain"
+                      },
+                      "key": "seed",
+                      "value": "0",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The output format of the edited image. (This can only be one of jpeg,png,webp)",
+                        "type": "text/plain"
+                      },
+                      "key": "output_format",
+                      "value": "png",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "268c0fa3-e13f-4814-9d46-b698ddca8db3",
+              "name": "Unauthorized due to missing or invalid API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2beta",
+                    "stable-image",
+                    "edit",
+                    "replace-background-and-relight"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The source image whose background will be replaced.",
+                        "type": "text/plain"
+                      },
+                      "key": "image",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Text describing the new background scene and lighting conditions.",
+                        "type": "text/plain"
+                      },
+                      "key": "background_prompt",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Text describing any adjustments to the foreground subject.",
+                        "type": "text/plain"
+                      },
+                      "key": "foreground_prompt",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Text describing elements to exclude from the result.",
+                        "type": "text/plain"
+                      },
+                      "key": "negative_prompt",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "A value to control randomness in generation.",
+                        "type": "text/plain"
+                      },
+                      "key": "seed",
+                      "value": "0",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The output format of the edited image. (This can only be one of jpeg,png,webp)",
+                        "type": "text/plain"
+                      },
+                      "key": "output_format",
+                      "value": "png",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "87f25cc3-3d77-4bb9-b66e-6281a5d9f22c",
+              "name": "Forbidden due to content moderation or insufficient permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2beta",
+                    "stable-image",
+                    "edit",
+                    "replace-background-and-relight"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The source image whose background will be replaced.",
+                        "type": "text/plain"
+                      },
+                      "key": "image",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Text describing the new background scene and lighting conditions.",
+                        "type": "text/plain"
+                      },
+                      "key": "background_prompt",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Text describing any adjustments to the foreground subject.",
+                        "type": "text/plain"
+                      },
+                      "key": "foreground_prompt",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Text describing elements to exclude from the result.",
+                        "type": "text/plain"
+                      },
+                      "key": "negative_prompt",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "A value to control randomness in generation.",
+                        "type": "text/plain"
+                      },
+                      "key": "seed",
+                      "value": "0",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The output format of the edited image. (This can only be one of jpeg,png,webp)",
+                        "type": "text/plain"
+                      },
+                      "key": "output_format",
+                      "value": "png",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "44aac701-5586-4624-a850-3db65b10f3c3",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2beta",
+                    "stable-image",
+                    "edit",
+                    "replace-background-and-relight"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The source image whose background will be replaced.",
+                        "type": "text/plain"
+                      },
+                      "key": "image",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Text describing the new background scene and lighting conditions.",
+                        "type": "text/plain"
+                      },
+                      "key": "background_prompt",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Text describing any adjustments to the foreground subject.",
+                        "type": "text/plain"
+                      },
+                      "key": "foreground_prompt",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Text describing elements to exclude from the result.",
+                        "type": "text/plain"
+                      },
+                      "key": "negative_prompt",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "A value to control randomness in generation.",
+                        "type": "text/plain"
+                      },
+                      "key": "seed",
+                      "value": "0",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The output format of the edited image. (This can only be one of jpeg,png,webp)",
+                        "type": "text/plain"
+                      },
+                      "key": "output_format",
+                      "value": "png",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.stability.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b10e63be-bbb4-4335-84f0-341b2b786f0f",
+    "name": "Stability AI Stable Fast 3D 3D Generation Replace Background and Relight API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Stability AI Stable Fast 3D API generates textured 3D mesh assets from single input images. The API rapidly produces 3D models suitable for use in games, augmented reality, virtual reality, and product visualization workflows. Developers can convert 2D images into fully textured 3D objects with UV-unwrapped meshes, enabling rapid prototyping and asset creation without manual 3D modeling.\n\nContact Support:\n Name: Stability AI Support",
+      "type": "text/plain"
+    }
+  }
+}

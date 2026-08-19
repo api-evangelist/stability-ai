@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Stability AI Stable Fast 3D 3D Generation Replace Background and Relight API",
+    "version": "v2beta"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Replace Background and Relight",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Replace background and adjust lighting",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.stability.ai/v2beta/stable-image/edit/replace-background-and-relight",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Replaces the background of an image with new content described by a text prompt and adjusts lighting conditions to match the new scene. The foreground subject is preserved while the background is regenerated."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

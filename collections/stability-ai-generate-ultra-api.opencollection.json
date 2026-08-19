@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Stability AI Stable Fast 3D 3D Generation Generate Ultra API",
+    "version": "v2beta"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Generate Ultra",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate an image using Stable Image Ultra",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.stability.ai/v2beta/stable-image/generate/ultra",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Generates a high-quality image from a text prompt using the Stable Image Ultra model. This endpoint produces state-of-the-art results with exceptional detail, lighting, and composition. Requests use multipart form data encoding."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

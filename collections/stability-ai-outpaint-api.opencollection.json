@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Stability AI Stable Fast 3D 3D Generation Outpaint API",
+    "version": "v2beta"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Outpaint",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Extend an image beyond its boundaries",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.stability.ai/v2beta/stable-image/edit/outpaint",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Extends an image by generating new content beyond its current boundaries. Specify the number of pixels to extend in each direction and optionally provide a text prompt to guide the content of the extended regions. The generated content seamlessly continues the existing scene."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

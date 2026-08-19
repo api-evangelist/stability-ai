@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Stability AI Stable Fast 3D 3D Generation Generate SD3 API",
+    "version": "v2beta"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Generate SD3",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate an image using Stable Diffusion 3",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.stability.ai/v2beta/stable-image/generate/sd3",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Generates an image using Stable Diffusion 3 or 3.5 models. Supports both text-to-image and image-to-image generation modes. When an image is provided along with a prompt, the model uses it as a reference guided by the strength parameter. Requests use multipart form data encoding."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

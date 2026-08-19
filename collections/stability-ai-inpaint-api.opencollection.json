@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Stability AI Stable Fast 3D 3D Generation Inpaint API",
+    "version": "v2beta"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Inpaint",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Inpaint a masked region of an image",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.stability.ai/v2beta/stable-image/edit/inpaint",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Fills in a masked region of an input image using AI-guided inpainting. Provide a source image, a mask indicating the region to fill, and a text prompt describing what should appear in the filled area. The result seamlessly blends with the surrounding image content."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

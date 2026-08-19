@@ -1,0 +1,644 @@
+{
+  "item": [
+    {
+      "id": "46fba501-cfc0-4340-90b2-fea2a38d6a0e",
+      "name": "Generate Core",
+      "description": {
+        "content": "Generate images using Stable Image Core, a fast and affordable model for high-quality image generation.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "346fbc5d-c384-43be-b5fd-d7721908d0a9",
+          "name": "Generate an image using Stable Image Core",
+          "request": {
+            "name": "Generate an image using Stable Image Core",
+            "description": {
+              "content": "Generates an image from a text prompt using the Stable Image Core model. This endpoint provides fast and affordable generation with high-quality results suitable for most use cases. Requests use multipart form data encoding.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2beta",
+                "stable-image",
+                "generate",
+                "core"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "image/jpeg"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "prompt",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) Text describing what you wish to see in the output image."
+                },
+                {
+                  "key": "negative_prompt",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Text describing elements to exclude from the output image."
+                },
+                {
+                  "key": "aspect_ratio",
+                  "value": "1:1",
+                  "type": "text",
+                  "description": "Controls the aspect ratio of the generated image. (This can only be one of 16:9,1:1,21:9,2:3,3:2,4:5,5:4,9:16,9:21)"
+                },
+                {
+                  "key": "seed",
+                  "value": "0",
+                  "type": "text",
+                  "description": "A value to control randomness in generation."
+                },
+                {
+                  "key": "output_format",
+                  "value": "png",
+                  "type": "text",
+                  "description": "The output format of the generated image. (This can only be one of jpeg,png,webp)"
+                },
+                {
+                  "key": "style_preset",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "An optional style preset to guide the image model towards a particular visual style."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "bb11199d-3862-41ba-a054-c40da5922e75",
+              "name": "Successfully generated image",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2beta",
+                    "stable-image",
+                    "generate",
+                    "core"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "image/jpeg"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Text describing what you wish to see in the output image.",
+                        "type": "text/plain"
+                      },
+                      "key": "prompt",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Text describing elements to exclude from the output image.",
+                        "type": "text/plain"
+                      },
+                      "key": "negative_prompt",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Controls the aspect ratio of the generated image. (This can only be one of 16:9,1:1,21:9,2:3,3:2,4:5,5:4,9:16,9:21)",
+                        "type": "text/plain"
+                      },
+                      "key": "aspect_ratio",
+                      "value": "1:1",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "A value to control randomness in generation.",
+                        "type": "text/plain"
+                      },
+                      "key": "seed",
+                      "value": "0",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The output format of the generated image. (This can only be one of jpeg,png,webp)",
+                        "type": "text/plain"
+                      },
+                      "key": "output_format",
+                      "value": "png",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "An optional style preset to guide the image model towards a particular visual style.",
+                        "type": "text/plain"
+                      },
+                      "key": "style_preset",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"image\": \"string\",\n  \"finish_reason\": \"CONTENT_FILTERED\",\n  \"seed\": 6320\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "35f922c2-0184-41cd-ad79-39794fc3b812",
+              "name": "Bad request due to invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2beta",
+                    "stable-image",
+                    "generate",
+                    "core"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Text describing what you wish to see in the output image.",
+                        "type": "text/plain"
+                      },
+                      "key": "prompt",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Text describing elements to exclude from the output image.",
+                        "type": "text/plain"
+                      },
+                      "key": "negative_prompt",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Controls the aspect ratio of the generated image. (This can only be one of 16:9,1:1,21:9,2:3,3:2,4:5,5:4,9:16,9:21)",
+                        "type": "text/plain"
+                      },
+                      "key": "aspect_ratio",
+                      "value": "1:1",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "A value to control randomness in generation.",
+                        "type": "text/plain"
+                      },
+                      "key": "seed",
+                      "value": "0",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The output format of the generated image. (This can only be one of jpeg,png,webp)",
+                        "type": "text/plain"
+                      },
+                      "key": "output_format",
+                      "value": "png",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "An optional style preset to guide the image model towards a particular visual style.",
+                        "type": "text/plain"
+                      },
+                      "key": "style_preset",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b90ffd8a-2a63-454e-a1c7-48a46c8278cc",
+              "name": "Unauthorized due to missing or invalid API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2beta",
+                    "stable-image",
+                    "generate",
+                    "core"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Text describing what you wish to see in the output image.",
+                        "type": "text/plain"
+                      },
+                      "key": "prompt",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Text describing elements to exclude from the output image.",
+                        "type": "text/plain"
+                      },
+                      "key": "negative_prompt",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Controls the aspect ratio of the generated image. (This can only be one of 16:9,1:1,21:9,2:3,3:2,4:5,5:4,9:16,9:21)",
+                        "type": "text/plain"
+                      },
+                      "key": "aspect_ratio",
+                      "value": "1:1",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "A value to control randomness in generation.",
+                        "type": "text/plain"
+                      },
+                      "key": "seed",
+                      "value": "0",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The output format of the generated image. (This can only be one of jpeg,png,webp)",
+                        "type": "text/plain"
+                      },
+                      "key": "output_format",
+                      "value": "png",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "An optional style preset to guide the image model towards a particular visual style.",
+                        "type": "text/plain"
+                      },
+                      "key": "style_preset",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5c0c4c2a-d719-403e-88fc-c7320f5bcc98",
+              "name": "Forbidden due to content moderation or insufficient permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2beta",
+                    "stable-image",
+                    "generate",
+                    "core"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Text describing what you wish to see in the output image.",
+                        "type": "text/plain"
+                      },
+                      "key": "prompt",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Text describing elements to exclude from the output image.",
+                        "type": "text/plain"
+                      },
+                      "key": "negative_prompt",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Controls the aspect ratio of the generated image. (This can only be one of 16:9,1:1,21:9,2:3,3:2,4:5,5:4,9:16,9:21)",
+                        "type": "text/plain"
+                      },
+                      "key": "aspect_ratio",
+                      "value": "1:1",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "A value to control randomness in generation.",
+                        "type": "text/plain"
+                      },
+                      "key": "seed",
+                      "value": "0",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The output format of the generated image. (This can only be one of jpeg,png,webp)",
+                        "type": "text/plain"
+                      },
+                      "key": "output_format",
+                      "value": "png",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "An optional style preset to guide the image model towards a particular visual style.",
+                        "type": "text/plain"
+                      },
+                      "key": "style_preset",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4bb197c1-f65c-455c-81eb-90f3b70b388f",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2beta",
+                    "stable-image",
+                    "generate",
+                    "core"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Text describing what you wish to see in the output image.",
+                        "type": "text/plain"
+                      },
+                      "key": "prompt",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Text describing elements to exclude from the output image.",
+                        "type": "text/plain"
+                      },
+                      "key": "negative_prompt",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Controls the aspect ratio of the generated image. (This can only be one of 16:9,1:1,21:9,2:3,3:2,4:5,5:4,9:16,9:21)",
+                        "type": "text/plain"
+                      },
+                      "key": "aspect_ratio",
+                      "value": "1:1",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "A value to control randomness in generation.",
+                        "type": "text/plain"
+                      },
+                      "key": "seed",
+                      "value": "0",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The output format of the generated image. (This can only be one of jpeg,png,webp)",
+                        "type": "text/plain"
+                      },
+                      "key": "output_format",
+                      "value": "png",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "An optional style preset to guide the image model towards a particular visual style.",
+                        "type": "text/plain"
+                      },
+                      "key": "style_preset",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.stability.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "df7dfee9-130c-45fd-a806-780453ac2109",
+    "name": "Stability AI Stable Fast 3D 3D Generation Generate Core API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Stability AI Stable Fast 3D API generates textured 3D mesh assets from single input images. The API rapidly produces 3D models suitable for use in games, augmented reality, virtual reality, and product visualization workflows. Developers can convert 2D images into fully textured 3D objects with UV-unwrapped meshes, enabling rapid prototyping and asset creation without manual 3D modeling.\n\nContact Support:\n Name: Stability AI Support",
+      "type": "text/plain"
+    }
+  }
+}

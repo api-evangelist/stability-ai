@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Stability AI Stable Fast 3D 3D Generation Sketch API",
+    "version": "v2beta"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sketch",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate an image from a sketch",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.stability.ai/v2beta/stable-image/control/sketch",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Generates a detailed image from a hand-drawn sketch or line drawing. The sketch provides the structural composition while the text prompt guides the content, colors, textures, and style of the output image."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

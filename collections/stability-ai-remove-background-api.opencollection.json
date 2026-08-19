@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Stability AI Stable Fast 3D 3D Generation Remove Background API",
+    "version": "v2beta"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Remove Background",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Remove background from an image",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.stability.ai/v2beta/stable-image/edit/remove-background",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Automatically detects and removes the background from an image, isolating the foreground subject. Returns the image with a transparent background in PNG format or a white background in JPEG format."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Stability AI Stable Fast 3D 3D Generation Creative Upscale API",
+    "version": "v2beta"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Creative Upscale",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Creative upscale an image",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.stability.ai/v2beta/stable-image/upscale/creative",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Increases the resolution of an image while enhancing details and adding creative improvements. An optional text prompt can guide the enhancement process. This produces higher quality results than conservative upscaling but takes longer to process. This is an asynchronous endpoint that returns a generation ID for polling."
+        },
+        {
+          "info": {
+            "name": "Get the result of a creative upscale",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.stability.ai/v2beta/stable-image/upscale/creative/result/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the asynchronous generation to poll for results."
+              }
+            ]
+          },
+          "docs": "Polls for the result of an asynchronous creative upscale operation. Returns the upscaled image when processing is complete or a status indicating the generation is still in progress."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

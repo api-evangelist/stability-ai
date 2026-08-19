@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Stability AI Stable Fast 3D 3D Generation Search and Replace API",
+    "version": "v2beta"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Search and Replace",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search and replace objects in an image",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.stability.ai/v2beta/stable-image/edit/search-and-replace",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Finds specific objects within an image using a text description and replaces them with new content described by a prompt. This enables targeted object replacement without manually creating masks."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

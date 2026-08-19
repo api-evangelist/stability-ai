@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Stability AI Stable Fast 3D 3D Generation Search and Recolor API",
+    "version": "v2beta"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Search and Recolor",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search and recolor objects in an image",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.stability.ai/v2beta/stable-image/edit/search-and-recolor",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Finds specific objects within an image using a text description and recolors them based on a provided prompt. This enables targeted color changes to specific elements without affecting the rest of the image."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
