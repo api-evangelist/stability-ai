@@ -24,6 +24,16 @@ description: Stability AI is an AI company that develops open-source generative 
 url: https://raw.githubusercontent.com/api-evangelist/stability-ai/refs/heads/main/apis.yml
 tags:
 - 3D Generation
+- Artificial Intelligence
+- Generative AI
+- Image-Generation
+- Image Editing
+- Machine-Learning
+- Stable Diffusion
+- Text-to-Image
+- Video Generation
+tags_raw:
+- 3D Generation
 - AI
 - Generative AI
 - Image Generation
@@ -184,6 +194,8 @@ apis:
   humanURL: https://platform.stability.ai/docs/getting-started/stable-image
   baseURL: https://api.stability.ai
   tags:
+  - Image-to-Video
+  tags_raw:
   - Image to Video
   properties:
   - type: OpenAPI
@@ -344,6 +356,8 @@ apis:
   humanURL: https://platform.stability.ai/docs/getting-started/stable-image
   baseURL: https://api.stability.ai
   tags:
+  - Styles
+  tags_raw:
   - Style
   properties:
   - type: OpenAPI
