@@ -206,7 +206,7 @@ apis:
   humanURL: https://platform.stability.ai/docs/getting-started/stable-image
   baseURL: https://api.stability.ai
   tags:
-  - Image to Video
+  - Image-to-Video
   tags_raw:
   - Image to Video
   properties:
