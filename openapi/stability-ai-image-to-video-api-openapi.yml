@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Stability AI Stable Fast 3D 3D Generation Image to Video API
-  description: The Stability AI Stable Fast 3D API generates textured 3D mesh assets from single input images. The API rapidly produces 3D models suitable for use in games, augmented reality, virtual reality, and product visualization workflows. Developers can convert 2D images into fully textured 3D objects with UV-unwrapped meshes, enabling rapid prototyping and asset creation without manual 3D modeling.
+  title: Stability AI Stable Video Diffusion Image to Video API
+  description: The Stability AI Stable Video Diffusion API enables developers to generate short video clips from a single input image. Powered by the Stable Video Diffusion model, the API produces smooth animated sequences that bring static images to life with realistic motion. This is useful for creating product animations, visual effects previews, and dynamic content from existing image assets. The API uses an asynchronous workflow where a generation is started and then polled for completion.
   version: v2beta
   contact:
     name: Stability AI Support
@@ -133,6 +133,15 @@ components:
           maximum: 255
           default: 127
           description: Controls the amount of motion in the generated video. Lower values produce less motion, higher values produce more dynamic motion.
+    AsyncGenerationResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique generation ID used to poll for results.
+        status:
+          type: string
+          description: The current status of the generation.
     VideoGenerationResponse:
       type: object
       properties:
@@ -148,15 +157,6 @@ components:
         seed:
           type: integer
           description: The seed used for generation.
-    AsyncGenerationResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The unique generation ID used to poll for results.
-        status:
-          type: string
-          description: The current status of the generation.
   parameters:
     generationId:
       name: id
@@ -171,5 +171,5 @@ components:
       scheme: bearer
       description: API key authentication. Pass your Stability AI API key as a Bearer token in the Authorization header.
 externalDocs:
-  description: Stability AI API Documentation
-  url: https://platform.stability.ai/docs/api-reference
+  description: Stability AI Video Documentation
+  url: https://platform.stability.ai/docs/getting-started/stable-video-diffusion

@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Stability AI Stable Fast 3D 3D Generation Creative Upscale API
-  description: The Stability AI Stable Fast 3D API generates textured 3D mesh assets from single input images. The API rapidly produces 3D models suitable for use in games, augmented reality, virtual reality, and product visualization workflows. Developers can convert 2D images into fully textured 3D objects with UV-unwrapped meshes, enabling rapid prototyping and asset creation without manual 3D modeling.
+  title: Stability AI Stable Image Upscale Creative Upscale API
+  description: The Stability AI Stable Image Upscale API enables developers to increase the resolution of images using AI-powered upscaling models. The API offers conservative upscaling, which preserves the original image closely while increasing resolution, creative upscaling, which enhances and adds detail to images during the upscaling process, and fast upscaling for quick resolution increases. These endpoints are useful for improving image quality for print, display, or further processing workflows.
   version: v2beta
   contact:
     name: Stability AI Support
@@ -102,6 +102,18 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: A unique identifier for the error instance.
+        name:
+          type: string
+          description: The error type name.
+        message:
+          type: string
+          description: A human-readable description of the error.
     CreativeUpscaleRequest:
       type: object
       required:
@@ -134,18 +146,15 @@ components:
           - webp
           default: png
           description: The output format of the upscaled image.
-    ErrorResponse:
+    AsyncGenerationResponse:
       type: object
       properties:
         id:
           type: string
-          description: A unique identifier for the error instance.
-        name:
+          description: The unique generation ID used to poll for results.
+        status:
           type: string
-          description: The error type name.
-        message:
-          type: string
-          description: A human-readable description of the error.
+          description: The current status of the generation.
     UpscaleImageResponse:
       type: object
       properties:
@@ -161,15 +170,6 @@ components:
         seed:
           type: integer
           description: The seed used for generation.
-    AsyncGenerationResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The unique generation ID used to poll for results.
-        status:
-          type: string
-          description: The current status of the generation.
   parameters:
     generationId:
       name: id

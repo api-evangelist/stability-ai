@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Stability AI Stable Fast 3D 3D Generation Structure API
-  description: The Stability AI Stable Fast 3D API generates textured 3D mesh assets from single input images. The API rapidly produces 3D models suitable for use in games, augmented reality, virtual reality, and product visualization workflows. Developers can convert 2D images into fully textured 3D objects with UV-unwrapped meshes, enabling rapid prototyping and asset creation without manual 3D modeling.
+  title: Stability AI Stable Image Control Structure API
+  description: The Stability AI Stable Image Control API provides image-to-image generation guided by structural inputs such as sketches, reference structures, and style guides. Using ControlNet-based models, developers can generate new images that follow the composition, edges, or layout of a source image while applying new styles or content based on text prompts. The API supports sketch-to-image, structure-guided generation, and style transfer workflows.
   version: v2beta
   contact:
     name: Stability AI Support
@@ -74,6 +74,33 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    ControlImageResponse:
+      type: object
+      properties:
+        image:
+          type: string
+          description: Base64-encoded image data when Accept header is set to application/json.
+        finish_reason:
+          type: string
+          enum:
+          - SUCCESS
+          - CONTENT_FILTERED
+          description: The reason the generation finished.
+        seed:
+          type: integer
+          description: The seed used for generation.
+    ErrorResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: A unique identifier for the error instance.
+        name:
+          type: string
+          description: The error type name.
+        message:
+          type: string
+          description: A human-readable description of the error.
     StructureControlRequest:
       type: object
       required:
@@ -112,33 +139,6 @@ components:
           - webp
           default: png
           description: The output format of the generated image.
-    ErrorResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          description: A unique identifier for the error instance.
-        name:
-          type: string
-          description: The error type name.
-        message:
-          type: string
-          description: A human-readable description of the error.
-    ControlImageResponse:
-      type: object
-      properties:
-        image:
-          type: string
-          description: Base64-encoded image data when Accept header is set to application/json.
-        finish_reason:
-          type: string
-          enum:
-          - SUCCESS
-          - CONTENT_FILTERED
-          description: The reason the generation finished.
-        seed:
-          type: integer
-          description: The seed used for generation.
   securitySchemes:
     bearerAuth:
       type: http

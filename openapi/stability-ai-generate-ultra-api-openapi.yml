@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Stability AI Stable Fast 3D 3D Generation Generate Ultra API
-  description: The Stability AI Stable Fast 3D API generates textured 3D mesh assets from single input images. The API rapidly produces 3D models suitable for use in games, augmented reality, virtual reality, and product visualization workflows. Developers can convert 2D images into fully textured 3D objects with UV-unwrapped meshes, enabling rapid prototyping and asset creation without manual 3D modeling.
+  title: Stability AI Stable Image Generate Generate Ultra API
+  description: The Stability AI Stable Image Generate API provides text-to-image generation capabilities powered by models including Stable Diffusion 3.5 and Stable Image Ultra. Developers can generate high-quality images from text prompts with control over style, dimensions, and output format. The API supports multiple model tiers including Stable Image Core for fast and affordable generation and Stable Image Ultra for state-of-the-art quality results.
   version: v2beta
   contact:
     name: Stability AI Support
@@ -74,21 +74,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    GenerateImageResponse:
-      type: object
-      properties:
-        image:
-          type: string
-          description: Base64-encoded image data when Accept header is set to application/json.
-        finish_reason:
-          type: string
-          enum:
-          - SUCCESS
-          - CONTENT_FILTERED
-          description: The reason the generation finished. SUCCESS indicates a successful generation, CONTENT_FILTERED indicates the output was blocked by content moderation.
-        seed:
-          type: integer
-          description: The seed used for generation. Useful for reproducing results.
     ErrorResponse:
       type: object
       properties:
@@ -142,6 +127,21 @@ components:
           - webp
           default: png
           description: The output format of the generated image.
+    GenerateImageResponse:
+      type: object
+      properties:
+        image:
+          type: string
+          description: Base64-encoded image data when Accept header is set to application/json.
+        finish_reason:
+          type: string
+          enum:
+          - SUCCESS
+          - CONTENT_FILTERED
+          description: The reason the generation finished. SUCCESS indicates a successful generation, CONTENT_FILTERED indicates the output was blocked by content moderation.
+        seed:
+          type: integer
+          description: The seed used for generation. Useful for reproducing results.
   securitySchemes:
     bearerAuth:
       type: http
