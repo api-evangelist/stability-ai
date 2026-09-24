@@ -39,9 +39,9 @@ tags:
 - 3D Generation
 - Artificial Intelligence
 - Generative AI
-- Image-Generation
+- Image Generation
 - Image Editing
-- Machine-Learning
+- Machine Learning
 - Stable Diffusion
 - Text-to-Image
 - Video Generation
@@ -55,6 +55,8 @@ tags_raw:
 - Stable Diffusion
 - Text to Image
 - Video Generation
+- Image-Generation
+- Machine-Learning
 created: '2026-03-20'
 modified: '2026-05-19'
 apis:
@@ -71,8 +73,6 @@ apis:
     url: openapi/stability-ai-3d-generation-api-openapi.yml
   - type: Documentation
     url: https://platform.stability.ai/docs/api-reference
-  - type: GraphQL
-    url: graphql/stability-ai-graphql.md
   - type: Documentation
     url: https://platform.stability.ai/docs/getting-started/stable-video-diffusion
 - aid: stability-ai:stability-ai-conservative-upscale-api
@@ -89,8 +89,6 @@ apis:
     url: openapi/stability-ai-conservative-upscale-api-openapi.yml
   - type: Documentation
     url: https://platform.stability.ai/docs/api-reference
-  - type: GraphQL
-    url: graphql/stability-ai-graphql.md
   - type: Documentation
     url: https://platform.stability.ai/docs/getting-started/stable-video-diffusion
 - aid: stability-ai:stability-ai-creative-upscale-api
@@ -107,8 +105,6 @@ apis:
     url: openapi/stability-ai-creative-upscale-api-openapi.yml
   - type: Documentation
     url: https://platform.stability.ai/docs/api-reference
-  - type: GraphQL
-    url: graphql/stability-ai-graphql.md
   - type: Documentation
     url: https://platform.stability.ai/docs/getting-started/stable-video-diffusion
 - aid: stability-ai:stability-ai-erase-api
@@ -125,8 +121,6 @@ apis:
     url: openapi/stability-ai-erase-api-openapi.yml
   - type: Documentation
     url: https://platform.stability.ai/docs/api-reference
-  - type: GraphQL
-    url: graphql/stability-ai-graphql.md
   - type: Documentation
     url: https://platform.stability.ai/docs/getting-started/stable-video-diffusion
 - aid: stability-ai:stability-ai-fast-upscale-api
@@ -142,8 +136,6 @@ apis:
     url: openapi/stability-ai-fast-upscale-api-openapi.yml
   - type: Documentation
     url: https://platform.stability.ai/docs/api-reference
-  - type: GraphQL
-    url: graphql/stability-ai-graphql.md
   - type: Documentation
     url: https://platform.stability.ai/docs/getting-started/stable-video-diffusion
 - aid: stability-ai:stability-ai-generate-core-api
@@ -159,8 +151,6 @@ apis:
     url: openapi/stability-ai-generate-core-api-openapi.yml
   - type: Documentation
     url: https://platform.stability.ai/docs/api-reference
-  - type: GraphQL
-    url: graphql/stability-ai-graphql.md
   - type: Documentation
     url: https://platform.stability.ai/docs/getting-started/stable-video-diffusion
 - aid: stability-ai:stability-ai-generate-sd3-api
@@ -177,8 +167,6 @@ apis:
     url: openapi/stability-ai-generate-sd3-api-openapi.yml
   - type: Documentation
     url: https://platform.stability.ai/docs/api-reference
-  - type: GraphQL
-    url: graphql/stability-ai-graphql.md
   - type: Documentation
     url: https://platform.stability.ai/docs/getting-started/stable-video-diffusion
 - aid: stability-ai:stability-ai-generate-ultra-api
@@ -195,8 +183,6 @@ apis:
     url: openapi/stability-ai-generate-ultra-api-openapi.yml
   - type: Documentation
     url: https://platform.stability.ai/docs/api-reference
-  - type: GraphQL
-    url: graphql/stability-ai-graphql.md
   - type: Documentation
     url: https://platform.stability.ai/docs/getting-started/stable-video-diffusion
 - aid: stability-ai:stability-ai-image-to-video-api
@@ -215,8 +201,6 @@ apis:
     url: openapi/stability-ai-image-to-video-api-openapi.yml
   - type: Documentation
     url: https://platform.stability.ai/docs/api-reference
-  - type: GraphQL
-    url: graphql/stability-ai-graphql.md
   - type: Documentation
     url: https://platform.stability.ai/docs/getting-started/stable-video-diffusion
 - aid: stability-ai:stability-ai-inpaint-api
@@ -233,8 +217,6 @@ apis:
     url: openapi/stability-ai-inpaint-api-openapi.yml
   - type: Documentation
     url: https://platform.stability.ai/docs/api-reference
-  - type: GraphQL
-    url: graphql/stability-ai-graphql.md
   - type: Documentation
     url: https://platform.stability.ai/docs/getting-started/stable-video-diffusion
 - aid: stability-ai:stability-ai-outpaint-api
@@ -251,8 +233,6 @@ apis:
     url: openapi/stability-ai-outpaint-api-openapi.yml
   - type: Documentation
     url: https://platform.stability.ai/docs/api-reference
-  - type: GraphQL
-    url: graphql/stability-ai-graphql.md
   - type: Documentation
     url: https://platform.stability.ai/docs/getting-started/stable-video-diffusion
 - aid: stability-ai:stability-ai-remove-background-api
@@ -268,8 +248,6 @@ apis:
     url: openapi/stability-ai-remove-background-api-openapi.yml
   - type: Documentation
     url: https://platform.stability.ai/docs/api-reference
-  - type: GraphQL
-    url: graphql/stability-ai-graphql.md
   - type: Documentation
     url: https://platform.stability.ai/docs/getting-started/stable-video-diffusion
 - aid: stability-ai:stability-ai-replace-background-and-relight-api
@@ -285,8 +263,6 @@ apis:
     url: openapi/stability-ai-replace-background-and-relight-api-openapi.yml
   - type: Documentation
     url: https://platform.stability.ai/docs/api-reference
-  - type: GraphQL
-    url: graphql/stability-ai-graphql.md
   - type: Documentation
     url: https://platform.stability.ai/docs/getting-started/stable-video-diffusion
 - aid: stability-ai:stability-ai-search-and-recolor-api
@@ -303,8 +279,6 @@ apis:
     url: openapi/stability-ai-search-and-recolor-api-openapi.yml
   - type: Documentation
     url: https://platform.stability.ai/docs/api-reference
-  - type: GraphQL
-    url: graphql/stability-ai-graphql.md
   - type: Documentation
     url: https://platform.stability.ai/docs/getting-started/stable-video-diffusion
 - aid: stability-ai:stability-ai-search-and-replace-api
@@ -321,8 +295,6 @@ apis:
     url: openapi/stability-ai-search-and-replace-api-openapi.yml
   - type: Documentation
     url: https://platform.stability.ai/docs/api-reference
-  - type: GraphQL
-    url: graphql/stability-ai-graphql.md
   - type: Documentation
     url: https://platform.stability.ai/docs/getting-started/stable-video-diffusion
 - aid: stability-ai:stability-ai-sketch-api
@@ -339,8 +311,6 @@ apis:
     url: openapi/stability-ai-sketch-api-openapi.yml
   - type: Documentation
     url: https://platform.stability.ai/docs/api-reference
-  - type: GraphQL
-    url: graphql/stability-ai-graphql.md
   - type: Documentation
     url: https://platform.stability.ai/docs/getting-started/stable-video-diffusion
 - aid: stability-ai:stability-ai-structure-api
@@ -357,8 +327,6 @@ apis:
     url: openapi/stability-ai-structure-api-openapi.yml
   - type: Documentation
     url: https://platform.stability.ai/docs/api-reference
-  - type: GraphQL
-    url: graphql/stability-ai-graphql.md
   - type: Documentation
     url: https://platform.stability.ai/docs/getting-started/stable-video-diffusion
 - aid: stability-ai:stability-ai-style-api
@@ -377,8 +345,6 @@ apis:
     url: openapi/stability-ai-style-api-openapi.yml
   - type: Documentation
     url: https://platform.stability.ai/docs/api-reference
-  - type: GraphQL
-    url: graphql/stability-ai-graphql.md
   - type: Documentation
     url: https://platform.stability.ai/docs/getting-started/stable-video-diffusion
 common:
