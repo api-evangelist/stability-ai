@@ -80,6 +80,21 @@ components:
         message:
           type: string
           description: A human-readable description of the error.
+    UpscaleImageResponse:
+      type: object
+      properties:
+        image:
+          type: string
+          description: Base64-encoded image data when Accept header is set to application/json.
+        finish_reason:
+          type: string
+          enum:
+          - SUCCESS
+          - CONTENT_FILTERED
+          description: The reason the upscale finished.
+        seed:
+          type: integer
+          description: The seed used for generation.
     FastUpscaleRequest:
       type: object
       required:
@@ -97,21 +112,6 @@ components:
           - webp
           default: png
           description: The output format of the upscaled image.
-    UpscaleImageResponse:
-      type: object
-      properties:
-        image:
-          type: string
-          description: Base64-encoded image data when Accept header is set to application/json.
-        finish_reason:
-          type: string
-          enum:
-          - SUCCESS
-          - CONTENT_FILTERED
-          description: The reason the upscale finished.
-        seed:
-          type: integer
-          description: The seed used for generation.
   securitySchemes:
     bearerAuth:
       type: http

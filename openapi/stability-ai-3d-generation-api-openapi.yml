@@ -66,18 +66,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          description: A unique identifier for the error instance.
-        name:
-          type: string
-          description: The error type name.
-        message:
-          type: string
-          description: A human-readable description of the error.
     StableFast3DRequest:
       type: object
       required:
@@ -121,6 +109,18 @@ components:
           - SUCCESS
           - CONTENT_FILTERED
           description: The reason the generation finished.
+    ErrorResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: A unique identifier for the error instance.
+        name:
+          type: string
+          description: The error type name.
+        message:
+          type: string
+          description: A human-readable description of the error.
   securitySchemes:
     bearerAuth:
       type: http

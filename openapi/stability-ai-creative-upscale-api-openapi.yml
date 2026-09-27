@@ -102,6 +102,15 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    AsyncGenerationResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique generation ID used to poll for results.
+        status:
+          type: string
+          description: The current status of the generation.
     ErrorResponse:
       type: object
       properties:
@@ -146,15 +155,6 @@ components:
           - webp
           default: png
           description: The output format of the upscaled image.
-    AsyncGenerationResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The unique generation ID used to poll for results.
-        status:
-          type: string
-          description: The current status of the generation.
     UpscaleImageResponse:
       type: object
       properties:
