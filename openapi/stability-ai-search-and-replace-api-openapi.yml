@@ -74,18 +74,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          description: A unique identifier for the error instance.
-        name:
-          type: string
-          description: The error type name.
-        message:
-          type: string
-          description: A human-readable description of the error.
     SearchAndReplaceRequest:
       type: object
       required:
@@ -123,6 +111,18 @@ components:
           - webp
           default: png
           description: The output format of the edited image.
+    ErrorResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: A unique identifier for the error instance.
+        name:
+          type: string
+          description: The error type name.
+        message:
+          type: string
+          description: A human-readable description of the error.
     EditImageResponse:
       type: object
       properties:

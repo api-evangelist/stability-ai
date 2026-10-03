@@ -74,6 +74,18 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: A unique identifier for the error instance.
+        name:
+          type: string
+          description: The error type name.
+        message:
+          type: string
+          description: A human-readable description of the error.
     SketchControlRequest:
       type: object
       required:
@@ -127,18 +139,6 @@ components:
         seed:
           type: integer
           description: The seed used for generation.
-    ErrorResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          description: A unique identifier for the error instance.
-        name:
-          type: string
-          description: The error type name.
-        message:
-          type: string
-          description: A human-readable description of the error.
   securitySchemes:
     bearerAuth:
       type: http

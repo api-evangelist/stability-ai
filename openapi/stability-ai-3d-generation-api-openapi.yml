@@ -66,6 +66,30 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: A unique identifier for the error instance.
+        name:
+          type: string
+          description: The error type name.
+        message:
+          type: string
+          description: A human-readable description of the error.
+    Generate3DResponse:
+      type: object
+      properties:
+        model:
+          type: string
+          description: Base64-encoded GLB model data when Accept header is set to application/json.
+        finish_reason:
+          type: string
+          enum:
+          - SUCCESS
+          - CONTENT_FILTERED
+          description: The reason the generation finished.
     StableFast3DRequest:
       type: object
       required:
@@ -97,30 +121,6 @@ components:
           - quad
           default: none
           description: The remeshing algorithm to apply to the generated mesh. Triangle and quad remeshing produce cleaner topology suitable for animation and further editing.
-    Generate3DResponse:
-      type: object
-      properties:
-        model:
-          type: string
-          description: Base64-encoded GLB model data when Accept header is set to application/json.
-        finish_reason:
-          type: string
-          enum:
-          - SUCCESS
-          - CONTENT_FILTERED
-          description: The reason the generation finished.
-    ErrorResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          description: A unique identifier for the error instance.
-        name:
-          type: string
-          description: The error type name.
-        message:
-          type: string
-          description: A human-readable description of the error.
   securitySchemes:
     bearerAuth:
       type: http

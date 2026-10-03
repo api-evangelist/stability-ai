@@ -68,18 +68,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          description: A unique identifier for the error instance.
-        name:
-          type: string
-          description: The error type name.
-        message:
-          type: string
-          description: A human-readable description of the error.
     UpscaleImageResponse:
       type: object
       properties:
@@ -112,6 +100,18 @@ components:
           - webp
           default: png
           description: The output format of the upscaled image.
+    ErrorResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: A unique identifier for the error instance.
+        name:
+          type: string
+          description: The error type name.
+        message:
+          type: string
+          description: A human-readable description of the error.
   securitySchemes:
     bearerAuth:
       type: http

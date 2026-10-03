@@ -74,6 +74,18 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: A unique identifier for the error instance.
+        name:
+          type: string
+          description: The error type name.
+        message:
+          type: string
+          description: A human-readable description of the error.
     GenerateImageResponse:
       type: object
       properties:
@@ -89,18 +101,6 @@ components:
         seed:
           type: integer
           description: The seed used for generation. Useful for reproducing results.
-    ErrorResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          description: A unique identifier for the error instance.
-        name:
-          type: string
-          description: The error type name.
-        message:
-          type: string
-          description: A human-readable description of the error.
     GenerateCoreRequest:
       type: object
       required:

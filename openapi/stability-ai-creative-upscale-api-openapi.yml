@@ -101,6 +101,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
+  parameters:
+    generationId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The unique identifier of the asynchronous generation to poll for results.
   schemas:
     AsyncGenerationResponse:
       type: object
@@ -111,6 +119,21 @@ components:
         status:
           type: string
           description: The current status of the generation.
+    UpscaleImageResponse:
+      type: object
+      properties:
+        image:
+          type: string
+          description: Base64-encoded image data when Accept header is set to application/json.
+        finish_reason:
+          type: string
+          enum:
+          - SUCCESS
+          - CONTENT_FILTERED
+          description: The reason the upscale finished.
+        seed:
+          type: integer
+          description: The seed used for generation.
     ErrorResponse:
       type: object
       properties:
@@ -155,29 +178,6 @@ components:
           - webp
           default: png
           description: The output format of the upscaled image.
-    UpscaleImageResponse:
-      type: object
-      properties:
-        image:
-          type: string
-          description: Base64-encoded image data when Accept header is set to application/json.
-        finish_reason:
-          type: string
-          enum:
-          - SUCCESS
-          - CONTENT_FILTERED
-          description: The reason the upscale finished.
-        seed:
-          type: integer
-          description: The seed used for generation.
-  parameters:
-    generationId:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-      description: The unique identifier of the asynchronous generation to poll for results.
   securitySchemes:
     bearerAuth:
       type: http

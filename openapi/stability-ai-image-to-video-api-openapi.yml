@@ -93,7 +93,42 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
+  parameters:
+    generationId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The unique identifier of the asynchronous generation to poll for results.
   schemas:
+    ImageToVideoRequest:
+      type: object
+      required:
+      - image
+      properties:
+        image:
+          type: string
+          format: binary
+          description: The source image to animate. The image should contain a clear subject with a stable composition suitable for animation. Supported resolutions include 1024x576, 576x1024, and 768x768.
+        seed:
+          type: integer
+          minimum: 0
+          maximum: 4294967294
+          default: 0
+          description: A value to control randomness in the video generation.
+        cfg_scale:
+          type: number
+          minimum: 0
+          maximum: 10
+          default: 1.8
+          description: Controls how closely the video follows the conditioning from the input image. Higher values produce videos more faithful to the input but may reduce motion quality.
+        motion_bucket_id:
+          type: integer
+          minimum: 1
+          maximum: 255
+          default: 127
+          description: Controls the amount of motion in the generated video. Lower values produce less motion, higher values produce more dynamic motion.
     AsyncGenerationResponse:
       type: object
       properties:
@@ -130,41 +165,6 @@ components:
         seed:
           type: integer
           description: The seed used for generation.
-    ImageToVideoRequest:
-      type: object
-      required:
-      - image
-      properties:
-        image:
-          type: string
-          format: binary
-          description: The source image to animate. The image should contain a clear subject with a stable composition suitable for animation. Supported resolutions include 1024x576, 576x1024, and 768x768.
-        seed:
-          type: integer
-          minimum: 0
-          maximum: 4294967294
-          default: 0
-          description: A value to control randomness in the video generation.
-        cfg_scale:
-          type: number
-          minimum: 0
-          maximum: 10
-          default: 1.8
-          description: Controls how closely the video follows the conditioning from the input image. Higher values produce videos more faithful to the input but may reduce motion quality.
-        motion_bucket_id:
-          type: integer
-          minimum: 1
-          maximum: 255
-          default: 127
-          description: Controls the amount of motion in the generated video. Lower values produce less motion, higher values produce more dynamic motion.
-  parameters:
-    generationId:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-      description: The unique identifier of the asynchronous generation to poll for results.
   securitySchemes:
     bearerAuth:
       type: http
