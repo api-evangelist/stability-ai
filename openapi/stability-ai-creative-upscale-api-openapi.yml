@@ -101,24 +101,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
-  parameters:
-    generationId:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-      description: The unique identifier of the asynchronous generation to poll for results.
   schemas:
-    AsyncGenerationResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The unique generation ID used to poll for results.
-        status:
-          type: string
-          description: The current status of the generation.
     UpscaleImageResponse:
       type: object
       properties:
@@ -134,18 +117,15 @@ components:
         seed:
           type: integer
           description: The seed used for generation.
-    ErrorResponse:
+    AsyncGenerationResponse:
       type: object
       properties:
         id:
           type: string
-          description: A unique identifier for the error instance.
-        name:
+          description: The unique generation ID used to poll for results.
+        status:
           type: string
-          description: The error type name.
-        message:
-          type: string
-          description: A human-readable description of the error.
+          description: The current status of the generation.
     CreativeUpscaleRequest:
       type: object
       required:
@@ -178,6 +158,26 @@ components:
           - webp
           default: png
           description: The output format of the upscaled image.
+    ErrorResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: A unique identifier for the error instance.
+        name:
+          type: string
+          description: The error type name.
+        message:
+          type: string
+          description: A human-readable description of the error.
+  parameters:
+    generationId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The unique identifier of the asynchronous generation to poll for results.
   securitySchemes:
     bearerAuth:
       type: http

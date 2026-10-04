@@ -74,6 +74,21 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    EditImageResponse:
+      type: object
+      properties:
+        image:
+          type: string
+          description: Base64-encoded image data when Accept header is set to application/json.
+        finish_reason:
+          type: string
+          enum:
+          - SUCCESS
+          - CONTENT_FILTERED
+          description: The reason the edit finished.
+        seed:
+          type: integer
+          description: The seed used for generation.
     SearchAndReplaceRequest:
       type: object
       required:
@@ -123,21 +138,6 @@ components:
         message:
           type: string
           description: A human-readable description of the error.
-    EditImageResponse:
-      type: object
-      properties:
-        image:
-          type: string
-          description: Base64-encoded image data when Accept header is set to application/json.
-        finish_reason:
-          type: string
-          enum:
-          - SUCCESS
-          - CONTENT_FILTERED
-          description: The reason the edit finished.
-        seed:
-          type: integer
-          description: The seed used for generation.
   securitySchemes:
     bearerAuth:
       type: http

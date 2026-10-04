@@ -93,14 +93,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
-  parameters:
-    generationId:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-      description: The unique identifier of the asynchronous generation to poll for results.
   schemas:
     ImageToVideoRequest:
       type: object
@@ -129,6 +121,21 @@ components:
           maximum: 255
           default: 127
           description: Controls the amount of motion in the generated video. Lower values produce less motion, higher values produce more dynamic motion.
+    VideoGenerationResponse:
+      type: object
+      properties:
+        video:
+          type: string
+          description: Base64-encoded video data when Accept header is set to application/json.
+        finish_reason:
+          type: string
+          enum:
+          - SUCCESS
+          - CONTENT_FILTERED
+          description: The reason the generation finished.
+        seed:
+          type: integer
+          description: The seed used for generation.
     AsyncGenerationResponse:
       type: object
       properties:
@@ -150,21 +157,14 @@ components:
         message:
           type: string
           description: A human-readable description of the error.
-    VideoGenerationResponse:
-      type: object
-      properties:
-        video:
-          type: string
-          description: Base64-encoded video data when Accept header is set to application/json.
-        finish_reason:
-          type: string
-          enum:
-          - SUCCESS
-          - CONTENT_FILTERED
-          description: The reason the generation finished.
-        seed:
-          type: integer
-          description: The seed used for generation.
+  parameters:
+    generationId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The unique identifier of the asynchronous generation to poll for results.
   securitySchemes:
     bearerAuth:
       type: http

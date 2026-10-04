@@ -74,33 +74,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          description: A unique identifier for the error instance.
-        name:
-          type: string
-          description: The error type name.
-        message:
-          type: string
-          description: A human-readable description of the error.
-    EditImageResponse:
-      type: object
-      properties:
-        image:
-          type: string
-          description: Base64-encoded image data when Accept header is set to application/json.
-        finish_reason:
-          type: string
-          enum:
-          - SUCCESS
-          - CONTENT_FILTERED
-          description: The reason the edit finished.
-        seed:
-          type: integer
-          description: The seed used for generation.
     EraseRequest:
       type: object
       required:
@@ -128,6 +101,33 @@ components:
           - webp
           default: png
           description: The output format of the edited image.
+    EditImageResponse:
+      type: object
+      properties:
+        image:
+          type: string
+          description: Base64-encoded image data when Accept header is set to application/json.
+        finish_reason:
+          type: string
+          enum:
+          - SUCCESS
+          - CONTENT_FILTERED
+          description: The reason the edit finished.
+        seed:
+          type: integer
+          description: The seed used for generation.
+    ErrorResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: A unique identifier for the error instance.
+        name:
+          type: string
+          description: The error type name.
+        message:
+          type: string
+          description: A human-readable description of the error.
   securitySchemes:
     bearerAuth:
       type: http
