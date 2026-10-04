@@ -1,0 +1,24 @@
+slug: stability-ai
+provider: Stability AI
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: 3D Generation
+  spec_file: stability-ai-3d-generation-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.7
+  evidence: POST /v2beta/3d/stable-fast-3d  generateStableFast3D  Generate a 3D model from an image
+  reason: Generative AI model inference service producing 3D assets; the capability realised is AI/ML
+    model delivery under Information & Data Management, Artificial Intelligence Management.
