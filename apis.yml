@@ -348,6 +348,8 @@ apis:
   - type: Documentation
     url: https://platform.stability.ai/docs/getting-started/stable-video-diffusion
 common:
+- type: Plans
+  url: plans/stability-ai-plans-pricing.yml
 - type: CapabilityMap
   url: capabilities/stability-ai-capability-edges.yml
   name: Stability AI Business Capability Map
