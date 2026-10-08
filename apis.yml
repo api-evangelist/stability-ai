@@ -348,6 +348,10 @@ apis:
   - type: Documentation
     url: https://platform.stability.ai/docs/getting-started/stable-video-diffusion
 common:
+- type: RateLimits
+  url: rate-limits/stability-ai-rate-limits.yml
+- type: FinOps
+  url: finops/stability-ai-finops.yml
 - type: Plans
   url: plans/stability-ai-plans-pricing.yml
 - type: CapabilityMap
