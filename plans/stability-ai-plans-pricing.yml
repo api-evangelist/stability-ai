@@ -1,102 +1,199 @@
-specification: API Commons Plans
-specificationVersion: '0.1'
-schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
-provider: Stability AI
-providerId: stability-ai
-created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-04'
-reconciled: true
-tags:
-  - AI
-  - Image Generation
-  - Video Generation
-description: Stability AI credit-based pricing. 1 credit = $0.01.
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-10-07'
+method: searched
+source: https://stability.ai/api-pricing-update-25
 sources:
-  - https://platform.stability.ai/pricing
+- https://stability.ai/api-pricing-update-25
+provenance:
+  tool: all/0-working/economics/harvest_pricing.py
+  run: 20261007T104522
+  grounding: every price_text was found verbatim in the fetched page text
+audience: developer-api
+pricing_basis: per-call
+delivery:
+  delivery: managed+licensed
+  method: page
+  read: '2026-10-07'
+  evidence: you can still deploy the model in your environment with a Self-Hosted License
+published: true
+note: Announcement of API price changes effective August 1, 2025, priced in credits per API service. Custom/enterprise
+  pricing with bulk discounts available via sales. Also mentions Self-Hosted License for Stable Video.
+plan_count: 13
 plans:
-  - id: stability-membership
-    name: API Membership
-    type: subscription
-    description: $20/month with 6,000 credits ($60 effective rate).
-    entries:
-      - label: Monthly
-        name: monthly
-        type: subscription
-        metric: month
-        limit: -1
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '20.00'
-        userMultiplied: false
-      - label: Credits included
-        name: credits
-        type: quota
-        metric: credit
-        limit: 6000
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: 1 credit = $0.01
-      - name: Effective $60 worth of credits for $20
-  - id: stability-sd3
-    name: Stable Diffusion 3 (SD3)
-    type: usage-based
-    description: ~$0.035 per image (3.5 credits).
-    entries:
-      - label: Per image
-        name: image
-        type: metered
-        metric: image
-        limit: -1
-        timeFrame: usage
-        geo: global
-        unit: 1
-        price: '0.035'
-        userMultiplied: false
-    elements:
-      - name: SD3 medium image quality
-      - name: Credit-based
-  - id: stability-image-ultra
-    name: Stable Image Ultra
-    type: usage-based
-    description: $0.08 per image (8 credits). Powered by SD3.5 Large.
-    entries:
-      - label: Per image
-        name: image
-        type: metered
-        metric: image
-        limit: -1
-        timeFrame: usage
-        geo: global
-        unit: 1
-        price: '0.08'
-        userMultiplied: false
-    elements:
-      - name: Highest quality
-      - name: SD3.5 Large model
-  - id: stability-enterprise
-    name: Enterprise
-    type: enterprise
-    description: Custom pricing for high volume.
-    entries:
-      - label: Annual (custom)
-        name: annual
-        type: subscription
-        metric: year
-        limit: -1
-        timeFrame: year
-        geo: global
-        unit: 1
-        price: custom
-        userMultiplied: false
-    elements:
-      - name: Volume discounts
-      - name: Dedicated support
-      - name: Self-hosted/private models option
+- name: Upscale Creative
+  price_text: '60'
+  price: 60
+  period: per-use
+  unit: credits
+- name: Upscale Fast
+  price_text: '2'
+  price: 2
+  period: per-use
+  unit: credits
+- name: Upscale Conservative
+  price_text: '40'
+  price: 40
+  period: per-use
+  unit: credits
+- name: Control Sketch
+  price_text: '5'
+  price: 5
+  period: per-use
+  unit: credits
+- name: Control Structure
+  price_text: '5'
+  price: 5
+  period: per-use
+  unit: credits
+- name: Control Style
+  price_text: '5'
+  price: 5
+  period: per-use
+  unit: credits
+- name: Edit Erase
+  price_text: '5'
+  price: 5
+  period: per-use
+  unit: credits
+- name: Inpaint
+  price_text: '5'
+  price: 5
+  period: per-use
+  unit: credits
+- name: Remove Background
+  price_text: '5'
+  price: 5
+  period: per-use
+  unit: credits
+- name: Search Replace
+  price_text: '5'
+  price: 5
+  period: per-use
+  unit: credits
+- name: Fast 3D
+  price_text: '10'
+  price: 10
+  period: per-use
+  unit: credits
+- name: Text to Audio
+  price_text: '20'
+  price: 20
+  period: per-use
+  unit: credits
+- name: Audio to Audio
+  price_text: '20'
+  price: 20
+  period: per-use
+  unit: credits
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - hybrid
+  units:
+  - credit
+  plans:
+  - name: Upscale Creative
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - credit
+    periods:
+    - other
+  - name: Upscale Fast
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - credit
+    periods:
+    - other
+  - name: Upscale Conservative
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - credit
+    periods:
+    - other
+  - name: Control Sketch
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - credit
+    periods:
+    - other
+  - name: Control Structure
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - credit
+    periods:
+    - other
+  - name: Control Style
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - credit
+    periods:
+    - other
+  - name: Edit Erase
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - credit
+    periods:
+    - other
+  - name: Inpaint
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - credit
+    periods:
+    - other
+  - name: Remove Background
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - credit
+    periods:
+    - other
+  - name: Search Replace
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - credit
+    periods:
+    - other
+  - name: Fast 3D
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - credit
+    periods:
+    - other
+  - name: Text to Audio
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - credit
+    periods:
+    - other
+  - name: Audio to Audio
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - credit
+    periods:
+    - other
