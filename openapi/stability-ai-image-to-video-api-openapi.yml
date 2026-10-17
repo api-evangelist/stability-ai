@@ -94,6 +94,15 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    AsyncGenerationResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique generation ID used to poll for results.
+        status:
+          type: string
+          description: The current status of the generation.
     ImageToVideoRequest:
       type: object
       required:
@@ -121,6 +130,18 @@ components:
           maximum: 255
           default: 127
           description: Controls the amount of motion in the generated video. Lower values produce less motion, higher values produce more dynamic motion.
+    ErrorResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: A unique identifier for the error instance.
+        name:
+          type: string
+          description: The error type name.
+        message:
+          type: string
+          description: A human-readable description of the error.
     VideoGenerationResponse:
       type: object
       properties:
@@ -136,27 +157,6 @@ components:
         seed:
           type: integer
           description: The seed used for generation.
-    AsyncGenerationResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The unique generation ID used to poll for results.
-        status:
-          type: string
-          description: The current status of the generation.
-    ErrorResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          description: A unique identifier for the error instance.
-        name:
-          type: string
-          description: The error type name.
-        message:
-          type: string
-          description: A human-readable description of the error.
   parameters:
     generationId:
       name: id

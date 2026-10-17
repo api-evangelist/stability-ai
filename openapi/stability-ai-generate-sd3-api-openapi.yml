@@ -74,33 +74,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    GenerateImageResponse:
-      type: object
-      properties:
-        image:
-          type: string
-          description: Base64-encoded image data when Accept header is set to application/json.
-        finish_reason:
-          type: string
-          enum:
-          - SUCCESS
-          - CONTENT_FILTERED
-          description: The reason the generation finished. SUCCESS indicates a successful generation, CONTENT_FILTERED indicates the output was blocked by content moderation.
-        seed:
-          type: integer
-          description: The seed used for generation. Useful for reproducing results.
-    ErrorResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          description: A unique identifier for the error instance.
-        name:
-          type: string
-          description: The error type name.
-        message:
-          type: string
-          description: A human-readable description of the error.
     GenerateSD3Request:
       type: object
       required:
@@ -169,6 +142,33 @@ components:
           - image-to-image
           default: text-to-image
           description: The generation mode. Use text-to-image for prompt-only generation or image-to-image when providing a reference image.
+    GenerateImageResponse:
+      type: object
+      properties:
+        image:
+          type: string
+          description: Base64-encoded image data when Accept header is set to application/json.
+        finish_reason:
+          type: string
+          enum:
+          - SUCCESS
+          - CONTENT_FILTERED
+          description: The reason the generation finished. SUCCESS indicates a successful generation, CONTENT_FILTERED indicates the output was blocked by content moderation.
+        seed:
+          type: integer
+          description: The seed used for generation. Useful for reproducing results.
+    ErrorResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: A unique identifier for the error instance.
+        name:
+          type: string
+          description: The error type name.
+        message:
+          type: string
+          description: A human-readable description of the error.
   securitySchemes:
     bearerAuth:
       type: http
