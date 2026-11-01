@@ -1,4 +1,4 @@
-# Stability AI (stability-ai)
+# Stability AI
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,168 +66,230 @@
 
 Stability AI is an AI company that develops open-source generative AI models for image, audio, video, and language, including the Stable Diffusion family of image generation models. The Stability AI developer platform provides REST APIs for text-to-image generation, image editing, image upscaling, image structure control, video generation, and 3D asset creation. All APIs are accessible at api.stability.ai using bearer token authentication.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/stability-ai/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/stability-ai/refs/heads/main/apis.yml)
+**Areas:** 3D Generation · Artificial Intelligence · Generative AI · Image Generation · Image Editing · Machine Learning · Stable Diffusion · Video Generation
 
-## Tags
+## Stability AI on APIs.io
 
-- 3D Generation
-- AI
-- Generative AI
-- Image Generation
-- Image Editing
-- Machine Learning
-- Stable Diffusion
-- Text to Image
-- Video Generation
+Everything profiled for Stability AI is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/stability-ai/](https://apis.io/providers/stability-ai/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (18)
 
-- **Created:** 2026-03-20
-- **Modified:** 2026-05-19
+- [Stability AI 3D Generation API](https://apis.io/apis/stability-ai/stability-ai-3d-generation-api/) — Generate textured 3D mesh assets from single input images using the Stable Fast 3D model.
+- [Stability AI Conservative Upscale API](https://apis.io/apis/stability-ai/stability-ai-conservative-upscale-api/) — Increase image resolution while closely preserving the original image details and composition with minimal creative additions.
+- [Stability AI Creative Upscale API](https://apis.io/apis/stability-ai/stability-ai-creative-upscale-api/) — Increase image resolution while enhancing details and adding creative improvements guided by an optional text prompt. This is an asynchronous endpoint that…
+- [Stability AI Erase API](https://apis.io/apis/stability-ai/stability-ai-erase-api/) — Remove objects from an image by masking the area to erase and letting the AI fill in the background naturally.
+- [Stability AI Fast Upscale API](https://apis.io/apis/stability-ai/stability-ai-fast-upscale-api/) — Quickly increase image resolution with minimal processing time while maintaining image quality.
+- [Stability AI Generate Core API](https://apis.io/apis/stability-ai/stability-ai-generate-core-api/) — Generate images using Stable Image Core, a fast and affordable model for high-quality image generation.
+- [Stability AI Generate SD3 API](https://apis.io/apis/stability-ai/stability-ai-generate-sd3-api/) — Generate images using Stable Diffusion 3 and 3.5 models with advanced text-to-image and image-to-image capabilities.
+- [Stability AI Generate Ultra API](https://apis.io/apis/stability-ai/stability-ai-generate-ultra-api/) — Generate images using Stable Image Ultra, the highest quality model for state-of-the-art photorealistic and artistic image generation.
+- [Stability AI Image to Video API](https://apis.io/apis/stability-ai/stability-ai-image-to-video-api/) — Generate short video clips from a single input image using the Stable Video Diffusion model. The API uses an asynchronous start-and-poll pattern.
+- [Stability AI Inpaint API](https://apis.io/apis/stability-ai/stability-ai-inpaint-api/) — Fill in masked regions of an image using AI-guided inpainting with text prompts to control what appears in the filled area.
+- [Stability AI Outpaint API](https://apis.io/apis/stability-ai/stability-ai-outpaint-api/) — Extend the boundaries of an image by generating new content that seamlessly continues the existing scene in any direction.
+- [Stability AI Remove Background API](https://apis.io/apis/stability-ai/stability-ai-remove-background-api/) — Automatically detect and remove the background from an image, isolating the foreground subject.
+- [Stability AI Replace Background and Relight API](https://apis.io/apis/stability-ai/stability-ai-replace-background-and-relight-api/) — Replace the background of an image and adjust lighting conditions using AI-powered scene understanding.
+- [Stability AI Search and Recolor API](https://apis.io/apis/stability-ai/stability-ai-search-and-recolor-api/) — Find specific objects within an image and recolor them using text descriptions of the target object and desired color.
+- [Stability AI Search and Replace API](https://apis.io/apis/stability-ai/stability-ai-search-and-replace-api/) — Find and replace specific objects within an image using text descriptions of what to search for and what to replace it with.
+- [Stability AI Sketch API](https://apis.io/apis/stability-ai/stability-ai-sketch-api/) — Generate images from hand-drawn sketches or line drawings, guided by a text prompt to fill in details, colors, and textures.
+- [Stability AI Structure API](https://apis.io/apis/stability-ai/stability-ai-structure-api/) — Generate images guided by the structural composition of a reference image, preserving edges and layout while applying new content from a text prompt.
+- [Stability AI Style API](https://apis.io/apis/stability-ai/stability-ai-style-api/) — Generate images that adopt the visual style of a reference image while following a text prompt for content direction.
 
-## APIs
+### Published properties
 
-### Stability AI Stable Image Generate API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-The Stability AI Stable Image Generate API provides text-to-image generation capabilities powered by models including Stable Diffusion 3.5 and Stable Image Ultra. Developers can generate high-quality images from text prompts with control over style, dimensions, and output format. The API supports multiple model tiers including Stable Image Core for fast and affordable generation and Stable Image Ultra for state-of-the-art quality results.
+#### GraphQL (1)
 
-- **Human URL:** [https://platform.stability.ai/docs/getting-started/stable-image](https://platform.stability.ai/docs/getting-started/stable-image)
-- **Base URL:** `https://api.stability.ai`
+GraphQL schemas.
 
-#### Tags
+- [Moved to /providers/stability-ai/](https://apis.io/graphqls/stability-ai/stability-ai-graphql/)
 
-- Generative AI
-- Image Generation
-- Stable Diffusion
-- Text to Image
+#### Agentic access (1)
 
-#### Properties
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- [Documentation](https://platform.stability.ai/docs/api-reference)
-- [OpenAPI](openapi/stability-ai-stable-image-generate-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/stability-ai-stable-image-generate.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/stability-ai-stable-image-generate.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Stability Ai Agentic Access](https://apis.io/agentic-access/stability-ai/stability-ai-agentic-access/)
 
-### Stability AI Stable Image Edit API
+#### JSON Schema (27)
 
-The Stability AI Stable Image Edit API provides image editing capabilities including inpainting, outpainting, object erasing, background removal, and search-and-replace functionality. Developers can use natural language prompts to modify existing images, fill in masked regions, extend image boundaries, or replace specific objects within a scene.
+The data models the API reads and writes.
 
-- **Human URL:** [https://platform.stability.ai/docs/api-reference](https://platform.stability.ai/docs/api-reference)
-- **Base URL:** `https://api.stability.ai`
+- [AsyncGenerationResponse](https://apis.io/schemas/stability-ai/stability-ai-asyncgenerationresponse/)
+- [ConservativeUpscaleRequest](https://apis.io/schemas/stability-ai/stability-ai-conservativeupscalerequest/)
+- [ControlImageResponse](https://apis.io/schemas/stability-ai/stability-ai-controlimageresponse/)
+- [CreativeUpscaleRequest](https://apis.io/schemas/stability-ai/stability-ai-creativeupscalerequest/)
+- [EditImageResponse](https://apis.io/schemas/stability-ai/stability-ai-editimageresponse/)
+- [EraseRequest](https://apis.io/schemas/stability-ai/stability-ai-eraserequest/)
+- [ErrorResponse](https://apis.io/schemas/stability-ai/stability-ai-errorresponse/)
+- [FastUpscaleRequest](https://apis.io/schemas/stability-ai/stability-ai-fastupscalerequest/)
+- [Generate3DResponse](https://apis.io/schemas/stability-ai/stability-ai-generate3dresponse/)
+- [GenerateCoreRequest](https://apis.io/schemas/stability-ai/stability-ai-generatecorerequest/)
+- [GenerateImageResponse](https://apis.io/schemas/stability-ai/stability-ai-generateimageresponse/)
+- [GenerateSD3Request](https://apis.io/schemas/stability-ai/stability-ai-generatesd3request/)
+- [GenerateUltraRequest](https://apis.io/schemas/stability-ai/stability-ai-generateultrarequest/)
+- [Stability AI Image Generation](https://apis.io/schemas/stability-ai/stability-ai-image-generation/)
+- [ImageToVideoRequest](https://apis.io/schemas/stability-ai/stability-ai-imagetovideorequest/)
+- [InpaintRequest](https://apis.io/schemas/stability-ai/stability-ai-inpaintrequest/)
+- [OutpaintRequest](https://apis.io/schemas/stability-ai/stability-ai-outpaintrequest/)
+- [RemoveBackgroundRequest](https://apis.io/schemas/stability-ai/stability-ai-removebackgroundrequest/)
+- [ReplaceBackgroundAndRelightRequest](https://apis.io/schemas/stability-ai/stability-ai-replacebackgroundandrelightrequest/)
+- [SearchAndRecolorRequest](https://apis.io/schemas/stability-ai/stability-ai-searchandrecolorrequest/)
+- [SearchAndReplaceRequest](https://apis.io/schemas/stability-ai/stability-ai-searchandreplacerequest/)
+- [SketchControlRequest](https://apis.io/schemas/stability-ai/stability-ai-sketchcontrolrequest/)
+- [StableFast3DRequest](https://apis.io/schemas/stability-ai/stability-ai-stablefast3drequest/)
+- [StructureControlRequest](https://apis.io/schemas/stability-ai/stability-ai-structurecontrolrequest/)
+- [StyleControlRequest](https://apis.io/schemas/stability-ai/stability-ai-stylecontrolrequest/)
+- …and 2 more published on APIs.io
 
-#### Tags
+#### JSON Structure (2)
 
-- Generative AI
-- Image Editing
-- Inpainting
-- Outpainting
-- Search and Replace
+Data models expressed in JSON Structure.
 
-#### Properties
+- [Stability Ai Image Generation Structure](https://apis.io/json-structure/stability-ai/stability-ai-image-generation-structure/)
+- [Stability Ai Structure](https://apis.io/json-structure/stability-ai/stability-ai-structure/)
 
-- [Documentation](https://platform.stability.ai/docs/api-reference)
-- [OpenAPI](openapi/stability-ai-stable-image-edit-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/stability-ai-stable-image-edit.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/stability-ai-stable-image-edit.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### JSON-LD (1)
 
-### Stability AI Stable Image Upscale API
+Linked-data contexts for the provider's vocabulary.
 
-The Stability AI Stable Image Upscale API enables developers to increase the resolution of images using AI-powered upscaling models. The API offers both conservative upscaling, which preserves the original image closely while increasing resolution, and creative upscaling, which enhances and adds detail to images during the upscaling process.
+- [Stability Ai Context](https://apis.io/jsonld/stability-ai/stability-ai-context/)
 
-- **Human URL:** [https://platform.stability.ai/docs/api-reference](https://platform.stability.ai/docs/api-reference)
-- **Base URL:** `https://api.stability.ai`
+#### Vocabulary (1)
 
-#### Tags
+The provider's domain terms, defined.
 
-- Generative AI
-- Image Enhancement
-- Image Upscaling
-- Super Resolution
+- [Stability AI Vocabulary](https://apis.io/vocabularies/stability-ai/stability-ai-vocabulary/)
 
-#### Properties
+#### Examples (1)
 
-- [Documentation](https://platform.stability.ai/docs/api-reference)
-- [OpenAPI](openapi/stability-ai-stable-image-upscale-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/stability-ai-stable-image-upscale.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/stability-ai-stable-image-upscale.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Example requests and responses.
 
-### Stability AI Stable Image Control API
+- [Stability Ai Generate Image Core Example](https://apis.io/examples/stability-ai/stability-ai-generate-image-core-example/)
 
-The Stability AI Stable Image Control API provides image-to-image generation guided by structural inputs such as sketches and reference structures. Using ControlNet-based models, developers can generate new images that follow the composition, edges, or layout of a source image while applying new styles or content based on text prompts.
+#### Collections (42)
 
-- **Human URL:** [https://platform.stability.ai/docs/api-reference](https://platform.stability.ai/docs/api-reference)
-- **Base URL:** `https://api.stability.ai`
+Postman and Open Collection request collections.
 
-#### Tags
+- [Stability AI Stable Fast 3D 3D Generation API](https://apis.io/collections/stability-ai/open-stability-ai-3d-generation-api/)
+- [Stability AI Stable Fast 3D 3D Generation Conservative Upscale API](https://apis.io/collections/stability-ai/open-stability-ai-conservative-upscale-api/)
+- [Stability AI Stable Fast 3D 3D Generation Creative Upscale API](https://apis.io/collections/stability-ai/open-stability-ai-creative-upscale-api/)
+- [Stability AI Stable Fast 3D 3D Generation Erase API](https://apis.io/collections/stability-ai/open-stability-ai-erase-api/)
+- [Stability AI Stable Fast 3D 3D Generation Fast Upscale API](https://apis.io/collections/stability-ai/open-stability-ai-fast-upscale-api/)
+- [Stability AI Stable Fast 3D 3D Generation Generate Core API](https://apis.io/collections/stability-ai/open-stability-ai-generate-core-api/)
+- [Stability AI Stable Fast 3D 3D Generation Generate SD3 API](https://apis.io/collections/stability-ai/open-stability-ai-generate-sd3-api/)
+- [Stability AI Stable Fast 3D 3D Generation Generate Ultra API](https://apis.io/collections/stability-ai/open-stability-ai-generate-ultra-api/)
+- [Stability AI Stable Fast 3D 3D Generation Image to Video API](https://apis.io/collections/stability-ai/open-stability-ai-image-to-video-api/)
+- [Stability AI Stable Fast 3D 3D Generation Inpaint API](https://apis.io/collections/stability-ai/open-stability-ai-inpaint-api/)
+- [Stability AI Stable Fast 3D 3D Generation Outpaint API](https://apis.io/collections/stability-ai/open-stability-ai-outpaint-api/)
+- [Stability AI Stable Fast 3D 3D Generation Remove Background API](https://apis.io/collections/stability-ai/open-stability-ai-remove-background-api/)
+- [Stability AI Stable Fast 3D 3D Generation Replace Background and Relight API](https://apis.io/collections/stability-ai/open-stability-ai-replace-background-and-relight-api/)
+- [Stability AI Stable Fast 3D 3D Generation Search and Recolor API](https://apis.io/collections/stability-ai/open-stability-ai-search-and-recolor-api/)
+- [Stability AI Stable Fast 3D 3D Generation Search and Replace API](https://apis.io/collections/stability-ai/open-stability-ai-search-and-replace-api/)
+- [Stability AI Stable Fast 3D 3D Generation Sketch API](https://apis.io/collections/stability-ai/open-stability-ai-sketch-api/)
+- [Stability AI Stable Fast 3D API](https://apis.io/collections/stability-ai/open-stability-ai-stable-fast-3d/)
+- [Stability AI Stable Image Control API](https://apis.io/collections/stability-ai/open-stability-ai-stable-image-control/)
+- [Stability AI Stable Image Edit API](https://apis.io/collections/stability-ai/open-stability-ai-stable-image-edit/)
+- [Stability AI Stable Image Generate API](https://apis.io/collections/stability-ai/open-stability-ai-stable-image-generate/)
+- [Stability AI Stable Image Upscale API](https://apis.io/collections/stability-ai/open-stability-ai-stable-image-upscale/)
+- [Stability AI Stable Video Diffusion API](https://apis.io/collections/stability-ai/open-stability-ai-stable-video-diffusion/)
+- [Stability AI Stable Fast 3D 3D Generation Structure API](https://apis.io/collections/stability-ai/open-stability-ai-structure-api/)
+- [Stability AI Stable Fast 3D 3D Generation Style API](https://apis.io/collections/stability-ai/open-stability-ai-style-api/)
+- [Stability AI Stable Fast 3D 3D Generation API](https://apis.io/collections/stability-ai/postman-stability-ai-3d-generation-api/)
+- …and 17 more published on APIs.io
 
-- ControlNet
-- Generative AI
-- Image Generation
-- Image to Image
+#### Governance rules (2)
 
-#### Properties
+Spectral rulesets for the provider's contracts.
 
-- [Documentation](https://platform.stability.ai/docs/api-reference)
-- [OpenAPI](openapi/stability-ai-stable-image-control-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/stability-ai-stable-image-control.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/stability-ai-stable-image-control.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Stability AI — jsonschema rules](https://apis.io/rules/stability-ai/stability-ai-jsonschema-spectral-rules/)
+- [Stability AI API Rules](https://apis.io/rules/stability-ai/stability-ai-rules/)
 
-### Stability AI Stable Video Diffusion API
+#### Security (2)
 
-The Stability AI Stable Video Diffusion API enables developers to generate short video clips from a single input image. Powered by the Stable Video Diffusion model, the API produces smooth animated sequences that bring static images to life with realistic motion.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://platform.stability.ai/docs/getting-started/stable-video](https://platform.stability.ai/docs/getting-started/stable-video)
-- **Base URL:** `https://api.stability.ai`
+- [Stability Ai Authentication](https://apis.io/security/stability-ai/stability-ai-authentication/)
+- [Stability Ai Domain Security](https://apis.io/security/stability-ai/stability-ai-domain-security/)
 
-#### Tags
+#### Plans and pricing (1)
 
-- Generative AI
-- Image to Video
-- Stable Diffusion
-- Video Generation
+Published plans, tiers and prices.
 
-#### Properties
+- [Stability Ai Plans Pricing](https://apis.io/plans/stability-ai/stability-ai-plans-pricing/)
 
-- [Documentation](https://platform.stability.ai/docs/getting-started/stable-video-diffusion)
-- [OpenAPI](openapi/stability-ai-stable-video-diffusion-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/stability-ai-stable-video-diffusion.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/stability-ai-stable-video-diffusion.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Rate limits (1)
 
-### Stability AI Stable Fast 3D API
+Published request limits.
 
-The Stability AI Stable Fast 3D API generates textured 3D mesh assets from single input images. The API rapidly produces 3D models suitable for use in games, augmented reality, virtual reality, and product visualization workflows.
+- [Stability Ai Rate Limits](https://apis.io/rate-limits/stability-ai/stability-ai-rate-limits/)
 
-- **Human URL:** [https://platform.stability.ai/docs/api-reference](https://platform.stability.ai/docs/api-reference)
-- **Base URL:** `https://api.stability.ai`
+#### FinOps (1)
 
-#### Tags
+What the API costs to run, by operation.
 
-- 3D Generation
-- Generative AI
-- Image to 3D
-- Mesh Generation
+- [Stability Ai Finops](https://apis.io/finops/stability-ai/stability-ai-finops/)
 
-#### Properties
+## Where to find this API
 
-- [Documentation](https://platform.stability.ai/docs/api-reference)
-- [OpenAPI](openapi/stability-ai-stable-fast-3d-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/stability-ai-stable-fast-3d.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/stability-ai-stable-fast-3d.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-## Common Properties
-
-- [LinkedIn](https://www.linkedin.com/company/stability-ai)
 - [Website](https://stability.ai)
 - [Documentation](https://platform.stability.ai/docs/getting-started)
-- [Portal](https://platform.stability.ai)
 - [Pricing](https://stability.ai/api-pricing-update-25)
-- [Terms of Service](https://stability.ai/terms-of-service)
-- [Privacy Policy](https://stability.ai/privacy-policy)
-- [Git Hub  Org](https://github.com/stability-ai)
-- [JSON-LD](json-ld/stability-ai-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [JSON Schema](json-schema/stability-ai-image-generation-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/stability-ai-image-generation-structure.json)
-- [Vocabulary](vocabulary/stability-ai-vocabulary.yml)
-- [Spectral Rules](rules/stability-ai-rules.yml)
-- [Features](undefined)
-- [Integrations](https://stability.ai/partners)
+- [Blog](https://stability.ai/news-updates)
+- [Terms of service](https://stability.ai/terms-of-service)
+- [Privacy policy](https://stability.ai/privacy-policy)
+
+## API Evangelist rating
+
+**Kin Score 43.0** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 54.8 |
+| Contract governance | 27.3 |
+| Operational transparency | 13.2 |
+| Developer ergonomics | 25.0 |
+| Access clarity | 63.2 |
+
+**Agent readiness 25.3** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 22.7** — AI & Biometrics
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/stability-ai/](https://apis.io/providers/stability-ai/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Stability AI: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/stability-ai/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
